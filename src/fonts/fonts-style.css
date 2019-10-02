@@ -1,0 +1,40 @@
+@font-face {
+    font-family: 'SteinemUnicode';
+    src: url('SteinemUnicode.woff2') format('woff2'),
+        url('SteinemUnicode.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Steinem-Italic';
+    src: url('Steinem-Italic.woff2') format('woff2'),
+        url('Steinem-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Steinem';
+    src: url('Steinem.woff2') format('woff2'),
+        url('Steinem.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Steinem-Bold';
+    src: url('Steinem-Bold.woff2') format('woff2'),
+        url('Steinem-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Steinem-BoldItalic';
+    src: url('Steinem-BoldItalic.woff2') format('woff2'),
+        url('Steinem-BoldItalic.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
