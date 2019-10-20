@@ -10,15 +10,20 @@ import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import styled from "@emotion/styled"
 
+import Navigation from "./navigation"
+
 import Header from "./header"
 import "./layout.css"
 
 const LayoutContainer = styled.div`
-  margin: 0 auto;
-  max-width: 60vw;
-  padding: 0px 1.0875rem 1.45rem;
-  padding-top: 0;
-  margin-bottom: 10vh;
+  padding: 2vh 2vw;
+  width: 72vw;
+`
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+  padding: 5vh 5vw;
 `
 
 const Layout = ({ children }) => {
@@ -33,9 +38,10 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <LayoutContainer>
-      <main>{children}</main>
-    </LayoutContainer>
+    <Container>
+      <Navigation />
+      <LayoutContainer>{children}</LayoutContainer>
+    </Container>
   )
 }
 

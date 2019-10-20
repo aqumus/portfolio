@@ -7,6 +7,10 @@
   "dependencies": {
     "@emotion/core": "^10.0.17",
     "@emotion/styled": "^10.0.17",
+    "d3-hierarchy": "^1.1.8",
+    "d3-scale": "^3.1.0",
+    "d3-selection": "^1.4.0",
+    "d3-transition": "^1.2.0",
     "gatsby": "^2.15.28",
     "gatsby-image": "^2.2.23",
     "gatsby-plugin-emotion": "^4.1.9",
@@ -42,5 +46,9 @@
   },
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
-  }
+  },
+  "browsersList": [
+    "defaults",
+    "not ie<=11"
+  ]
 }

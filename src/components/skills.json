@@ -1,0 +1,259 @@
+[
+  {
+    "technologyType": "Front End Technologies",
+    "topics": [
+      {
+        "name": "HTML5",
+        "comments": "Using HTML5 syntax, semantics since past 6 years. Learned through W3, WHATWG standards, online blogs and book referred \"HTML & CSS: Designing and Building Web Sites\" By Jon Duckett",
+        "level": 7.5
+      },
+      {
+        "name": "CSS3",
+        "comments": "Using CSS3, since past 6 years, including responsive layout, grid layout, Flexbox, CSS in JS libraries like emotion",
+        "level": 7
+      },
+      {
+        "name": "JS",
+        "comments": "Coding in JS (and my primary) programming language since past 7 years, learned core JS concepts alongwith browser API through book and courses like You don't JS- Kyle Simpson, Javasript The Good parts- Douglas Crockford, Exploring ES6- Dr Axel, High Performance JS- Nicholas Zakas. Also referred few online blogs and videos to know about browser rendering process, optimising web application.",
+        "level": 8.5
+      },
+      {
+        "name": "ES6/ES7/ES8",
+        "comments": "Have switched to using latest JS syntax specially ES6 since past 4. Learned mostly through Exploring ES6- Dr Axel (online book) and TC39 standards and discussions",
+        "level": 8
+      },
+      {
+        "name": "React.js",
+        "comments": "Been working in React.js framework since past 5 years, learned through official React documentation, react conference videos and react source code",
+        "level": 8.5
+      },
+      {
+        "name": "Typescript",
+        "comments": "Been writing front end code in TS since 3 years, highly recommend and advocate making JS strict typings, Gonna saves lives and time",
+        "level": 8.5
+      },
+      {
+        "name": "Angular",
+        "comments": "Done few prototype in Angular 4.X, not much used to Angular framework, still learning",
+        "level": 4
+      },
+      {
+        "name": "Angular.js",
+        "comments": "Have worked in earlier 1.X version of Angular.js for 1 years",
+        "level": 5
+      },
+      {
+        "name": "React Native",
+        "comments": "Worked on few modules in React Native for 2 months,",
+        "level": 3
+      },
+      {
+        "name": "Rx.js",
+        "comments": "Truly enjoy coding using observable pattern and largely using Rx.js since 3 years, learned and still learning through online blogs and conference videos by Ben Lesh, Jaffar Hussain and through Rx.js spec files",
+        "level": 7
+      },
+      {
+        "name": "Highcharts",
+        "comments": "For my current project, have been extensively using highcharts for creating analytics modules since past 3 years",
+        "level": 7
+      },
+      {
+        "name": "Jquery",
+        "comments": "I am from pre Angular and React era, so have developed web applications using Jquery for 2-3 years, learned mostly through Jquery documentation",
+        "level": 6
+      },
+      {
+        "name": "Material UI",
+        "comments": "Used in few of the application and in my current project since past 2 years",
+        "level": 6
+      },
+      {
+        "name": "Selenium",
+        "level": 6,
+        "comments": "Learned about Selenium in my current project for writing UI functional test"
+      },
+      {
+        "name": "Jest",
+        "level": 6.5,
+        "comments": "Used for unit testing of React components"
+      },
+      {
+        "name": "Enzyme",
+        "level": 7,
+        "comments": "Used for unit testing of React components"
+      },
+      {
+        "name": "Mocha",
+        "level": 7,
+        "comments": "Used Mocha in unit testing of node.js server and functional test for UI project"
+      },
+      {
+        "name": "jasmine",
+        "level": 6.5,
+        "comments": "Assertion library used in one of the UI project"
+      },
+      {
+        "name": "Chrome Dev tools",
+        "level": 7,
+        "comments": "Extensively used Chrome Dev tools From inspecting DOM to changing styles on Fly, from debugging scripts to profiling UI interaction, from monitoring network calls to verify responsive design"
+      },
+      {
+        "name": "Webpack",
+        "level": 6.5,
+        "comments": "Actively worked on enhancing project build and local developmeny rig, in process of which learned alot of webpack internals mostly through github PR's, conference videos by Sean Larkin"
+      },
+      {
+        "name": "grunt",
+        "level": 6,
+        "comments": "Used as build tool in one of the projects"
+      },
+      {
+        "name": "gulp",
+        "level": 5,
+        "comments": "Used as build tool in one of the projects"
+      }
+    ]
+  },
+  {
+    "technologyType": "Cloud",
+    "topics": [
+      {
+        "name": "Git",
+        "level": 8,
+        "comments": "Learned Git mostly through my daily routine, have done wonderful coursre on pluralsight \"How Git Works - Paolo Perrotta\" "
+      },
+      {
+        "name": "Jenkins",
+        "level": 6,
+        "comments": "Have been doing tasks and enhancement in my current project for CI and CD usging internal JP Morgan tool build on top of jenkins, docker"
+      },
+      {
+        "name": "Docker",
+        "level": 5,
+        "comments": "Basic knowledge of linux container and docker"
+      },
+      {
+        "name": "AWS",
+        "level": 5,
+        "comments": "Basic knowledge of cloud computing mostly around EC2, S3 storage"
+      }
+    ]
+  },
+
+  {
+    "technologyType": "Backend",
+    "topics": [
+      {
+        "name": "Node.js",
+        "comments": "Worked as full stack developer for 2 years in which web server were written in Node.js, learned through documentation and blogs",
+        "level": 7
+      },
+      {
+        "name": "express.js",
+        "comments": "Worked as full stack developer for 2 years in which web server were written in Node.js with express framework, learned through documentation and blogs",
+        "level": 7
+      },
+      {
+        "name": "Socket.io",
+        "level": 6,
+        "comments": "Developed few modules where socket.io was used as a messaging system"
+      },
+      {
+        "name": "Python",
+        "comments": "self learned Python programming language through online courses, my second choice of programming language",
+        "level": 5
+      },
+      {
+        "name": "Unix",
+        "comments": "Enrolled in classroom training for learning about Unix scripting and building CLI commands",
+        "level": 4
+      },
+      {
+        "name": "JAVA",
+        "comments": "My first programming language, although not my preferred language now",
+        "level": 5
+      },
+      {
+        "name": "Haddop",
+        "comments": "Done a classroom training on Hadoop 1 year back where I learned about HDFS, hadoop parallel processing",
+        "level": 3
+      },
+      {
+        "name": "MongoDB",
+        "comments": "Worked as full stack developer for 2 years in which database used was MongoDB, learned through documentation and blogs",
+        "level": 6
+      },
+      {
+        "name": "MySQL",
+        "level": 4,
+        "comments": "Basic knowledge of sql queries mostly learned through small projects"
+      }
+    ]
+  },
+  {
+    "technologyType": "Other Technologies",
+    "topics": [
+      {
+        "name": "ML",
+        "comments": "Started Learning ML and achieved first milestone by Completing \"Intro to Machine Learning - Andrew Ng\" course",
+        "level": 2
+      },
+      {
+        "name": "Blockchain",
+        "comments": "Participated in one of the Hackathon project based on blockhain using solidity and JP Morgan Quorum",
+        "level": 1
+      }
+    ]
+  },
+  {
+    "technologyType": "Systems",
+    "topics": [
+      {
+        "name": "IBM SystemX Server",
+        "level": 7,
+        "comments": "Have configured, diagnosed and fixed IBM Blade Systems, Rack server X3500, x3600, x3800. Also configured these server for high avilability"
+      },
+      {
+        "name": "HP Server",
+        "level": 5,
+        "comments": "As part of OEM, used to diagnose and fix problem in HP Rack servers"
+      },
+      {
+        "name": "DELL Server",
+        "level": 5,
+        "comments": "As part of OEM, used to diagnose and fix problem in Dell Rack servers"
+      },
+
+      {
+        "name": "Cisco switches",
+        "level": 4,
+        "comments": "As part of system installation and configuration, I have also worked on Cisco switches on L2 layer"
+      },
+      {
+        "name": "DS Storage",
+        "level": 6,
+        "comments": "Have configured Storage Area Network, using SAN switches and DS storages where I learned concept of \"Zoning\""
+      },
+      {
+        "name": "Netapp Storage",
+        "level": 5,
+        "comments": "Have configured Storage Area Network, using SAN switches and Netapp storages"
+      },
+      {
+        "name": "IBM Storwise Storage",
+        "level": 5,
+        "comments": "Have configured Storage Area Network, using SAN switches and Netapp storages"
+      },
+      {
+        "name": "VMware OS",
+        "level": 5,
+        "comments": "Have installed and configured server with Vmware hypervisor OS, where I learned Virtualization concepts"
+      },
+      {
+        "name": "RedHat OS",
+        "level": 5,
+        "comments": "Have installed and configured server with RedHat OS"
+      }
+    ]
+  }
+]

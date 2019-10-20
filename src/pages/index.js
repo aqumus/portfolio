@@ -1,5 +1,4 @@
 import React from "react"
-import { Link } from "gatsby"
 import styled from "@emotion/styled"
 
 import Layout from "../components/layout"
@@ -8,26 +7,41 @@ import SEO from "../components/seo"
 
 const StyledContainer = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-top: 30vh;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 0 2vw;
+  height: 100%;
 `
 
 const IndexPage = () => (
   <Layout>
     <StyledContainer>
       <SEO title="Aquib Vadsaria Intro" />
-      <Image />
       <div
         style={{
           display: "flex",
           flexDirection: "column",
+          justifyContent: "flex-end",
           alignItems: "center",
-          justifyContent: "center",
+          height: "100%",
         }}
       >
-        <h1>Aquib Vadsaria</h1>
-        <h3>Web Developer</h3>
+        <Image />
+        <h1
+          style={{
+            fontSize: "2.5vw",
+            marginTop: "5vh",
+          }}
+        >
+          Aquib Vadsaria
+        </h1>
+        <h3
+          style={{
+            fontSize: "1.5vw",
+          }}
+        >
+          Web Developer
+        </h3>
       </div>
     </StyledContainer>
   </Layout>
