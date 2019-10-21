@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 
 // Code courtesy https://www.hooks.guide/community/useMedia
 export function useMediaQuery(query) {
-  const [matches, setMatches] = useState(window.matchMedia(query).matches)
+  const [matches, setMatches] = useState(undefined)
 
   useEffect(() => {
     const media = window.matchMedia(query)

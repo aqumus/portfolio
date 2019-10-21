@@ -48,10 +48,10 @@ const About = () => {
         </p>
 
         <p>
-          Beside learning about new technolgies like machine learning and
-          blockchain, my area of interest includes to be more well versed about
+          Beside learning about new technologies like machine learning and
+          blockchain, my area of interest includes to be more well versed in
           backend technologies i.e creating web servers and system design, which
-          could allow me to reach my goal of becoming{" "}
+          could allow me to reach my goal of becoming
           <em>Technical Architect</em>
         </p>
 
