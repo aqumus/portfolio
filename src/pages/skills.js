@@ -14,7 +14,7 @@ const SkillContainer = styled.div`
 `
 
 const Skills = () => (
-  <Layout>
+  <Layout page="Skills">
     <SEO title="Aquib Vadsaria skills" />
     <SkillContainer>
       <SkillCircle />

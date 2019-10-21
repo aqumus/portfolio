@@ -8,25 +8,37 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-import styled from "@emotion/styled"
+/** @jsx jsx */
+import { jsx, css } from "@emotion/core"
 
 import Navigation from "./navigation"
+import SideNavigation from "./side-navigation"
 
-import Header from "./header"
 import "./layout.css"
 
-const LayoutContainer = styled.div`
+const layoutContainerIndex = css`
   padding: 2vh 2vw;
   width: 72vw;
 `
 
-const Container = styled.div`
+const layoutContainerPage = css`
+  padding: 2vh 3vw;
+  width: 91vw;
+`
+
+const mainContainerIndex = css`
   display: flex;
   flex-direction: row;
   padding: 5vh 5vw;
 `
 
-const Layout = ({ children }) => {
+const mainContainerPage = css`
+  display: flex;
+  flex-direction: row;
+  padding: 5vh 2vw;
+`
+
+const Layout = ({ children, page }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -38,10 +50,12 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <Container>
-      <Navigation />
-      <LayoutContainer>{children}</LayoutContainer>
-    </Container>
+    <div css={[mainContainerIndex, page && mainContainerPage]}>
+      {page ? <SideNavigation /> : <Navigation />}
+      <div css={[layoutContainerIndex, page && layoutContainerPage]}>
+        {children}
+      </div>
+    </div>
   )
 }
 

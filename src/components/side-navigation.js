@@ -8,38 +8,19 @@ const navigationContainerPage = css`
   width: 3vw;
 `
 
-const navigationContainerIndex = css`
-  height: 90vh;
-  width: 18vw;
-`
-
 const navPage = css`
-  position: relative;
-  top: -5vh;
-  left: -2vw;
-  flex-direction: row-reverse;
-  transform: rotate(270deg) translate(20px, -40px);
-  a {
-    &&:nth-of-type(even) {
-      padding: 0 2vh;
-    }
-    &&:hover {
-      padding-top: 5px;
-    }
-  }
-`
-
-const navIndex = css`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+    writing-mode: vertical-rl;
+    text-orientation: sideways;
   justify-content: space-between;
-  max-height: 700px;
   align-items: flex-end;
-  height: 17vh;
+  height: 100%;
     a {
-      font-size: 2.6vw;
+      font-size: 3.4vh;
+      transform : rotate(180deg);
       display: block;
-      line-height: 5vh;
+      line-height: 4vh;
       text-decoration: none;
       text-transform: uppercase;
       letter-spacing: 1px;
@@ -48,7 +29,6 @@ const navIndex = css`
       transition: all 0.2s ease-in-out;
       :hover {
         text-shadow: 0px 0px 1px white;
-        padding-right: 5px;
       }
     }
   }
@@ -59,7 +39,8 @@ const navIndex = css`
 
 const linkActiveStyle = {
   textShadow: "0px 0px 1px white",
-  paddingRight: "5px",
+  textOrientation: "upright",
+  transform: "rotate(0deg)",
 }
 
 const links = [
@@ -77,9 +58,9 @@ const links = [
   },
 ]
 
-const Navigation = ({ page }) => (
-  <div css={[navigationContainerIndex, page && navigationContainerPage]}>
-    <nav css={[navIndex, page && navPage]}>
+const SideNavigation = () => (
+  <div css={navigationContainerPage}>
+    <nav css={navPage}>
       {links.map(({ to, text }, i) => (
         <Link key={i} to={to} activeStyle={linkActiveStyle}>
           {text}
@@ -89,4 +70,4 @@ const Navigation = ({ page }) => (
   </div>
 )
 
-export default Navigation
+export default SideNavigation

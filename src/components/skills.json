@@ -14,12 +14,12 @@
       },
       {
         "name": "JS",
-        "comments": "Coding in JS (and my primary) programming language since past 7 years, learned core JS concepts alongwith browser API through book and courses like You don't JS- Kyle Simpson, Javasript The Good parts- Douglas Crockford, Exploring ES6- Dr Axel, High Performance JS- Nicholas Zakas. Also referred few online blogs and videos to know about browser rendering process, optimising web application.",
+        "comments": "My primary programming language for 7 years, learned core JS concepts from \"You don't JS - Kyle Simpson\", \"JS The Good parts - Douglas Crockford\", \"High Performance JS - Nicholas Zakas\", few conf videos and blogs",
         "level": 8.5
       },
       {
         "name": "ES6/ES7/ES8",
-        "comments": "Have switched to using latest JS syntax specially ES6 since past 4. Learned mostly through Exploring ES6- Dr Axel (online book) and TC39 standards and discussions",
+        "comments": "Have switched to using latest JS syntax specially ES6 since past 4 yrs. Learned mostly through Exploring ES6- Dr Axel (online book) and TC39 standards and discussions",
         "level": 8
       },
       {

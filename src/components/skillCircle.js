@@ -89,10 +89,9 @@ const setAndCreateCircle = () => {
       return Array.isArray(data) ? data : data.topics
     }).sum(data => (data.children ? 0 : data.level))
     let focus = dataHierarchy
-    let view = dataHierarchy
 
-    const width = document.getElementById("chart").offsetWidth
-    const height = document.getElementById("chart").offsetHeight
+    // const width = document.getElementById("chart").offsetWidth
+    // const height = document.getElementById("chart").offsetHeight
 
     //Size of the circle pack layout
     const childrenSize = dataHierarchy.children.length
@@ -119,7 +118,7 @@ const setAndCreateCircle = () => {
       .enter()
       .append("g")
 
-    const node = gElem
+    gElem
       .attr("id", function(d) {
         const id = !d.children ? d.data.name : d.data.technologyType
         return "g-" + id
@@ -256,7 +255,7 @@ const setAndCreateCircle = () => {
 
         console.log("texl", textLines)
 
-        const commentLine = clickedGElem
+        clickedGElem
           .append("text")
           .attr("x", function(d) {
             return x(clickedD.x)
