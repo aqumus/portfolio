@@ -3,30 +3,9 @@ import { Link } from "gatsby"
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core"
 
-const navigationContainerPage = css`
-  height: 90vh;
-  width: 3vw;
-`
-
 const navigationContainerIndex = css`
   height: 90vh;
   width: 18vw;
-`
-
-const navPage = css`
-  position: relative;
-  top: -5vh;
-  left: -2vw;
-  flex-direction: row-reverse;
-  transform: rotate(270deg) translate(20px, -40px);
-  a {
-    &&:nth-of-type(even) {
-      padding: 0 2vh;
-    }
-    &&:hover {
-      padding-top: 5px;
-    }
-  }
 `
 
 const navIndex = css`
@@ -78,8 +57,8 @@ const links = [
 ]
 
 const Navigation = ({ page }) => (
-  <div css={[navigationContainerIndex, page && navigationContainerPage]}>
-    <nav css={[navIndex, page && navPage]}>
+  <div css={navigationContainerIndex}>
+    <nav css={navIndex}>
       {links.map(({ to, text }, i) => (
         <Link key={i} to={to} activeStyle={linkActiveStyle}>
           {text}

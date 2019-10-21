@@ -6,6 +6,7 @@ import { jsx, css } from "@emotion/core"
 const navigationContainerPage = css`
   height: 90vh;
   width: 3vw;
+  min-width: 30px;
 `
 
 const navPage = css`
