@@ -24,7 +24,8 @@
     "prop-types": "^15.7.2",
     "react": "^16.10.1",
     "react-dom": "^16.10.1",
-    "react-helmet": "^5.2.1"
+    "react-helmet": "^5.2.1",
+    "react-vertical-timeline-component": "^2.5.0"
   },
   "devDependencies": {
     "prettier": "^1.18.2"
