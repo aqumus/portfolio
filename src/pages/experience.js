@@ -27,6 +27,24 @@ const ExperienceContainer = styled.div`
       color: white;
     }
   }
+  .vertical-timeline-element-title {
+    padding-bottom: 5px;
+    @media (max-width: 768px) {
+      font-size: 15px;
+    }
+  }
+  .vertical-timeline-element-subtitle {
+    @media (max-width: 768px) {
+      font-size: 13px;
+    }
+
+    .vertical-timeline-element-description {
+      font-size: 15px;
+      @media (max-width: 768px) {
+        font-size: 13px;
+      }
+    }
+  }
 `
 
 const Experience = () => (
@@ -43,8 +61,8 @@ const Experience = () => (
           <h3 className="vertical-timeline-element-title">
             Application Developer
           </h3>
-          <h4 className="vertical-timeline-element-subtitle">Mumbai, India</h4>
-          <p>
+          <h5 className="vertical-timeline-element-subtitle">Mumbai, India</h5>
+          <p className="vertical-timeline-element-description">
             Working on a trading platform, rebuilding current Flex application
             to HTML/JS based application
           </p>
@@ -57,7 +75,7 @@ const Experience = () => (
         >
           <h3 className="vertical-timeline-element-title">Web Engineer</h3>
           <h4 className="vertical-timeline-element-subtitle">Mumbai, India</h4>
-          <p>
+          <p className="vertical-timeline-element-description">
             Worked as a full stack developer for{" "}
             <a href="https://www.built.io/products/flow/features">
               Built.io Flow application
@@ -73,7 +91,7 @@ const Experience = () => (
         >
           <h3 className="vertical-timeline-element-title">System Engineer</h3>
           <h4 className="vertical-timeline-element-subtitle">Mumbai, India</h4>
-          <p>
+          <p className="vertical-timeline-element-description">
             Worked as System engineer where I used to setup, configure mainframe
             servers, swicthes and storages mainly used for high computing nodes
           </p>

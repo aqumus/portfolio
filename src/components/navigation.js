@@ -29,6 +29,9 @@ const navIndex = css`
         text-shadow: 0px 0px 1px white;
         padding-right: 5px;
       }
+      @media only screen and (max-width: 768px) {
+        text-shadow: 0px 0px 1px white;
+      }
     }
   }
   &:hover a:not(:hover) {

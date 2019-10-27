@@ -31,10 +31,16 @@ const navPage = css`
       :hover {
         text-shadow: 0px 0px 1px white;
       }
+      @media only screen and (max-width: 768px) {
+        text-shadow: 0px 0px 2px white;
+      }
     }
   }
   &:hover a:not(:hover) {
     text-shadow: 0px 0px 6px white;
+    @media only screen and (max-width: 768px) {
+      text-shadow: 0px 0px 2px white;
+    }
   }
 `
 
