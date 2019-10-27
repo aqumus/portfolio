@@ -5,6 +5,7 @@ import { select, event as d3Event } from "d3-selection"
 import { transition } from "d3-transition"
 import styled from "@emotion/styled"
 import { scaleLinear } from "d3-scale"
+import { useSmallScreenMediaQuery } from "../hooks/useMediaQuery.js"
 
 const colorLevel = [
   "#bb210f",
@@ -52,7 +53,7 @@ const calculateLines = (wordsWithComputedWidth, spaceWidth, lineWidth) => {
         result.push(newLine)
       } else if (
         lastLine.width + width + lastLine.words.length * spaceWidth <
-        lineWidth - i * 0.3
+        lineWidth - i * 0.5
       ) {
         // Word can be added to an existing line
         lastLine.words.push(word)
@@ -79,10 +80,23 @@ const getCommentLines = (words, textStyle, linewidth) => {
   return calculateLines(wordsWithComputedWidth, spaceWidth, linewidth)
 }
 
-const setAndCreateCircle = () => {
+const normalScreenCircleRadius = [250, 350, 500]
+
+const smallScreenCircleRadius = [175, 200, 250]
+
+const skillHeadingFontSize = isSmallScreen => (isSmallScreen ? 20 : 35)
+
+const skillTitleFontSize = isSmallScreen => (isSmallScreen ? 10 : 12)
+
+const setAndCreateCircle = isSmallScreen => {
   //////////////////////////////////////////////////////////////
   ////////////////// Create Set-up constiables  //////////////////
   //////////////////////////////////////////////////////////////
+
+  // remove any existing svg
+  select("#chart")
+    .selectAll("svg")
+    .remove()
 
   skillsTechnologies.forEach((technology, techIndex) => {
     const dataHierarchy = hierarchy(technology, data => {
@@ -90,12 +104,16 @@ const setAndCreateCircle = () => {
     }).sum(data => (data.children ? 0 : data.level))
     let focus = dataHierarchy
 
-    // const width = document.getElementById("chart").offsetWidth
-    // const height = document.getElementById("chart").offsetHeight
+    // const isSmallScreen = window.innerWidth <= 768
+
+    const [sparse, medium, dense] = isSmallScreen
+      ? smallScreenCircleRadius
+      : normalScreenCircleRadius
 
     //Size of the circle pack layout
     const childrenSize = dataHierarchy.children.length
-    const diameter = childrenSize <= 5 ? 250 : childrenSize <= 10 ? 350 : 500
+    const diameter =
+      childrenSize <= 5 ? sparse : childrenSize <= 10 ? medium : dense
 
     //Initialize the circle pack layout
     const nodePack = pack()
@@ -153,11 +171,51 @@ const setAndCreateCircle = () => {
         d3Event.stopPropagation()
       })
 
+    gElem
+      .append("path")
+      .attr("id", function(d, i) {
+        return "skillTextPath" + i + techIndex
+      }) //Unique id of the path
+      .attr("d", function(d) {
+        const { x, y, r } = d
+        const pathPosition = !d.children ? 0 : 1
+        return `M${x - r},${y} A${r},${r} 0 0,${pathPosition} ${x + r},${y}`
+      }) //SVG path
+      .style("fill", "none")
+      .style("stroke", "none")
+    gElem
+      .append("text")
+      .attr("x", -2) //Move the text from the start angle of the arc
+      .attr("dy", -4) //Move the text down
+      .style("fill", function(d) {
+        return "white"
+      })
+      .append("textPath") //append a textPath to the text element
+      .attr("xlink:href", function(d, i) {
+        return "#skillTextPath" + i + techIndex
+      }) //place the ID of the path here
+      .style("text-anchor", "middle") //place the text halfway on the arc
+      .style("font-size", function(d) {
+        const size = !d.children
+          ? skillTitleFontSize(isSmallScreen)
+          : skillHeadingFontSize(isSmallScreen)
+        return `${size}`
+      })
+      .style("letter-spacing", function(d) {
+        const spacing = isSmallScreen ? 1 : 2
+        return `${spacing}px`
+      })
+      .attr("startOffset", "50%") //place the text halfway on the arc
+      .text(function(d) {
+        return !d.children ? d.data.name : d.data.technologyType
+      })
+
     function zoom(clickedD) {
       focus = clickedD
       const k = diameter / clickedD.r / 2
       x.domain([clickedD.x - clickedD.r, clickedD.x + clickedD.r])
       y.domain([clickedD.y - clickedD.r, clickedD.y + clickedD.r])
+
       const cTrans = transition().duration(250)
       svgContainer
         .selectAll("circle")
@@ -214,7 +272,10 @@ const setAndCreateCircle = () => {
           return this.id === `g-${clickedD.data.name}`
         })
 
-        const commentFontSize = Math.min(22, k * clickedD.r * 0.1)
+        const commentFontSize = `${Math.min(
+          22,
+          Math.max(k * clickedD.r * 0.1, 12)
+        )}px`
 
         clickedGElem
           .append("text")
@@ -232,7 +293,7 @@ const setAndCreateCircle = () => {
           .transition(cTrans)
           .style("stroke", "white")
           .style("font-family", "Michroma")
-          .style("font-size", function(d) {
+          .style("font-size", function zoomedNameSize(d) {
             return `${k * d.r * 0.13}px`
           })
           .style("text-anchor", "middle")
@@ -247,13 +308,13 @@ const setAndCreateCircle = () => {
                 "font-family": "Roberto",
                 "font-style": "italic",
                 "line-height": "15px",
-                "font-size": `${commentFontSize}px`,
+                "font-size": commentFontSize,
               },
               diameter
             )
           : []
 
-        console.log("texl", textLines)
+        // console.log("texl", textLines)
 
         clickedGElem
           .append("text")
@@ -272,7 +333,7 @@ const setAndCreateCircle = () => {
           .style("font-family", "Roberto")
           .style("font-style", "italic")
           .style("font-size", function(d) {
-            return `${commentFontSize}px`
+            return commentFontSize
           })
           .style("text-anchor", "middle")
           .style("line-height", "15px")
@@ -288,7 +349,7 @@ const setAndCreateCircle = () => {
           })
           .attr("dy", function(d, i) {
             console.log("d", k * d.r * 0.05 * (i + 1))
-            return k * clickedD.r * 0.1 * (i + 1)
+            return k * clickedD.r * 0.12 * (i + 1)
           })
           .transition(cTrans)
           .text(function(d) {
@@ -296,42 +357,6 @@ const setAndCreateCircle = () => {
           })
       }
     }
-
-    gElem
-      .append("path")
-      .attr("id", function(d, i) {
-        return "skillTextPath" + i + techIndex
-      }) //Unique id of the path
-      .attr("d", function(d) {
-        const { x, y, r } = d
-        const pathPosition = !d.children ? 0 : 1
-        return `M${x - r},${y} A${r},${r} 0 0,${pathPosition} ${x + r},${y}`
-      }) //SVG path
-      .style("fill", "none")
-      .style("stroke", "none")
-    gElem
-      .append("text")
-      .attr("x", -2) //Move the text from the start angle of the arc
-      .attr("dy", -4) //Move the text down
-      .style("fill", function(d) {
-        return "white"
-      })
-      .append("textPath") //append a textPath to the text element
-      .attr("xlink:href", function(d, i) {
-        return "#skillTextPath" + i + techIndex
-      }) //place the ID of the path here
-      .style("text-anchor", "middle") //place the text halfway on the arc
-      .style("font-size", function(d) {
-        const size = !d.children ? 12 : 35
-        return `${size}`
-      })
-      .style("letter-spacing", function(d) {
-        return `2px`
-      })
-      .attr("startOffset", "50%") //place the text halfway on the arc
-      .text(function(d) {
-        return !d.children ? d.data.name : d.data.technologyType
-      })
   })
 }
 
@@ -342,9 +367,10 @@ const SkillCircleContainer = styled.div`
 `
 
 const SkillCircle = () => {
+  const isSmallScreen = useSmallScreenMediaQuery()
   useLayoutEffect(() => {
-    setAndCreateCircle()
-  }, [])
+    setAndCreateCircle(isSmallScreen)
+  }, [isSmallScreen])
   return <SkillCircleContainer id="chart" />
 }
 
