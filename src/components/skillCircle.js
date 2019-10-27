@@ -53,7 +53,7 @@ const calculateLines = (wordsWithComputedWidth, spaceWidth, lineWidth) => {
         result.push(newLine)
       } else if (
         lastLine.width + width + lastLine.words.length * spaceWidth <
-        lineWidth - i * 0.5
+        lineWidth - i * 0.7
       ) {
         // Word can be added to an existing line
         lastLine.words.push(word)
@@ -86,7 +86,7 @@ const smallScreenCircleRadius = [175, 200, 250]
 
 const skillHeadingFontSize = isSmallScreen => (isSmallScreen ? 20 : 35)
 
-const skillTitleFontSize = isSmallScreen => (isSmallScreen ? 10 : 12)
+const skillTitleFontSize = isSmallScreen => (isSmallScreen ? 8 : 12)
 
 const setAndCreateCircle = isSmallScreen => {
   //////////////////////////////////////////////////////////////
@@ -95,7 +95,7 @@ const setAndCreateCircle = isSmallScreen => {
 
   // remove any existing svg
   select("#chart")
-    .selectAll("svg")
+    .selectAll(".svgContainer")
     .remove()
 
   skillsTechnologies.forEach((technology, techIndex) => {
@@ -103,8 +103,6 @@ const setAndCreateCircle = isSmallScreen => {
       return Array.isArray(data) ? data : data.topics
     }).sum(data => (data.children ? 0 : data.level))
     let focus = dataHierarchy
-
-    // const isSmallScreen = window.innerWidth <= 768
 
     const [sparse, medium, dense] = isSmallScreen
       ? smallScreenCircleRadius
@@ -121,6 +119,14 @@ const setAndCreateCircle = isSmallScreen => {
       .size([diameter, diameter])(dataHierarchy)
 
     const svgContainer = select("#chart")
+      .append("div")
+      .attr("class", "svgContainer")
+      .style("display", "flex")
+      .style("justify-content", "center")
+      .style("align-items", "center")
+      .style("flex-grow", "1")
+      .style("width", `${dense + 50}px`)
+      .style("height", `${diameter + 50}`)
       .append("svg")
       .attr("viewBox", `-20 -30 ${diameter + 50} ${diameter + 50}`)
       .attr("id", "skillCircle" + techIndex)
@@ -272,9 +278,11 @@ const setAndCreateCircle = isSmallScreen => {
           return this.id === `g-${clickedD.data.name}`
         })
 
+        const minimumFontSize = isSmallScreen ? 12 : 14
+
         const commentFontSize = `${Math.min(
           22,
-          Math.max(k * clickedD.r * 0.1, 12)
+          Math.max(k * clickedD.r * 0.1, minimumFontSize)
         )}px`
 
         clickedGElem
@@ -313,8 +321,6 @@ const setAndCreateCircle = isSmallScreen => {
               diameter
             )
           : []
-
-        // console.log("texl", textLines)
 
         clickedGElem
           .append("text")
@@ -364,6 +370,9 @@ const SkillCircleContainer = styled.div`
   width: 100%;
   margin: 3vw 0;
   height: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-flow: wrap;
 `
 
 const SkillCircle = () => {
