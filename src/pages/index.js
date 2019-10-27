@@ -2,7 +2,7 @@ import React from "react"
 import styled from "@emotion/styled"
 
 import Layout from "../components/layout"
-import Image from "../components/image"
+import IntroImage from "../components/intro-image"
 import SEO from "../components/seo"
 
 const StyledContainer = styled.div`
@@ -26,7 +26,7 @@ const IndexPage = () => (
           height: "100%",
         }}
       >
-        <Image />
+        <IntroImage />
         <h1
           style={{
             fontSize: "2.5vw",

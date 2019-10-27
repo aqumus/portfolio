@@ -4,9 +4,9 @@ import { Link } from "gatsby"
 import { jsx, css } from "@emotion/core"
 
 const navigationContainerPage = css`
-  height: 90vh;
+  height: 85vh;
   width: 3vw;
-  min-width: 30px;
+  min-width: 40px;
 `
 
 const navPage = css`
@@ -18,7 +18,7 @@ const navPage = css`
   align-items: flex-end;
   height: 100%;
     a {
-      font-size: 3.4vh;
+      font-size: 3vh;
       transform : rotate(180deg);
       display: block;
       line-height: 4vh;
