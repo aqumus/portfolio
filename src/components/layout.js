@@ -22,8 +22,8 @@ const layoutContainerIndex = css`
 `
 
 const layoutContainerPage = css`
-  padding: 2vh 3vw;
-  width: 91vw;
+  padding: 2vh 3vw 2vh 10vw;
+  width: 98vw;
 `
 
 const mainContainerIndex = css`

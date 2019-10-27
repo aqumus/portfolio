@@ -4,6 +4,7 @@ import { Link } from "gatsby"
 import { jsx, css } from "@emotion/core"
 
 const navigationContainerPage = css`
+  position: fixed;
   height: 85vh;
   width: 3vw;
   min-width: 40px;
