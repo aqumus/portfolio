@@ -5,6 +5,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core"
+import styled from "@emotion/styled"
 import { useSmallScreenMediaQuery } from "../hooks/useMediaQuery"
 
 const smallScreenStyle = css`
@@ -17,12 +18,18 @@ const nameStyle = css`
   font-size: 15px;
 `
 
+const AboutArticle = styled.article`
+  color: transparent;
+  text-shadow: 0px 0px 20px white;
+  animation: blurOutEffect 0.5s ease-in-out 0s 1 normal forwards;
+`
+
 const About = () => {
   const isSmallScreen = useSmallScreenMediaQuery()
   return (
     <Layout page="About">
       <SEO title="About Aquib Vadsaria" />
-      <article css={isSmallScreen && smallScreenStyle}>
+      <AboutArticle css={isSmallScreen && smallScreenStyle}>
         <h4>Hey there,</h4>
         <p>
           I am <h6 css={nameStyle}>Aquib Vadsaria</h6> born, brought up and
@@ -63,7 +70,7 @@ const About = () => {
           <div>&#8226; Explore new places</div>
           <div>&#8226; Sleep</div>
         </p>
-      </article>
+      </AboutArticle>
 
       <Link to="/">Back to Main</Link>
     </Layout>
