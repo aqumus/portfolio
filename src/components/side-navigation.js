@@ -49,6 +49,7 @@ const linkActiveStyle = {
   textShadow: "0px 0px 1px white",
   textOrientation: "upright",
   transform: "rotate(0deg)",
+  borderRight: "2px outset white",
 }
 
 const links = [

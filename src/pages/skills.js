@@ -1,5 +1,4 @@
 import React from "react"
-import { Link } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -18,7 +17,6 @@ const Skills = () => (
     <SEO title="Aquib Vadsaria skills" />
     <SkillContainer>
       <SkillCircle />
-      <Link to="/">Back to Main</Link>
     </SkillContainer>
   </Layout>
 )

@@ -1,5 +1,4 @@
 import React from "react"
-import { Link } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -98,7 +97,6 @@ const Experience = () => (
         </VerticalTimelineElement>
       </VerticalTimeline>
     </ExperienceContainer>
-    <Link to="/">Back to Main</Link>
   </Layout>
 )
 

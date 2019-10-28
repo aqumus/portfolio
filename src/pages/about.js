@@ -1,5 +1,4 @@
 import React from "react"
-import { Link } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -7,6 +6,7 @@ import SEO from "../components/seo"
 import { jsx, css } from "@emotion/core"
 import styled from "@emotion/styled"
 import { useSmallScreenMediaQuery } from "../hooks/useMediaQuery"
+import ResumeIcon from "../components/resume-icon"
 
 const smallScreenStyle = css`
   font-size: 13px;
@@ -15,13 +15,28 @@ const smallScreenStyle = css`
 const nameStyle = css`
   display: inline-block;
   margin: 0;
-  font-size: 15px;
+  font-size: 16px;
+  @media (min-width: 768px) {
+    font-size: 18px;
+  }
 `
 
 const AboutArticle = styled.article`
   color: transparent;
   text-shadow: 0px 0px 20px white;
   animation: blurOutEffect 0.5s ease-in-out 0s 1 normal forwards;
+`
+
+const ResumeText = styled.span`
+  margin-left: 5px;
+`
+
+const ResumeContainer = styled.a`
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
 `
 
 const About = () => {
@@ -70,9 +85,12 @@ const About = () => {
           <div>&#8226; Explore new places</div>
           <div>&#8226; Sleep</div>
         </p>
-      </AboutArticle>
 
-      <Link to="/">Back to Main</Link>
+        <ResumeContainer href="./static/Aquib_Resumev5.pdf" download>
+          <ResumeIcon size={30} />
+          <ResumeText>My Resume</ResumeText>
+        </ResumeContainer>
+      </AboutArticle>
     </Layout>
   )
 }
