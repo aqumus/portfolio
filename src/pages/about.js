@@ -86,7 +86,7 @@ const About = () => {
           <div>&#8226; Sleep</div>
         </p>
 
-        <ResumeContainer href="./static/Aquib_Resumev5.pdf" download>
+        <ResumeContainer href="./content/Aquib_Resumev5.pdf" download>
           <ResumeIcon size={30} />
           <ResumeText>My Resume</ResumeText>
         </ResumeContainer>
