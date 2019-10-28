@@ -28,37 +28,40 @@ const About = () => {
           I am <h6 css={nameStyle}>Aquib Vadsaria</h6> born, brought up and
           based in <i>Mumbai</i>, professional web developer by choice where my
           core expertise is around front end technologies like HTLML5, CSS3, JS,
-          React.js, Angular. My current role involves developing web application
+          React.js. My current job role involves developing web application
           based on the UX design.
         </p>
         <p>
-          I have started my career as a "System Engineer" where I was
-          configuring Mainframe Server, network switches and storages for Data
-          Center primarily used as high availability nodes but then soon
+          I have started my career as a &#10077;System Engineer&#10078; where I
+          was configuring mainframe servers, network switches and storages for
+          Data Center, primarily used as high availability nodes but soon
           realised my passion for coding and development which got me turned
           into a Web Developer.
         </p>
 
         <p>
-          Highly productive, thorougly follow coding standards, clean code and
-          have also deliver technical sessions. Self-learned Javascript and
-          Python programming language, Node.js, React.js and Angular framework
-          alongwith common utility libraries like highcharts, Rx.js, webpack
-          (more could be browsed under Skills section).
+          Javascript is my primary programming language, I like to follow coding
+          standards, clean coding and love to deliver technical sessions. I
+          believe in continuous learning and most of the time, you would usually
+          find me busy exploring new framework, libraries or new technologies.
         </p>
 
         <p>
-          Beside learning about new technologies like machine learning and
-          blockchain, my area of interest includes to be more well versed in
-          backend technologies i.e creating web servers and system design, which
-          could allow me to reach my goal of becoming
-          <em>Technical Architect</em>
+          My current area of interest is to be more proficient in backend
+          technologies i.e creating web servers and system design, which could
+          allow me to reach my goal of becoming a<em>Technical Architect</em>
         </p>
 
         <p>
-          While I am not learning or coding, I like to listen music, watch
-          movies and TV shows, play and watch gameplays, explore new places and
-          sleep.
+          While I am not learning or coding
+          <div>
+            &#8226; I like to listen music - EDM, Hip Hop and old bollywood
+            songs
+          </div>
+          <div> &#8226; Watch movies and TV shows</div>
+          <div>&#8226; Play games and watch gameplays</div>
+          <div>&#8226; Explore new places</div>
+          <div>&#8226; Sleep</div>
         </p>
       </article>
 

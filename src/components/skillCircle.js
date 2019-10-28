@@ -3,6 +3,7 @@ import skillsTechnologies from "./skills.json"
 import { pack, hierarchy } from "d3-hierarchy"
 import { select, event as d3Event } from "d3-selection"
 import { transition } from "d3-transition"
+import { easeCircleOut } from "d3-ease"
 import styled from "@emotion/styled"
 import { scaleLinear } from "d3-scale"
 import { useSmallScreenMediaQuery } from "../hooks/useMediaQuery.js"
@@ -142,39 +143,67 @@ const setAndCreateCircle = isSmallScreen => {
       .enter()
       .append("g")
 
+    // parent Circle
     gElem
+      .filter(function(d) {
+        return d.children
+      })
       .attr("id", function(d) {
-        const id = !d.children ? d.data.name : d.data.technologyType
-        return "g-" + id
+        return "g-" + d.data.technologyType
       })
       .append("circle")
-      .attr("class", function(d, i) {
-        return d.parent
-          ? d.children
-            ? "node"
-            : "node node--leaf"
-          : "node node--root"
-      })
       .attr("cx", function(d) {
         return d.x
       })
       .attr("cy", function(d) {
         return d.y
       })
-      .attr("r", function(d) {
-        return d.r
-      })
-      .attr("fill", function(d) {
-        return !d.children ? colorLevel[Math.floor(d.value)] : "#cfd8dc"
-      })
-      .style("cursor", function(d) {
-        return !d.children ? "pointer" : "default"
-      })
+      .attr("fill", "#cfd8dc")
+      .style("cursor", "default")
       .on("click", function(d, i) {
         if (focus !== d) {
           zoom(d)
         }
         d3Event.stopPropagation()
+      })
+      .transition()
+      .ease(easeCircleOut)
+      .duration(200)
+      .attr("r", function(d) {
+        return d.r
+      })
+
+    // child circles
+    gElem
+      .filter(function(d) {
+        return !d.children
+      })
+      .attr("id", function(d) {
+        const id = !d.children ? d.data.name : d.data.technologyType
+        return "g-" + d.data.name
+      })
+      .append("circle")
+      .attr("cx", function(d) {
+        return d.x
+      })
+      .attr("cy", function(d) {
+        return d.y
+      })
+      .attr("fill", function(d) {
+        return colorLevel[Math.floor(d.value)]
+      })
+      .style("cursor", "pointer")
+      .on("click", function(d, i) {
+        if (focus !== d) {
+          zoom(d)
+        }
+        d3Event.stopPropagation()
+      })
+      .transition()
+      .ease(easeCircleOut)
+      .duration(550)
+      .attr("r", function(d) {
+        return d.r
       })
 
     gElem
@@ -189,7 +218,8 @@ const setAndCreateCircle = isSmallScreen => {
       }) //SVG path
       .style("fill", "none")
       .style("stroke", "none")
-    gElem
+
+    const circleTitle = gElem
       .append("text")
       .attr("x", -2) //Move the text from the start angle of the arc
       .attr("dy", -4) //Move the text down
@@ -211,10 +241,50 @@ const setAndCreateCircle = isSmallScreen => {
         const spacing = isSmallScreen ? 1 : 2
         return `${spacing}px`
       })
-      .attr("startOffset", "50%") //place the text halfway on the arc
-      .text(function(d) {
-        return !d.children ? d.data.name : d.data.technologyType
+
+    circleTitle
+      .filter(function(d) {
+        return d.children
       })
+      .attr("startOffset", "10%")
+      .text(function(d) {
+        return d.data.technologyType
+      })
+      .transition()
+      .ease(easeCircleOut)
+      .duration(450)
+      .attr("startOffset", "50%") //place the text halfway on the arc
+
+    circleTitle
+      .filter(function(d) {
+        return !d.children
+      })
+      .attr("startOffset", "50%") //place the text halfway on the arc
+      .style("opacity", "0")
+      .text(function(d) {
+        return d.data.name
+      })
+      .transition()
+      .delay(200)
+      .ease(easeCircleOut)
+      .duration(350)
+      .style("opacity", "1")
+
+    // .attr("startOffset", function(d){
+    //   return !d.children ? '50%': '10%'
+    // } //place the text halfway on the arc
+    // .text(function(d) {
+    //   return !d.children ? d.data.name : d.data.technologyType
+    // })
+    // .transition()
+    // .ease(easeCircleOut)
+    // .delay(function(d) {
+    //   return !d.children ? 600 : 0
+    // })
+    // .duration(function(d) {
+    //   return !d.children ? 0 : 500
+    // })
+    // .attr("startOffset", "50%") //place the text halfway on the arc
 
     function zoom(clickedD) {
       focus = clickedD
