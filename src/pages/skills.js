@@ -4,6 +4,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import SkillCircle from "../components/skillCircle"
 import styled from "@emotion/styled"
+import SkillLevelLegend from "../components/skillLevelLegend"
 
 const SkillContainer = styled.div`
   display: flex;
@@ -16,6 +17,7 @@ const Skills = () => (
   <Layout page="Skills">
     <SEO title="Aquib Vadsaria skills" />
     <SkillContainer>
+      <SkillLevelLegend />
       <SkillCircle />
     </SkillContainer>
   </Layout>

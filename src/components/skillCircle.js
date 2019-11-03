@@ -7,19 +7,7 @@ import { easeCircleOut } from "d3-ease"
 import styled from "@emotion/styled"
 import { scaleLinear } from "d3-scale"
 import { useSmallScreenMediaQuery } from "../hooks/useMediaQuery.js"
-
-const colorLevel = [
-  "#bb210f",
-  "#bd561a",
-  "#c0792d",
-  "#c69748",
-  "#d0b16b",
-  "#33c59b",
-  "#179fa8",
-  "#067e90",
-  "#015e71",
-  "#004150",
-]
+import { skillLevel } from "../util"
 
 const calculateWordWidths = (wordsArg, textStyle) => {
   // Calculate length of each word to be used to determine number of words per line
@@ -190,7 +178,7 @@ const setAndCreateCircle = isSmallScreen => {
         return d.y
       })
       .attr("fill", function(d) {
-        return colorLevel[Math.floor(d.value)]
+        return skillLevel[Math.floor(d.value)]
       })
       .style("cursor", "pointer")
       .on("click", function(d, i) {

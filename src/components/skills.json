@@ -240,14 +240,14 @@
         "comments": "Have configured Storage Area Network, using SAN switches and Netapp storages"
       },
       {
-        "name": "IBM Storwise Storage",
+        "name": "IBM Storage",
         "level": 5,
-        "comments": "Have configured Storage Area Network, using SAN switches and Netapp storages"
+        "comments": "Have configured Storage Area Network, using SAN switches and Mid level IBM storwise storages, have also done online storage migration and firware updates"
       },
       {
         "name": "VMware OS",
         "level": 5,
-        "comments": "Have installed and configured server with Vmware hypervisor OS, where I learned Virtualization concepts"
+        "comments": "Have installed and configured server with Vmware hypervisor OS, where I learned Virtualization concepts like vSwitches, vNetwork, vLan and online migration"
       },
       {
         "name": "RedHat OS",

@@ -18,7 +18,7 @@ const sideFooter = isSmallScreen => css`
   max-height: ${isSmallScreen ? "90px" : "150px"};
   position: fixed;
   bottom: 1vh;
-  right: 8px;
+  right: 1vw;
   opacity: 0.8;
 `
 
@@ -37,7 +37,7 @@ const indexFooter = isSmallScreen => css`
 
 const Footer = ({ page }) => {
   const isSmallScreen = useSmallScreenMediaQuery()
-  const size = isSmallScreen ? "12px" : "30px"
+  const size = isSmallScreen ? "12px" : "25px"
   return (
     <footer css={page ? sideFooter(isSmallScreen) : indexFooter(isSmallScreen)}>
       <GithubIcon size={size} />
