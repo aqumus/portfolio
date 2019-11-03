@@ -9,7 +9,7 @@ import GithubIcon from "./github-icon"
 import LinkedInIcon from "./linkedin-icon"
 import EmailIcon from "./email-icon"
 
-const contactHeader = isSmallScreen => css`
+const sideFooter = isSmallScreen => css`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -22,7 +22,7 @@ const contactHeader = isSmallScreen => css`
   opacity: 0.8;
 `
 
-const indexHeader = isSmallScreen => css`
+const indexFooter = isSmallScreen => css`
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -35,18 +35,16 @@ const indexHeader = isSmallScreen => css`
   opacity: 0.8;
 `
 
-const Header = ({ page }) => {
+const Footer = ({ page }) => {
   const isSmallScreen = useSmallScreenMediaQuery()
-  const size = isSmallScreen ? "15px" : "30px"
+  const size = isSmallScreen ? "12px" : "30px"
   return (
-    <header
-      css={page ? contactHeader(isSmallScreen) : indexHeader(isSmallScreen)}
-    >
+    <footer css={page ? sideFooter(isSmallScreen) : indexFooter(isSmallScreen)}>
       <GithubIcon size={size} />
       <LinkedInIcon size={size} />
       <EmailIcon size={size} />
-    </header>
+    </footer>
   )
 }
 
-export default Header
+export default Footer

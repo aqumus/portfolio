@@ -13,7 +13,7 @@ import { jsx, css } from "@emotion/core"
 
 import Navigation from "./navigation"
 import SideNavigation from "./side-navigation"
-import Header from "./header"
+import Footer from "./footer"
 
 import "./layout.css"
 
@@ -23,7 +23,7 @@ const layoutContainerIndex = css`
 `
 
 const layoutContainerPage = css`
-  padding: 2vh 6vw 2vh 10vw;
+  padding: 2vh 4vw 2vh 12vw;
   width: 98vw;
 `
 
@@ -52,7 +52,7 @@ const Layout = ({ children, page }) => {
 
   return (
     <div css={[mainContainerIndex, page && mainContainerPage]}>
-      <Header page={page} />
+      <Footer page={page} />
       {page ? <SideNavigation /> : <Navigation />}
       <div css={[layoutContainerIndex, page && layoutContainerPage]}>
         {children}
