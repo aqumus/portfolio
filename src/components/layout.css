@@ -647,3 +647,9 @@ pre tt:after {
     text-shadow: none;
   }
 }
+
+@keyframes stroke-offset {
+  100% {
+    stroke-dashoffset: -35%;
+  }
+}

@@ -5,6 +5,7 @@ import Layout from "../components/layout"
 import IntroImage from "../components/intro-image"
 import SEO from "../components/seo"
 import { useSmallScreenMediaQuery } from "../hooks/useMediaQuery"
+import Loader from "../components/loader"
 
 const StyledContainer = styled.div`
   display: flex;
@@ -16,6 +17,10 @@ const StyledContainer = styled.div`
 
 const IndexPage = () => {
   const isSmallScreen = useSmallScreenMediaQuery()
+  const isLoading = false
+  if (isLoading) {
+    return <Loader />
+  }
   return (
     <Layout>
       <StyledContainer>
