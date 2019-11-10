@@ -15,7 +15,10 @@ const SkillContainer = styled.div`
 
 const Skills = () => (
   <Layout page="Skills">
-    <SEO title="Aquib Vadsaria skills" />
+    <SEO
+      title="Aquib Vadsaria skills"
+      description="Skills about Front End Technologies, Cloud, Backend technologies"
+    />
     <SkillContainer>
       <SkillLevelLegend />
       <SkillCircle />

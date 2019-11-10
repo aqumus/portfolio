@@ -33,13 +33,6 @@ function SEO({ description, lang, meta, title }) {
         lang,
       }}
       title={title}
-      link={[
-        {
-          href:
-            "https://fonts.googleapis.com/css?family=Michroma|Roboto:400,700&display=swap",
-          rel: "stylesheet",
-        },
-      ]}
       meta={[
         {
           name: `description`,

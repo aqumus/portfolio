@@ -56,7 +56,10 @@ const ExperienceContainer = styled.div`
 
 const Experience = () => (
   <Layout page="Experience">
-    <SEO title="Aquib Vadsaria experience" />
+    <SEO
+      title="Aquib Vadsaria experience"
+      description="JP Morgan, Built.io, IBM"
+    />
     <ExperienceContainer>
       <VerticalTimeline>
         <VerticalTimelineElement

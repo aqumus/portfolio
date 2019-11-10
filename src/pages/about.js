@@ -43,7 +43,10 @@ const About = () => {
   const isSmallScreen = useSmallScreenMediaQuery()
   return (
     <Layout page="About">
-      <SEO title="About Aquib Vadsaria" />
+      <SEO
+        title="About Aquib Vadsaria"
+        description="Brief Intro, area of interest and hobbies"
+      />
       <AboutArticle css={isSmallScreen && smallScreenStyle}>
         <h4>Hey there,</h4>
         <p>

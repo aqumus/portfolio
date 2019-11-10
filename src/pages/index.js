@@ -19,7 +19,7 @@ const IndexPage = () => {
   return (
     <Layout>
       <StyledContainer>
-        <SEO title="Aquib Vadsaria Intro" />
+        <SEO title="Aquib Vadsaria Intro" description="Main Portfolio index" />
         <div
           style={{
             display: "flex",
