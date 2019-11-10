@@ -32,17 +32,7 @@ module.exports = {
         background_color: `#203e3b`,
         theme_color: `#203e3b`,
         display: `minimal-ui`,
-        icon: `src/images/intro-face_small.jpg`, // This path is relative to the root of the site.
-      },
-    },
-    {
-      resolve: `gatsby-plugin-google-fonts`,
-      options: {
-        fonts: [
-          `Michroma`,
-          `Roboto\:400,700`, // you can also specify font weights and styles
-        ],
-        display: "swap",
+        icon: `src/images/intro-face-icon.jpg`, // This path is relative to the root of the site.
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
