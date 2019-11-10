@@ -19,7 +19,7 @@ const IntroImage = () => {
     query {
       high: file(relativePath: { eq: "intro-face_high.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 500) {
+          fluid(maxWidth: 300) {
             ...GatsbyImageSharpFluid
           }
         }
@@ -33,7 +33,7 @@ const IntroImage = () => {
       }
       small: file(relativePath: { eq: "intro-face_small.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 200) {
+          fluid(maxWidth: 150) {
             ...GatsbyImageSharpFluid
           }
         }
