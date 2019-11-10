@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[5],{225:function(c,t,a){"use strict";a.r(t);var e=a(1),n=(a(0),a(222)),o=a(221);t.default=function(){return Object(e.c)(n.a,{page:"Blogs"},Object(e.c)(o.a,{title:"Aquib Vadsaria blogs"}),Object(e.c)("h1",null,"Blogs"))}}}]);
+//# sourceMappingURL=component---src-pages-blogs-js-e2bf9068673fa1c6fd1d.js.map
