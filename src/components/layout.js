@@ -5,7 +5,7 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
+import React, { useEffect } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 /** @jsx jsx */
@@ -16,6 +16,7 @@ import SideNavigation from "./side-navigation"
 import Footer from "./footer"
 
 import "./layout.css"
+import { links } from "../util"
 
 const layoutContainerIndex = css`
   padding: 2vh 5vw;
@@ -40,6 +41,17 @@ const mainContainerPage = css`
 `
 
 const Layout = ({ children, page }) => {
+  useEffect(() => {
+    links
+      .filter(link => link.text !== page)
+      .forEach(({ text }) => {
+        const linkElem = document.querySelector(`#${text}`)
+
+        if (linkElem) {
+          linkElem.dispatchEvent(new MouseEvent("mouseover", { bubbles: true }))
+        }
+      })
+  })
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {

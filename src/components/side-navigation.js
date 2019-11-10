@@ -61,6 +61,7 @@ const SideNavigation = () => (
         <Link
           key={i}
           to={to}
+          id={text}
           activeStyle={linkActiveStyle}
           partiallyActive={true}
         >

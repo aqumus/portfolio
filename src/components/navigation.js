@@ -49,7 +49,7 @@ const Navigation = ({ page }) => (
   <div css={navigationContainerIndex}>
     <nav css={navIndex}>
       {links.map(({ to, text }, i) => (
-        <Link key={i} to={to} activeStyle={linkActiveStyle}>
+        <Link key={i} id={text} to={to} activeStyle={linkActiveStyle}>
           {text}
         </Link>
       ))}
