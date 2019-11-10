@@ -3,6 +3,8 @@ import { Link } from "gatsby"
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core"
 
+import { links } from "../util"
+
 const navigationContainerPage = css`
   position: fixed;
   height: 85vh;
@@ -52,26 +54,16 @@ const linkActiveStyle = {
   borderRight: "2px outset white",
 }
 
-const links = [
-  {
-    to: "/about",
-    text: "About",
-  },
-  {
-    to: "/skills",
-    text: "Skills",
-  },
-  {
-    to: "/experience",
-    text: "Experience",
-  },
-]
-
 const SideNavigation = () => (
   <div css={navigationContainerPage}>
     <nav css={navPage}>
       {links.map(({ to, text }, i) => (
-        <Link key={i} to={to} activeStyle={linkActiveStyle}>
+        <Link
+          key={i}
+          to={to}
+          activeStyle={linkActiveStyle}
+          partiallyActive={true}
+        >
           {text}
         </Link>
       ))}

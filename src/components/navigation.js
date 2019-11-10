@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core"
+import { links } from "../util"
 
 const navigationContainerIndex = css`
   height: 90vh;
@@ -43,21 +44,6 @@ const linkActiveStyle = {
   textShadow: "0px 0px 1px white",
   paddingRight: "5px",
 }
-
-const links = [
-  {
-    to: "/about",
-    text: "About",
-  },
-  {
-    to: "/skills",
-    text: "Skills",
-  },
-  {
-    to: "/experience",
-    text: "Experience",
-  },
-]
 
 const Navigation = ({ page }) => (
   <div css={navigationContainerIndex}>
