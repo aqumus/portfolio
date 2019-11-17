@@ -1,10 +1,9 @@
-@import url("./../fonts/fonts-style.css");
-
 html {
   font-family: "Roboto", sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
+
 body {
   margin: 0;
   -webkit-font-smoothing: antialiased;

@@ -17,6 +17,7 @@ const StyledContainer = styled.div`
 
 const IndexPage = () => {
   const isSmallScreen = useSmallScreenMediaQuery()
+  // TODO: experimental not been used
   const isLoading = false
   if (isLoading) {
     return <Loader />
