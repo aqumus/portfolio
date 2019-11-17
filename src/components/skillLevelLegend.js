@@ -17,14 +17,14 @@ const SkillLevelLegend = () => {
   const isSmallScreen = useSmallScreenMediaQuery()
   const width = isSmallScreen ? "5vw" : "3vw"
   const height = isSmallScreen ? 300 : 400
-  const viewPortWidth = isSmallScreen ? "35" : "50"
+  const viewPortWidth = isSmallScreen ? "40" : "50"
   const viewPortHeight = isSmallScreen ? "40" : "50"
   return (
     <Svg
       xmlns="http://www.w3.org/2000/svg"
       version="1.1"
       width={width}
-      height="42vh"
+      height="45vh"
       viewBox={`-5 150 ${viewPortWidth} ${viewPortHeight}`}
     >
       <text x={-3} y={-5} width={width} fontSize="14px" fill="white">
