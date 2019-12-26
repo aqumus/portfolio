@@ -57,13 +57,31 @@ const IntroImage = () => {
   ]
   const isSmallScreen = useSmallScreenMediaQuery()
   return (
-    <Img
-      fluid={fluid}
-      style={{
-        borderRadius: "150px",
-        width: isSmallScreen ? "150px" : "300px",
-      }}
-    />
+    <>
+      <Img
+        fluid={fluid}
+        style={{
+          borderRadius: "150px",
+          width: isSmallScreen ? "150px" : "300px",
+        }}
+      />
+      <h1
+        style={{
+          fontSize: isSmallScreen ? "4vw" : "2.5vw",
+          marginTop: "5vh",
+          marginBottom: isSmallScreen ? "2.5vh" : "3.5vh",
+        }}
+      >
+        Aquib Vadsaria
+      </h1>
+      <h3
+        style={{
+          fontSize: isSmallScreen ? "2.7vw" : "1.5vw",
+        }}
+      >
+        Web Developer
+      </h3>
+    </>
   )
 }
 

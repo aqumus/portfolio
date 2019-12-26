@@ -29,6 +29,7 @@ const layoutContainerPage = css`
 `
 
 const mainContainerIndex = css`
+  position: relative;
   display: flex;
   flex-direction: row;
   padding: 5vh 5vw;
@@ -65,7 +66,7 @@ const Layout = ({ children, page }) => {
   return (
     <div css={[mainContainerIndex, page && mainContainerPage]}>
       <Footer page={page} />
-      {page ? <SideNavigation /> : <Navigation />}
+      <SideNavigation />
       <div css={[layoutContainerIndex, page && layoutContainerPage]}>
         {children}
       </div>

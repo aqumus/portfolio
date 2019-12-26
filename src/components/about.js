@@ -1,12 +1,11 @@
 import React from "react"
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import SEO from "./seo"
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core"
 import styled from "@emotion/styled"
 import { useSmallScreenMediaQuery } from "../hooks/useMediaQuery"
-import ResumeIcon from "../components/resume-icon"
+import ResumeIcon from "./resume-icon"
 
 const smallScreenStyle = css`
   font-size: 13px;
@@ -42,7 +41,7 @@ const ResumeContainer = styled.a`
 const About = () => {
   const isSmallScreen = useSmallScreenMediaQuery()
   return (
-    <Layout page="About">
+    <>
       <SEO
         title="About Aquib Vadsaria"
         description="Brief Intro, area of interest and hobbies"
@@ -94,7 +93,7 @@ const About = () => {
           <ResumeText>My Resume</ResumeText>
         </ResumeContainer>
       </AboutArticle>
-    </Layout>
+    </>
   )
 }
 

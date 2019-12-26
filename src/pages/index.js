@@ -1,60 +1,24 @@
-import React from "react"
+import React, { useState } from "react"
 import styled from "@emotion/styled"
 
 import Layout from "../components/layout"
-import IntroImage from "../components/intro-image"
-import SEO from "../components/seo"
-import { useSmallScreenMediaQuery } from "../hooks/useMediaQuery"
 import Loader from "../components/loader"
-
-const StyledContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  padding: 0 2vw;
-  height: 100%;
-`
+import Intro from "../components/intro"
+import About from "../components/about"
 
 const IndexPage = () => {
-  const isSmallScreen = useSmallScreenMediaQuery()
-  // TODO: experimental not been used
-  const isLoading = false
-  if (isLoading) {
-    return <Loader />
-  }
+  const [isLoading, setLoading] = useState(true)
+  setTimeout(() => setLoading(false), 5000)
   return (
-    <Layout>
-      <StyledContainer>
-        <SEO title="Aquib Vadsaria Intro" description="Main Portfolio index" />
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "flex-end",
-            alignItems: "center",
-            height: "100%",
-          }}
-        >
-          <IntroImage />
-          <h1
-            style={{
-              fontSize: isSmallScreen ? "4vw" : "2.5vw",
-              marginTop: "5vh",
-              marginBottom: isSmallScreen ? "2.5vh" : "3.5vh",
-            }}
-          >
-            Aquib Vadsaria
-          </h1>
-          <h3
-            style={{
-              fontSize: isSmallScreen ? "2.7vw" : "1.5vw",
-            }}
-          >
-            Web Developer
-          </h3>
-        </div>
-      </StyledContainer>
-    </Layout>
+    <>
+      <Loader isLoading={isLoading} />
+      {!isLoading && (
+        <Layout page="Skills">
+          <Intro />
+          <About />
+        </Layout>
+      )}
+    </>
   )
 }
 

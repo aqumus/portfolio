@@ -29,7 +29,7 @@ const indexFooter = isSmallScreen => css`
   width: 20vw;
   min-width: ${isSmallScreen ? "75px" : "150px"};
   max-width: ${isSmallScreen ? "90px" : "200px"};
-  position: fixed;
+  position: absolute;
   bottom: ${isSmallScreen ? "10vh" : "15vh"};
   left: 7vw;
   opacity: 0.8;
