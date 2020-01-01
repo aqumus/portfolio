@@ -5,7 +5,6 @@ import styled from "@emotion/styled"
 import { useSprings, animated, interpolate } from "react-spring"
 
 import MoveDown from "../components/move-down"
-import SideNavigation from "../components/side-navigation"
 import { useSmallScreenMediaQuery } from "../hooks/useMediaQuery"
 
 const LoaderContainer = styled.div`
@@ -18,8 +17,9 @@ const LoaderContainer = styled.div`
   z-index: 11;
 `
 
-const Svg = styled.svg`
-  font: 4vw "Michroma";
+const svgStyle = isSmallScreen => css`
+  font-size: ${isSmallScreen ? "9vw" : "4vw"};
+  font-family: "Michroma";
   width: 100vw;
   height: 100vh;
 `
@@ -27,34 +27,34 @@ const Svg = styled.svg`
 const getTextStyle = isSmallScreen => css`
   fill: none;
   stroke: white;
-  stroke-dasharray: 7% 29%;
+  stroke-dasharray: 6% 29%;
   stroke-dashoffset: 0%;
-  stroke-width: ${isSmallScreen ? "1.2px" : "4px"};
-  animation: stroke-offset 8s infinite linear;
+  stroke-width: ${isSmallScreen ? "1.5px" : "3.5px"};
+  animation: stroke-offset 6s infinite linear;
 
   &:nth-child(1) {
     stroke: #c69748;
-    animation-delay: -0.5s;
+    animation-delay: -1;
   }
 
   &:nth-child(2) {
     stroke: #33c59b;
-    animation-delay: -1.5s;
+    animation-delay: -2s;
   }
 
   &:nth-child(3) {
     stroke: #bd561a;
-    animation-delay: -2.5s;
+    animation-delay: -3s;
   }
 
   &:nth-child(4) {
     stroke: #d0b16b;
-    animation-delay: -3.5s;
+    animation-delay: -4s;
   }
 
   &:nth-child(5) {
     stroke: #179fa8;
-    animation-delay: -4.5s;
+    animation-delay: -5s;
   }
 
   @keyframes stroke-offset {
@@ -64,11 +64,11 @@ const getTextStyle = isSmallScreen => css`
   }
 `
 
-const GLoadingCircle = styled.g`
+const loadingCircleStyle = isSmallScreen => css`
   circle {
     stroke: none;
-    cy: 80%;
-    r: 0.2vw;
+    cy: ${isSmallScreen ? "65%" : "80%"};
+    r: ${isSmallScreen ? "0.8vw" : "0.2vw"};
   }
 
   circle:nth-child(1) {
@@ -110,52 +110,54 @@ const GLoadingCircle = styled.g`
   }
 `
 
-const SvgContainerRect = styled.rect`
-  x: 0;
-  y: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -1;
-  fill: #f2a191;
-`
-
 const commonRectPieceStyle = {
-  width: "50vw",
-  height: "50vh",
-  fill: "#072b37",
+  width: "11vw",
+  height: "11vh",
+  fill: "#1a343d",
+  stroke: "none",
 }
 
-const RectPiecesSpring = [
-  {
-    from: { x1: "0%", y1: "0%", r: 0, opacity: 1 },
-    to: { r: 40, y1: "150%", opacity: 0 },
-  },
-  {
-    from: { x1: "50%", y1: "0%", r: 0, opacity: 1 },
-    to: { r: -45, y1: "250%", opacity: 0 },
-  },
-  {
-    from: { x1: "0%", y1: "50%", r: 0, opacity: 1 },
-    to: { r: 40, y1: "150%", opacity: 0 },
-  },
-  {
-    from: { x1: "50%", y1: "50%", r: 0, opacity: 1 },
-    to: { r: -45, y1: "150%", opacity: 0 },
-  },
-]
+const randomDeg = () => Math.floor(Math.random() * 150)
+
+const getRectSpring = () => {
+  let rects = new Array(100)
+  let rectIndex = 99
+  for (let row = 0; row < 100; row += 10) {
+    for (let col = 0; col < 100; col += 10) {
+      const randDeg = randomDeg()
+      const r = randDeg * (randDeg % 2 === 0 ? -1 : 1)
+      rects[rectIndex] = {
+        from: {
+          x1: `${row}%`,
+          y1: `${col}%`,
+          r: 0,
+          fill: "#14282f",
+        },
+        to: {
+          r,
+          y1: "150%",
+          delay: randDeg * 5,
+          fill: "#376f82",
+        },
+      }
+      rectIndex--
+    }
+  }
+  return rects
+}
+
+const RectPiecesSpring = getRectSpring()
 
 const Loader = ({ isLoading }) => {
   const [hideLoader, setLoader] = useState(false)
   const isSmallScreen = useSmallScreenMediaQuery()
-  const viewPortWidth = isSmallScreen ? "250" : "50vw"
-  const viewPortHeight = isSmallScreen ? "210" : ""
   const textStyle = getTextStyle(isSmallScreen)
-  const [springs, setSprings] = useSprings(4, i => ({
+  const [springs, setSprings] = useSprings(RectPiecesSpring.length, i => ({
     ...RectPiecesSpring[i].from,
-    config: { duration: 500 },
     onRest: iq => {
-      if (i === 3 && iq.opacity === 0) {
-        setTimeout(() => setLoader(true), 750)
+      // set the loader to true to remove the Loader component from DOM
+      if (i === 99 && iq.y1 === "150%") {
+        setTimeout(() => setLoader(true), 550)
       }
     },
   }))
@@ -171,12 +173,10 @@ const Loader = ({ isLoading }) => {
 
   return (
     <LoaderContainer>
-      <Svg
+      <svg
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
-        width="100vw"
-        height="100vh"
-        viewBox={`0 0 ${viewPortWidth} ${viewPortHeight}`}
+        css={svgStyle(isSmallScreen)}
       >
         {springs.map(({ x1, y1, r, ...restStyles }) => (
           <animated.rect
@@ -197,7 +197,11 @@ const Loader = ({ isLoading }) => {
               <text text-anchor="middle" x="50%" y="40%">
                 Aquib Vadsaria
               </text>
-              <text text-anchor="middle" x="65%" y="55%">
+              <text
+                text-anchor="middle"
+                x="65%"
+                y={isSmallScreen ? "50%" : "55%"}
+              >
                 Portfolio
               </text>
             </symbol>
@@ -209,17 +213,16 @@ const Loader = ({ isLoading }) => {
               <use xlinkHref="#s-text" css={textStyle} />
               <use xlinkHref="#s-text" css={textStyle} />
             </g>
-            <GLoadingCircle>
-              <circle cy="80%" fill="#bd561a" />
-              <circle cy="80%" fill="#c69748" />
-              <circle cy="80%" fill="#d0b16b" />
-              <circle cy="80%" fill="#33c59b" />
-              <circle cy="80%" fill="#179fa8" />
-            </GLoadingCircle>
+            <g css={loadingCircleStyle(isSmallScreen)}>
+              <circle fill="#bd561a" />
+              <circle fill="#c69748" />
+              <circle fill="#d0b16b" />
+              <circle fill="#33c59b" />
+              <circle fill="#179fa8" />
+            </g>
           </>
         )}
-      </Svg>
-      {/* {!isLoading && <MoveDown />} */}
+      </svg>
     </LoaderContainer>
   )
 }

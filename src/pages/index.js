@@ -6,7 +6,7 @@ import Intro from "../components/intro"
 
 const IndexPage = () => {
   const [isLoading, setLoading] = useState(true)
-  setTimeout(() => setLoading(false), 5000)
+  setTimeout(() => setLoading(false), 3000)
   return (
     <>
       <Loader isLoading={isLoading} />
