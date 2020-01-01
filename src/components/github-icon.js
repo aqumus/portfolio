@@ -6,7 +6,7 @@ import { jsx, css } from "@emotion/core"
 import styled from "@emotion/styled"
 
 const Svg = styled.svg`
-  fill: white;
+  fill: black;
   cursor: pointer;
 `
 
