@@ -1,5 +1,8 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
+/** @jsx jsx */
+import { jsx, css } from "@emotion/core"
+import styled from "@emotion/styled"
 import Img from "gatsby-image"
 import { useSmallScreenMediaQuery } from "../hooks/useMediaQuery"
 
@@ -14,7 +17,39 @@ import { useSmallScreenMediaQuery } from "../hooks/useMediaQuery"
  * - `useStaticQuery`: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
+const introContainerStyle = isSmallScreen => css`
+  display: flex;
+  flex-grow: 1;
+  position: sticky;
+  top: 0vh;
+  height: ${isSmallScreen ? "50vh" : "65vh"};
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 2vw;
+`
+
+const introNameStyle = isSmallScreen => css`
+  margin-top: 4vh;
+  margin-bottom: 2vh;
+  font-size: 24px;
+  ${isSmallScreen &&
+    `
+    font-size: 15px;
+  `}
+`
+
+const introDesignationStyle = isSmallScreen => css`
+  font-size: 16px;
+  ${isSmallScreen &&
+    `
+  font-size: 12px;
+`}
+`
+
 const IntroImage = () => {
+  const isSmallScreen = useSmallScreenMediaQuery()
+  const introContainerCss = introContainerStyle(isSmallScreen)
   const data = useStaticQuery(graphql`
     query {
       high: file(relativePath: { eq: "intro-face_high.jpg" }) {
@@ -55,9 +90,8 @@ const IntroImage = () => {
       media: `(max-width: 768px)`,
     },
   ]
-  const isSmallScreen = useSmallScreenMediaQuery()
   return (
-    <>
+    <div css={introContainerCss}>
       <Img
         fluid={fluid}
         style={{
@@ -65,23 +99,9 @@ const IntroImage = () => {
           width: isSmallScreen ? "150px" : "300px",
         }}
       />
-      <h1
-        style={{
-          fontSize: isSmallScreen ? "4vw" : "2.5vw",
-          marginTop: "5vh",
-          marginBottom: isSmallScreen ? "2.5vh" : "3.5vh",
-        }}
-      >
-        Aquib Vadsaria
-      </h1>
-      <h3
-        style={{
-          fontSize: isSmallScreen ? "2.7vw" : "1.5vw",
-        }}
-      >
-        Web Developer
-      </h3>
-    </>
+      <h4 css={introNameStyle(isSmallScreen)}>Aquib Vadsaria</h4>
+      <h6 css={introDesignationStyle(isSmallScreen)}>Web Developer</h6>
+    </div>
   )
 }
 

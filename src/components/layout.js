@@ -11,35 +11,10 @@ import { useStaticQuery, graphql } from "gatsby"
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core"
 
-import Navigation from "./navigation"
-import SideNavigation from "./side-navigation"
 import Footer from "./footer"
 
 import "./layout.css"
 import { links } from "../util"
-
-const layoutContainerIndex = css`
-  padding: 2vh 5vw;
-  width: 70vw;
-`
-
-const layoutContainerPage = css`
-  padding: 2vh 4vw 2vh 12vw;
-  width: 98vw;
-`
-
-const mainContainerIndex = css`
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  padding: 5vh 5vw;
-`
-
-const mainContainerPage = css`
-  display: flex;
-  flex-direction: row;
-  padding: 5vh 2vw;
-`
 
 const Layout = ({ children, page }) => {
   useEffect(() => {
@@ -64,13 +39,10 @@ const Layout = ({ children, page }) => {
   `)
 
   return (
-    <div css={[mainContainerIndex, page && mainContainerPage]}>
+    <>
+      {children}
       <Footer page={page} />
-      <SideNavigation />
-      <div css={[layoutContainerIndex, page && layoutContainerPage]}>
-        {children}
-      </div>
-    </div>
+    </>
   )
 }
 

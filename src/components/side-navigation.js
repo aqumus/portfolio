@@ -6,7 +6,6 @@ import { jsx, css } from "@emotion/core"
 import { links } from "../util"
 
 const navigationContainerPage = css`
-  position: fixed;
   height: 85vh;
   width: 3vw;
   min-width: 40px;
