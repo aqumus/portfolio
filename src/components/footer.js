@@ -20,6 +20,7 @@ const sideFooter = isSmallScreen => css`
   bottom: 1vh;
   right: 1vw;
   opacity: 0.8;
+  z-index: 20;
 `
 
 const indexFooter = isSmallScreen => css`
