@@ -1,7 +1,7 @@
 import React from "react"
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Layout from "./layout"
+import SEO from "./seo"
 
 import {
   VerticalTimeline,
@@ -17,6 +17,14 @@ import styled from "@emotion/styled"
 
 const BrandIcon = styled.img`
   border-radius: 30px;
+`
+
+const CloseButton = styled.span`
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  cursor: pointer;
+  z-index: 20;
 `
 
 const ExperienceContainer = styled.div`
@@ -54,12 +62,13 @@ const ExperienceContainer = styled.div`
   }
 `
 
-const Experience = () => (
+const Experience = ({ onCloseHandler }) => (
   <Layout page="Experience">
     <SEO
       title="Aquib Vadsaria experience"
       description="JP Morgan, Built.io, IBM"
     />
+    <CloseButton onClick={() => onCloseHandler()}>&#10005;</CloseButton>
     <ExperienceContainer>
       <VerticalTimeline>
         <VerticalTimelineElement

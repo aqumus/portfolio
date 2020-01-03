@@ -97,6 +97,7 @@ const IntroImage = () => {
         style={{
           borderRadius: "150px",
           width: isSmallScreen ? "150px" : "300px",
+          boxShadow: "2px 10px 30px 3px #14282f",
         }}
       />
       <h4 css={introNameStyle(isSmallScreen)}>Aquib Vadsaria</h4>
