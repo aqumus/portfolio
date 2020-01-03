@@ -11,30 +11,23 @@ const smallScreenStyle = css`
   font-size: 13px;
 `
 
-const nameStyle = css`
-  display: inline-block;
-  margin: 0;
-  font-size: 16px;
-  @media (min-width: 768px) {
-    font-size: 18px;
-  }
-`
-
 const AboutArticle = styled.article`
-  color: transparent;
   flex-grow: 3;
-  text-shadow: 0px 0px 20px black;
-  animation: blurOutEffect 0.5s ease-in-out 0s 1 normal forwards;
+  padding: 2vw;
+  background: #cee3ea;
+  box-shadow: 2px 2px 25px 0px #14282f;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    width: 0.35em;
+  }
 
-  @keyframes blurOutEffect {
-    from {
-      color: transparent;
-      text-shadow: 0px 0px 20px black;
-    }
-    to {
-      color: black;
-      text-shadow: none;
-    }
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px #ead5ce;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #cd9a89;
+    outline: 1px solid white;
   }
 `
 
@@ -54,7 +47,7 @@ const About = () => {
   const isSmallScreen = useSmallScreenMediaQuery()
   return (
     <AboutArticle css={isSmallScreen && smallScreenStyle}>
-      <h4>Hey there,</h4>
+      <h6>Hey there,</h6>
       <p>
         I am a full stack web developer based in <em>Mumbai</em>, where my core
         expertise is around front end technologies like HTLML5, CSS3, JS,
@@ -93,7 +86,7 @@ const About = () => {
         <div>&#8226; Sleep</div>
       </p>
 
-      <ResumeContainer href="./Aquib_Resumev5.pdf" download>
+      <ResumeContainer href="./Aquib_Resumev5.1.pdf" download>
         <ResumeIcon size={30} />
         <ResumeText>My Resume</ResumeText>
       </ResumeContainer>
