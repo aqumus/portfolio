@@ -19,10 +19,6 @@ import { useSmallScreenMediaQuery } from "../hooks/useMediaQuery"
 
 const introContainerStyle = isSmallScreen => css`
   display: flex;
-  flex-grow: 1;
-  position: sticky;
-  top: 0vh;
-  height: ${isSmallScreen ? "50vh" : "65vh"};
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -95,13 +91,10 @@ const IntroImage = () => {
       <Img
         fluid={fluid}
         style={{
-          borderRadius: "150px",
+          clipPath: "ellipse(50% 50% at 50% 50%)",
           width: isSmallScreen ? "150px" : "300px",
-          boxShadow: "2px 10px 30px 3px #14282f",
         }}
       />
-      <h4 css={introNameStyle(isSmallScreen)}>Aquib Vadsaria</h4>
-      <h6 css={introDesignationStyle(isSmallScreen)}>Web Developer</h6>
     </div>
   )
 }

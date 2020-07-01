@@ -29,7 +29,8 @@
     "react-dom": "^16.10.1",
     "react-helmet": "^5.2.1",
     "react-spring": "^8.0.27",
-    "react-vertical-timeline-component": "^2.5.0"
+    "react-vertical-timeline-component": "^2.5.0",
+    "react-xmasonry": "^3.0.1"
   },
   "devDependencies": {
     "prettier": "^1.18.2"

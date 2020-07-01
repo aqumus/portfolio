@@ -1,0 +1,7 @@
+export default {
+  DARK: "#1A2639",
+  LIGHT_DARK: "#3E4A61",
+  LIGHT: "#D9DAD7",
+  MEDIUM: "#DD6B4D",
+  LIGHT_BACKGROUND: "#CACCCA",
+}

@@ -35,17 +35,17 @@
       {
         "name": "Angular",
         "comments": "Done few prototype in Angular 4.X, not much used to Angular framework, still learning",
-        "level": 4
+        "level": 3
       },
       {
         "name": "Angular.js",
         "comments": "Have worked in earlier 1.X version of Angular.js for 1 years",
-        "level": 5
+        "level": 2
       },
       {
         "name": "React Native",
         "comments": "Worked on few modules in React Native for 2 months,",
-        "level": 3
+        "level": 4
       },
       {
         "name": "Rx.js",
@@ -55,12 +55,12 @@
       {
         "name": "Highcharts",
         "comments": "For my current project, have been extensively using highcharts for creating analytics modules since past 3 years",
-        "level": 7
+        "level": 5
       },
       {
         "name": "Jquery",
         "comments": "I am from pre Angular and React era, so have developed web applications using Jquery for 2-3 years, learned mostly through Jquery documentation",
-        "level": 6
+        "level": 3
       },
       {
         "name": "Material UI",
@@ -74,7 +74,7 @@
       },
       {
         "name": "Jest",
-        "level": 6.5,
+        "level": 8,
         "comments": "Used for unit testing of React components"
       },
       {
@@ -103,13 +103,18 @@
         "comments": "Actively worked on enhancing project build and local developmeny rig, in process of which learned alot of webpack internals mostly through github PR's, conference videos by Sean Larkin"
       },
       {
+        "name": "RollUp",
+        "level": 4,
+        "comments": "Actively worked on enhancing project build and local developmeny rig, in process of which learned alot of webpack internals mostly through github PR's, conference videos by Sean Larkin"
+      },
+      {
         "name": "grunt",
-        "level": 6,
+        "level": 3,
         "comments": "Used as build tool in one of the projects"
       },
       {
         "name": "gulp",
-        "level": 5,
+        "level": 2,
         "comments": "Used as build tool in one of the projects"
       }
     ]
