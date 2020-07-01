@@ -9938,6 +9938,11 @@ react-visibility-sensor@^5.1.1:
   dependencies:
     prop-types "^15.7.2"
 
+react-xmasonry@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/react-xmasonry/-/react-xmasonry-3.0.1.tgz#0d31ab307e118f47f2ec023db2c47bb4b1271176"
+  integrity sha512-hPfv17vyBS6SCpZHQFqkAiaoX/feh4Y+LUbxwvXNuK+PaPLsePA+JK5E+pZXh0c8hlLkxYuL4T0JfyS+q8Spqw==
+
 react@^16.10.1, react@^16.9.0:
   version "16.10.1"
   resolved "https://registry.yarnpkg.com/react/-/react-16.10.1.tgz#967c1e71a2767dfa699e6ba702a00483e3b0573f"

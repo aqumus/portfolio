@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react"
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core"
 import styled from "@emotion/styled"
-import { useSprings, animated, interpolate } from "react-spring"
+import Palette from "../palette"
+// import { useSprings, animated, interpolate } from "react-spring"
 
 import MoveDown from "../components/move-down"
 import { useSmallScreenMediaQuery } from "../hooks/useMediaQuery"
@@ -13,7 +14,7 @@ const LoaderContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-content: center;
-  background: transparent;
+  background: ${Palette.DARK};
   z-index: 11;
 `
 
@@ -110,88 +111,18 @@ const loadingCircleStyle = isSmallScreen => css`
   }
 `
 
-const commonRectPieceStyle = {
-  width: "11vw",
-  height: "11vh",
-  fill: "#1a343d",
-  stroke: "none",
-}
-
-const randomDeg = () => Math.floor(Math.random() * 150)
-
-const getRectSpring = () => {
-  let rects = new Array(100)
-  let rectIndex = 99
-  for (let row = 0; row < 100; row += 10) {
-    for (let col = 0; col < 100; col += 10) {
-      const randDeg = randomDeg()
-      const r = randDeg * (randDeg % 2 === 0 ? -1 : 1)
-      rects[rectIndex] = {
-        from: {
-          x1: `${row}%`,
-          y1: `${col}%`,
-          r: 0,
-          fill: "#14282f",
-        },
-        to: {
-          r,
-          y1: "150%",
-          delay: randDeg * 5,
-          fill: "#376f82",
-        },
-      }
-      rectIndex--
-    }
-  }
-  return rects
-}
-
-const RectPiecesSpring = getRectSpring()
-
 const Loader = ({ isLoading }) => {
-  const [hideLoader, setLoader] = useState(false)
   const isSmallScreen = useSmallScreenMediaQuery()
   const textStyle = getTextStyle(isSmallScreen)
-  const [springs, setSprings] = useSprings(RectPiecesSpring.length, i => ({
-    ...RectPiecesSpring[i].from,
-    onRest: iq => {
-      // set the loader to true to remove the Loader component from DOM
-      if (i === 99 && iq.y1 === "150%") {
-        setTimeout(() => setLoader(true), 550)
-      }
-    },
-  }))
-
-  useEffect(() => {
-    if (isLoading) return
-    setSprings(i => ({ ...RectPiecesSpring[i].to }))
-  }, [isLoading])
-
-  if (hideLoader) {
-    return null
-  }
 
   return (
-    <LoaderContainer>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        version="1.1"
-        css={svgStyle(isSmallScreen)}
-      >
-        {springs.map(({ x1, y1, r, ...restStyles }) => (
-          <animated.rect
-            style={{
-              ...commonRectPieceStyle,
-              ...restStyles,
-              transform: interpolate(
-                [x1, y1, r],
-                (x, y, r) => `translate3d(${x}, ${y}, 0) rotate(${r}deg)`
-              ),
-            }}
-          />
-        ))}
-
-        {isLoading && (
+    isLoading && (
+      <LoaderContainer>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          version="1.1"
+          css={svgStyle(isSmallScreen)}
+        >
           <>
             <symbol id="s-text">
               <text text-anchor="middle" x="50%" y="40%">
@@ -221,9 +152,9 @@ const Loader = ({ isLoading }) => {
               <circle fill="#179fa8" />
             </g>
           </>
-        )}
-      </svg>
-    </LoaderContainer>
+        </svg>
+      </LoaderContainer>
+    )
   )
 }
 
