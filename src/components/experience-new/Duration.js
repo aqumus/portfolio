@@ -6,12 +6,13 @@ import { useSmallScreenMediaQuery } from "../../hooks/useMediaQuery"
 import { ExperienceContext } from "./ExperienceContext"
 import Palette from "../../palette"
 
-const durationStyle = ({ background, color }) => css`
-  position: relative;
-  right: -5%;
-  top: 15%;
-  width: 400px;
-  height: 75px;
+const durationStyle = ({ background, color, isSmallScreen }) => css`
+  position: absolute;
+  right: ${isSmallScreen ? "0" : "-5%"};
+  top: ${isSmallScreen ? "0%" : "12%"};
+  width: auto;
+  height: ${isSmallScreen ? "auto" : "75px"};
+  padding: ${isSmallScreen ? "3vh 2vw" : "25px"};
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -19,7 +20,8 @@ const durationStyle = ({ background, color }) => css`
   background: ${background};
   color: ${color};
   font-weight: bold;
-  font-size: 35px;
+  font-size: ${isSmallScreen ? "18px" : "35px"};
+  writing-mode: ${isSmallScreen ? "vertical-lr" : "inherit"};
 `
 
 const endDuration = ({ end }) => css`
@@ -33,7 +35,7 @@ export const Duration = ({ children }) => {
   const end = children.split("-")[1].trim()
 
   return (
-    <div css={durationStyle({ background, color })}>
+    <div css={durationStyle({ background, color, isSmallScreen })}>
       <span>{start}</span>
       &nbsp;
       <span>{"-"}</span>

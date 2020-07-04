@@ -2,7 +2,6 @@ import React from "react"
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core"
 import styled from "@emotion/styled"
-import { useSmallScreenMediaQuery } from "../hooks/useMediaQuery"
 
 const skillsContainerStyle = ({ background }) => css`
   display: flex;
@@ -33,6 +32,7 @@ const SkillImage = styled.img`
   align-self: center;
   flex-grow: 2;
   justify-content: center;
+  padding: 0px 25px;
   z-index: 1;
 `
 
@@ -42,7 +42,6 @@ export const SkillDetails = ({
   background,
   headerClassName,
 }) => {
-  const isSmallScreen = useSmallScreenMediaQuery()
   return (
     <div css={skillsContainerStyle({ background })}>
       <header css={[headerStyle, headerClassName]}>

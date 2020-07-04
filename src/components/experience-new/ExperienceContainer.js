@@ -21,16 +21,16 @@ const experienceContainerStyle = ({ background, color }) => css`
   color: ${color};
 `
 
-const sectionStyle = ({ background, color }) => css`
+const sectionStyle = ({ background, color, isSmallScreen }) => css`
   width: 70%;
   height: 60%;
-  margin-right: 5%;
+  margin-right: ${isSmallScreen ? "0" : "5%"};
   position: relative;
   align-self: flex-end;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 5vh 0;
+  padding: ${isSmallScreen ? "5vh 0 0 0" : "5vh 0"};
   background: ${background};
   color: ${color};
 `
@@ -67,7 +67,13 @@ export const ExperienceContainer = ({
       }}
     >
       <div css={experienceContainerStyle({ background, color })}>
-        <section css={sectionStyle({ color: background, background: color })}>
+        <section
+          css={sectionStyle({
+            color: background,
+            background: color,
+            isSmallScreen,
+          })}
+        >
           <div css={experienceTitleStyle}>
             <div css={experienceHeaderStyle}>
               <Company firstHalf={companyFirstHalf}>{company}</Company>

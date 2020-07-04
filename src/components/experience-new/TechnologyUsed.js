@@ -5,7 +5,7 @@ import styled from "@emotion/styled"
 import { useSmallScreenMediaQuery } from "../../hooks/useMediaQuery"
 import { ExperienceContext } from "./ExperienceContext"
 
-const technologyUsedStyle = ({ color, background }) => css`
+const technologyUsedStyle = ({ color, background, isSmallScreen }) => css`
   position: absolute;
   bottom: 0;
   left: 0;
@@ -13,8 +13,8 @@ const technologyUsedStyle = ({ color, background }) => css`
   color: ${color};
   width: 80%;
   height: 25%;
-  font-size: 22px;
-  line-height: 28px;
+  font-size: ${isSmallScreen ? "16px" : "22px"};
+  line-height: ${isSmallScreen ? "20px" : "28px"};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -24,7 +24,6 @@ const technologyUsedStyle = ({ color, background }) => css`
 
 const headingStyle = css`
   font-weight: bold;
-  font-size: 28px;
   margin-bottom: 15px;
 `
 
@@ -32,7 +31,13 @@ export const TechnologyUsed = ({ children }) => {
   const { background, color } = useContext(ExperienceContext)
   const isSmallScreen = useSmallScreenMediaQuery()
   return (
-    <div css={technologyUsedStyle({ color: background, background: color })}>
+    <div
+      css={technologyUsedStyle({
+        color: background,
+        background: color,
+        isSmallScreen,
+      })}
+    >
       <div css={headingStyle}>Technology Used:</div>
       {children}
     </div>

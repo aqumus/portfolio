@@ -22,25 +22,7 @@ const introContainerStyle = isSmallScreen => css`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0 2vw;
-`
-
-const introNameStyle = isSmallScreen => css`
-  margin-top: 4vh;
-  margin-bottom: 2vh;
-  font-size: 24px;
-  ${isSmallScreen &&
-    `
-    font-size: 15px;
-  `}
-`
-
-const introDesignationStyle = isSmallScreen => css`
-  font-size: 16px;
-  ${isSmallScreen &&
-    `
-  font-size: 12px;
-`}
+  margin: ${isSmallScreen ? "3vh 5vw 3vh 2vw" : "0 2vw 7vh 2vw"};
 `
 
 const IntroImage = () => {
@@ -50,7 +32,7 @@ const IntroImage = () => {
     query {
       high: file(relativePath: { eq: "intro-face_high.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 300) {
+          fluid(maxWidth: 500) {
             ...GatsbyImageSharpFluid
           }
         }
@@ -64,7 +46,7 @@ const IntroImage = () => {
       }
       small: file(relativePath: { eq: "intro-face_small.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 150) {
+          fluid(maxWidth: 110) {
             ...GatsbyImageSharpFluid
           }
         }
@@ -92,7 +74,7 @@ const IntroImage = () => {
         fluid={fluid}
         style={{
           clipPath: "ellipse(50% 50% at 50% 50%)",
-          width: isSmallScreen ? "150px" : "300px",
+          width: isSmallScreen ? "110px" : "300px",
         }}
       />
     </div>
