@@ -18,21 +18,33 @@ const HEADER_MIN_WIDTH = "35vw"
 
 const AboutContainer = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: ${({ isSmallScreen }) => (isSmallScreen ? "column" : "row")};
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  background: ${Palette.LIGHT};
 `
 
-const HeaderContainer = styled.header`
+const HeaderContainer = styled.header(({ isSmallScreen }) => {
+  return `
+    display: flex;
+    flex-direction: ${isSmallScreen ? "row" : "column"};
+    background-color: ${Palette.LIGHT_BACKGROUND};
+    color: ${Palette.DARK};
+    width: ${isSmallScreen ? "100vw" : "65vw"};
+    position: relative;
+    justify-content: center;
+    min-width: ${HEADER_MIN_WIDTH};
+    min-height: ${isSmallScreen ? "200px" : "100vh"};
+    max-height: ${isSmallScreen ? "220px" : "100vh"};
+    `
+})
+
+const HeaderTextContainer = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: ${Palette.LIGHT_BACKGROUND};
-  color: ${Palette.DARK};
-  width: 65vw;
-  position: relative;
+  align-items: center;
   justify-content: center;
-  min-width: ${HEADER_MIN_WIDTH};
 `
 
 const ContactLinkContainer = styled.aside`
@@ -40,57 +52,62 @@ const ContactLinkContainer = styled.aside`
   flex-direction: row;
   justify-content: center;
   position: absolute;
-  bottom: 25px;
+  bottom: ${({ isSmallScreen }) => (isSmallScreen ? "25px" : "6vh")};
   min-width: ${HEADER_MIN_WIDTH};
 
   & svg:not(:last-child) {
-    margin-right: 15px;
+    margin-right: ${({ isSmallScreen }) => (isSmallScreen ? "20px" : "30px")};
   }
 `
 
 const titleContainer = styled.div``
 
 const Name = styled.span`
-  font-size: 40px;
+  font-size: ${({ isSmallScreen }) => (isSmallScreen ? "21px" : "38px")};
   font-family: "Frijole";
   align-self: center;
-  margin: 50px 0 15px 0;
-  line-height: 50px;
   text-align: center;
 `
 
 const Designation = styled.span`
-  font-size: 30px;
+  font-size: ${({ isSmallScreen }) => (isSmallScreen ? "18px" : "30px")};
   align-self: center;
-  line-height: 40px;
+  margin-top: ${({ isSmallScreen }) => (isSmallScreen ? "5px" : "2vh")};
 `
 
-const Separator = styled.hr`
+const verticalSeparator = css`
   background: white;
   width: 5px;
   height: 100%;
 `
 
+const horizontalSeparator = css`
+  width: 100vw;
+  border-top: 2px solid white;
+  margin: 0px;
+`
+
 const AboutArticle = styled.article`
   display: flex;
   flex-direction: column;
-  font-size: 22px;
-  line-height: 28px;
+  font-size: ${({ isSmallScreen }) => (isSmallScreen ? "16px" : "22px")};
   color: ${Palette.DARK};
-  padding: 10vh 5vw;
-  padding-top: 10vh;
+  padding: ${({ isSmallScreen }) => (isSmallScreen ? "4vh 5vw" : "10vh 5vw")};
+  height: 100vh;
+  overflow-y: auto;
   justify-content: space-between;
 `
 
-const AboutSection = styled.section``
+const AboutSection = styled.section`
+  margin-bottom: ${({ isSmallScreen }) => (isSmallScreen ? "3vh" : "5vh")};
+`
 
 const Para = styled.p`
-  margin-bottom: 15px;
+  margin-bottom: ${({ isSmallScreen }) => (isSmallScreen ? "16px" : "1.45rem")};
 `
 
 const Bold = styled.bold`
   font-weight: bold;
-  font-size: 28px;
   opacity: 0.8;
 `
 
@@ -100,8 +117,7 @@ const HobbiesList = styled.ul`
 `
 
 const ListBullet = styled(Bullet)`
-  margin-right: 15px;
-  height: 12px;
+  margin-right: ${({ isSmallScreen }) => (isSmallScreen ? "10px" : "15px")};
 `
 
 const hobbies = [
@@ -113,73 +129,81 @@ const hobbies = [
 
 export const AboutNew = () => {
   const isSmallScreen = useSmallScreenMediaQuery()
+  const iconSize = isSmallScreen ? 15 : 30
+  const listBulletSize = isSmallScreen ? 12 : 15
   return (
-    <AboutContainer>
+    <AboutContainer isSmallScreen={isSmallScreen}>
       <SEO
         title="Aquib Vadsaria Intro"
         description="Brief Intro, area of interest and hobbies"
       />
-      <HeaderContainer>
+      <HeaderContainer isSmallScreen={isSmallScreen}>
         <IntroImage />
-        <Name>Aquib Vadsaria</Name>
-        <Designation>Web Developer</Designation>
-        <ContactLinkContainer>
-          <Twitter width={25} height={25} />
-          <Gmail width={25} height={25} />
-          <LinkedIn
-            width={25}
-            height={25}
-            style={{
-              position: "relative",
-              top: "-2px",
-            }}
-          />
-          <Github width={25} height={25} />
-        </ContactLinkContainer>
+        <HeaderTextContainer>
+          <Name isSmallScreen={isSmallScreen}>Aquib Vadsaria</Name>
+          <Designation isSmallScreen={isSmallScreen}>Web Developer</Designation>
+          <ContactLinkContainer isSmallScreen={isSmallScreen}>
+            <Twitter width={iconSize} height={iconSize} />
+            <Gmail width={iconSize} height={iconSize} />
+            <LinkedIn
+              width={iconSize}
+              height={iconSize}
+              style={{
+                position: "relative",
+                top: "-2px",
+              }}
+            />
+            <Github width={iconSize} height={iconSize} />
+          </ContactLinkContainer>
+        </HeaderTextContainer>
       </HeaderContainer>
-      <Separator />
-      <AboutArticle>
-        <AboutSection>
-          <p>
+      <hr css={isSmallScreen ? horizontalSeparator : verticalSeparator} />
+      <AboutArticle isSmallScreen={isSmallScreen}>
+        <AboutSection isSmallScreen={isSmallScreen}>
+          <Para isSmallScreen={isSmallScreen}>
             <Bold>Hey there,</Bold>
-          </p>
+          </Para>
 
-          <p>
+          <Para isSmallScreen={isSmallScreen}>
             I am a <Bold>Full stack web developer</Bold> based in{" "}
             <Bold>Mumbai</Bold>.
-          </p>
+          </Para>
 
-          <p>
+          <Para isSmallScreen={isSmallScreen}>
             I have started my career as a “System Engineer” where I used to
             configure mainframe servers, network switches and storages but soon
             realised my passion for development which got me turned into a Web
             Developer.
-          </p>
+          </Para>
 
-          <p>
+          <Para isSmallScreen={isSmallScreen}>
             My current area of interest is to be more proficient in server side
             technologies i.e creating web servers and system design.
-          </p>
+          </Para>
 
-          <p>
+          <Para isSmallScreen={isSmallScreen}>
             My <Bold>goal</Bold> is to become a <Bold>Technical Architect</Bold>
             .
-          </p>
+          </Para>
         </AboutSection>
         <section>
-          <p>
+          <Para isSmallScreen={isSmallScreen}>
             <Bold>Hobbies:</Bold>
-          </p>
-          <p>
+          </Para>
+          <Para isSmallScreen={isSmallScreen}>
             <HobbiesList>
               {hobbies.map(hobby => (
                 <li>
-                  <ListBullet />
+                  <ListBullet
+                    width={listBulletSize}
+                    height={listBulletSize}
+                    isSmallScreen={isSmallScreen}
+                  />
                   {hobby}
                 </li>
               ))}
             </HobbiesList>
-          </p>
+          </Para>
         </section>
       </AboutArticle>
     </AboutContainer>

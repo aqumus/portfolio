@@ -5,15 +5,15 @@ import styled from "@emotion/styled"
 import { useSmallScreenMediaQuery } from "../../hooks/useMediaQuery"
 import { ExperienceContext } from "./ExperienceContext"
 
-const companyStyle = css`
+const companyStyle = isSmallScreen => css`
   display: flex;
   flex-direction: row;
-  margin-bottom: 25px;
+  margin-bottom: ${isSmallScreen ? "15px" : "25px"};
 `
 
-const companyTextStyle = css`
-  font-size: 100px;
-  line-height: 100px;
+const companyTextStyle = isSmallScreen => css`
+  font-size: ${isSmallScreen ? "50px" : "100px"};
+  line-height: ${isSmallScreen ? "50px" : "100px"};
   font-weight: bold;
 `
 
@@ -30,11 +30,13 @@ export const Company = ({ firstHalf, children }) => {
   const { background, color } = useContext(ExperienceContext)
   const isSmallScreen = useSmallScreenMediaQuery()
   return (
-    <div css={companyStyle}>
-      <span css={[companyTextStyle, firstHalfStyle({ color })]}>
+    <div css={companyStyle(isSmallScreen)}>
+      <span css={[companyTextStyle(isSmallScreen), firstHalfStyle({ color })]}>
         <span>{firstHalf}</span>
       </span>
-      <span css={companyTextStyle}>{children.replace(firstHalf, "")}</span>
+      <span css={companyTextStyle(isSmallScreen)}>
+        {children.replace(firstHalf, "")}
+      </span>
     </div>
   )
 }

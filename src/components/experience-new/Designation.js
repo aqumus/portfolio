@@ -13,16 +13,16 @@ const designationStyle = css`
 const firstHalfStyle = ({ color }) => css`
   color: ${color};
   position: absolute;
-  width: 30%;
-  left: -30%;
+  width: 35%;
+  left: -35%;
   display: flex;
   justify-content: flex-end;
 `
 
-const designationText = css`
-  font-size: 40px;
+const designationText = isSmallScreen => css`
+  font-size: ${isSmallScreen ? "18px" : "40px"};
+  line-height: ${isSmallScreen ? "18px" : "40px"};
   font-weight: bold;
-  line-height: 40px;
 `
 
 export const Designation = ({ firstHalf, children }) => {
@@ -30,10 +30,12 @@ export const Designation = ({ firstHalf, children }) => {
   const isSmallScreen = useSmallScreenMediaQuery()
   return (
     <div css={designationStyle}>
-      <span css={[designationText, firstHalfStyle({ color })]}>
+      <span css={[designationText(isSmallScreen), firstHalfStyle({ color })]}>
         {firstHalf}
       </span>
-      <span css={designationText}>{children.replace(firstHalf, "")}</span>
+      <span css={designationText(isSmallScreen)}>
+        {children.replace(firstHalf, "")}
+      </span>
     </div>
   )
 }

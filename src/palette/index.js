@@ -3,5 +3,5 @@ export default {
   LIGHT_DARK: "#3E4A61",
   LIGHT: "#D9DAD7",
   MEDIUM: "#DD6B4D",
-  LIGHT_BACKGROUND: "#CACCCA",
+  LIGHT_BACKGROUND: "#1a26391a",
 }

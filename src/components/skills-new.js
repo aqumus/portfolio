@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import SEO from "./seo"
 import { animated, useSpring, useSprings, useTransition } from "react-spring"
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core"
@@ -25,6 +26,10 @@ const Skills = {
 export function SkillsNew({ setShowDetails, show }) {
   return (
     <div css={skillsDetails}>
+      <SEO
+        title="Aquib Vadsaria Skills"
+        description="List of Aquib Vadsaria FrontEnd Skill, Backend and cloud skills, System skills"
+      />
       <FrontEndSkills />
       <BackEndSkills />
       <SystemSkills />

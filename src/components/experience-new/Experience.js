@@ -1,4 +1,5 @@
 import React from "react"
+import SEO from "../seo"
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core"
 import styled from "@emotion/styled"
@@ -21,7 +22,7 @@ const JPMorganExperience = {
   company: "J.P. Morgan",
   companyFirstHalf: "J.P.",
   designation: "Application Developer, Mumbai",
-  designationFirstHalf: "Application",
+  designationFirstHalf: "Applicatio",
   duration: "Nov, 2016 - Current",
   renderDescription: () => {
     return (
@@ -45,9 +46,9 @@ const builioExperience = {
   background: Palette.LIGHT,
   color: Palette.DARK,
   company: "Built.io",
-  companyFirstHalf: "Buil",
+  companyFirstHalf: "Bui",
   designation: "Web Developer, Mumbai",
-  designationFirstHalf: "Web Develo",
+  designationFirstHalf: "Web Dev",
   duration: "Aug, 2015 - Oct, 2016",
   renderDescription: () => {
     return (
@@ -71,22 +72,18 @@ const IBMExperience = {
   company: "I.B.M",
   companyFirstHalf: "I.B",
   designation: "System Engineer, Mumbai",
-  designationFirstHalf: "System En",
+  designationFirstHalf: "System",
   duration: "Jul, 2012 - Jul, 2015",
   renderDescription: () => {
     return (
       <>
         <p>
           Worked as a <emphasis>System Engineer</emphasis> for various IBM
-          clients mostly include Kotak Bank, ICICI bank, Vodafone, Airtel etc.
+          clients namely Kotak Bank, ICICI bank, Vodafone, Airtel etc.
         </p>
         <p>
-          Worked on OS virtualisation using Vnware ESX, Citrix Xen hypervisor,
-          Cisco UCS.
-        </p>
-        <p>
-          Implemented and configured servers, network swicthes, Mid level
-          storages as per the Low level design.
+          Worked on OS virtualisation, implemented & configured servers, network
+          swicthes, Mid range storages.
         </p>
       </>
     )
@@ -99,6 +96,10 @@ export const Experience = () => {
   const isSmallScreen = useSmallScreenMediaQuery()
   return (
     <div css={expereinceStyle}>
+      <SEO
+        title="Aquib Vadsaria Experience"
+        description="Experience of Aquib Vadsaria with current employer being J.P. Morgan and past companies Build.io and IBM"
+      />
       <ExperienceContainer {...JPMorganExperience} />
       <ExperienceContainer {...builioExperience} />
       <ExperienceContainer {...IBMExperience} />

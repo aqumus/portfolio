@@ -7,23 +7,25 @@ import BackEndNextArrow from "../images/BackEndNextArrow.svg"
 import BackEndPrevArrow from "../images/BackEndPreviousArrow.svg"
 import Palette from "../palette"
 import { SkillDetails } from "./SkillDetails"
+import { useSmallScreenMediaQuery } from "../hooks/useMediaQuery"
 
-const headerStyle = css`
+const headerStyle = isSmallScreen => css`
   color: ${Palette.DARK};
   opacity: 0.55;
   font-size: 360px;
-  font-size: 31vh;
-  line-height: 29vh;
+  font-size: ${isSmallScreen ? "12vh" : "31vh"};
+  line-height: ${isSmallScreen ? "25vh" : "29vh"};
 `
 
 export const BackEndSkills = ({ show, onNext, onPrev }) => {
+  const isSmallScreen = useSmallScreenMediaQuery()
   return (
     <SkillDetails
       header="Backend Cloud Skills"
       background={Palette.LIGHT_DARK}
       color={Palette.LIGHT}
       imgSrc={BackEndSkillsSvg}
-      headerClassName={headerStyle}
+      headerClassName={headerStyle(isSmallScreen)}
     />
   )
 }

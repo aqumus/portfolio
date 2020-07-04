@@ -7,6 +7,7 @@ import { Experience } from "../components/experience-new"
 import { SkillsNew } from "../components/skills-new"
 import { AboutNew } from "../components/about-new"
 import palette from "../palette"
+import { useSmallScreenMediaQuery } from "../hooks/useMediaQuery"
 
 const container = css`
   display: flex;
@@ -17,74 +18,82 @@ const container = css`
   color: white;
 `
 
-const titleContainer = css`
-  position: relative;
-  background: #ff5959;
-  flex-grow: 1;
-  cursor: pointer;
+const smallScreenContainer = css`
+  flex-direction: column;
 `
 
-const layeredTitle = css`
-  text-shadow: none;
-  filter: grayscale(0%);
-`
-const skillsTitle = css`
+const skillsLayeredTitle = css`
   color: #dd6b4d;
+  filter: grayscale(0%);
+  text-shadow: none;
 `
 
-const skills = css`
+const skills = isSmallScreen => css`
   background: #1a2639;
-  &:hover {
-    ${layeredTitle}
-    ${skillsTitle}
+  ${!isSmallScreen &&
+    css`&:hover {
+    ${skillsLayeredTitle}`}
+    ${isSmallScreen && skillsLayeredTitle}
   }
 `
 
 const aboutLayeredTitle = css`
   color: #c24d2c;
+  filter: grayscale(0%);
+  text-shadow: none;
 `
 
-const about = css`
+const about = isSmallScreen => css`
   background: #d9dad7;
   text-shadow: 0px 0px 25px #807878;
-  &:hover {
-    ${layeredTitle}
-    ${aboutLayeredTitle}
+  ${!isSmallScreen &&
+    css`&:hover {
+    ${aboutLayeredTitle}`}
+    ${isSmallScreen && aboutLayeredTitle}
   }
 `
 
 const projectsLayeredTitle = css`
   color: #d9dad7;
+  filter: grayscale(0%);
+  text-shadow: none;
 `
 
-const projects = css`
+const projects = isSmallScreen => css`
   background: #1a2639;
-  &:hover {
-    ${layeredTitle}
-    ${projectsLayeredTitle}
+  ${!isSmallScreen &&
+    css`&:hover {
+    ${projectsLayeredTitle}`}
+    ${isSmallScreen && projectsLayeredTitle}
   }
 `
 
-const title = css`
+const rotatedTitle = `
+writing-mode: vertical-rl;
+text-orientation: sideways;
+transform: rotate(180deg);
+text-transform: uppercase;
+letter-spacing: 25px;
+color: transparent;
+text-shadow: 0px 0px 25px white;
+filter: grayscale(100%);
+`
+
+const title = isSmallScreen => css`
   display: flex;
   justify-content: center;
   align-content: center;
   align-items: center;
   width: 100%;
   height: 100%;
-  writing-mode: vertical-rl;
-  text-orientation: sideways;
-  transform: rotate(180deg);
-  text-transform: uppercase;
-  letter-spacing: 25px;
-  font-size: 10vh;
-  color: transparent;
-  text-shadow: 0px 0px 25px white;
-  filter: grayscale(100%);
+  text-shadow: 0px 0px 20px white;
+  font-size: ${isSmallScreen ? "8vh" : "10vh"};
+  ${!isSmallScreen && rotatedTitle}
 `
 
 const IndexPage = () => {
   const [isLoading, setLoading] = useState(true)
+  const isSmallScreen = useSmallScreenMediaQuery()
   setTimeout(() => setLoading(false), 3000)
 
   const [showDetails, setShowDetails] = useState({
@@ -97,21 +106,21 @@ const IndexPage = () => {
     <>
       <Loader isLoading={isLoading} />
       {!isLoading && (
-        <div css={container}>
+        <div css={[container, isSmallScreen && smallScreenContainer]}>
           <span
-            css={[title, skills]}
+            css={[title(isSmallScreen), skills(isSmallScreen)]}
             onClick={() => setShowDetails({ skills: true })}
           >
             Skills
           </span>
           <span
-            css={[title, about]}
+            css={[title(isSmallScreen), about(isSmallScreen)]}
             onClick={() => setShowDetails({ about: true })}
           >
             About
           </span>
           <span
-            css={[title, projects]}
+            css={[title(isSmallScreen), projects(isSmallScreen)]}
             onClick={() => setShowDetails({ projects: true })}
           >
             Projects
