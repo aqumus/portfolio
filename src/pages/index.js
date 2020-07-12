@@ -3,6 +3,7 @@ import { animated, useSpring, useSprings, useTransition } from "react-spring"
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core"
 import Loader from "../components/loader"
+import BulbLoader from "../components/bulb-loader"
 import { Experience } from "../components/experience-new"
 import { SkillsNew } from "../components/skills-new"
 import { AboutNew } from "../components/about-new"
@@ -104,7 +105,7 @@ const IndexPage = () => {
 
   return (
     <>
-      <Loader isLoading={isLoading} />
+      <BulbLoader isLoading={isLoading} />
       {!isLoading && (
         <div css={[container, isSmallScreen && smallScreenContainer]}>
           <span
