@@ -1,4 +1,10 @@
-import React, { useState, useCallback } from "react"
+import React, {
+  useState,
+  useCallback,
+  useEffect,
+  useRef,
+  Suspense,
+} from "react"
 import { animated, useSpring, useSprings, useTransition } from "react-spring"
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core"
@@ -7,8 +13,10 @@ import BulbLoader from "../components/bulb-loader"
 import { Experience } from "../components/experience-new"
 import { SkillsNew } from "../components/skills-new"
 import { AboutNew } from "../components/about-new"
+import { LinkHover } from "../components/link-hover"
 import palette from "../palette"
 import { useSmallScreenMediaQuery } from "../hooks/useMediaQuery"
+import { useIsMounted } from "../hooks/useIsMounted"
 
 const container = css`
   display: flex;
@@ -93,51 +101,12 @@ const title = isSmallScreen => css`
 `
 
 const IndexPage = () => {
-  const [isLoading, setLoading] = useState(true)
-  const isSmallScreen = useSmallScreenMediaQuery()
-  setTimeout(() => setLoading(false), 3000)
-
-  const [showDetails, setShowDetails] = useState({
-    skills: false,
-    about: false,
-    projects: false,
-  })
+  const ProfilePage = React.lazy(() => import("./landing")) // Lazy-loaded
 
   return (
-    <>
-      <BulbLoader isLoading={isLoading} />
-      {!isLoading && (
-        <div css={[container, isSmallScreen && smallScreenContainer]}>
-          <span
-            css={[title(isSmallScreen), skills(isSmallScreen)]}
-            onClick={() => setShowDetails({ skills: true })}
-          >
-            Skills
-          </span>
-          <span
-            css={[title(isSmallScreen), about(isSmallScreen)]}
-            onClick={() => setShowDetails({ about: true })}
-          >
-            About
-          </span>
-          <span
-            css={[title(isSmallScreen), projects(isSmallScreen)]}
-            onClick={() => setShowDetails({ projects: true })}
-          >
-            Projects
-          </span>
-        </div>
-      )}
-      {showDetails.skills && (
-        <SkillsNew
-          show={showDetails.skills}
-          setShowDetails={() => setShowDetails({ skills: !showDetails.skills })}
-        />
-      )}
-
-      {showDetails.about && <AboutNew />}
-      {showDetails.projects && <Experience />}
-    </>
+    <Suspense fallback={<BulbLoader isLoading={true} />}>
+      <ProfilePage />
+    </Suspense>
   )
 }
 
