@@ -9,7 +9,10 @@ import { SkillDetails } from "./SkillDetails"
 import { useSmallScreenMediaQuery } from "../hooks/useMediaQuery"
 
 const headerStyle = isSmallScreen => css`
-  color: ${Palette.MEDIUM};
+  color: ${Palette.LIGHT};
+  -webkit-text-stroke: 2px ${Palette.MEDIUM};
+  text-shadow: -2px -2px 0 ${Palette.MEDIUM}, 2px -2px 0 ${Palette.MEDIUM},
+    -2px 2px 0 ${Palette.MEDIUM}, 2px 2px 0 ${Palette.MEDIUM};
   opacity: 0.3;
   font-size: 390px;
   font-size: ${isSmallScreen ? "14vh" : "37vh"};

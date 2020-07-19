@@ -1,4 +1,5 @@
 import { gsap } from "gsap"
+import Palette from "../palette"
 
 export class LinkHover {
   constructor(el) {

@@ -8,7 +8,7 @@ import { Experience } from "../components/experience-new"
 import { SkillsNew } from "../components/skills-new"
 import { AboutNew } from "../components/about-new"
 import { LinkHover } from "../components/link-hover"
-import palette from "../palette"
+import Palette from "../palette"
 import { useSmallScreenMediaQuery } from "../hooks/useMediaQuery"
 import { useIsMounted } from "../hooks/useIsMounted"
 
@@ -26,17 +26,17 @@ const smallScreenContainer = css`
 `
 
 const skillsLayeredTitle = css`
-  color: #dd6b4d;
+  color: ${Palette.MEDIUM};
   filter: grayscale(0%);
   text-shadow: none;
 `
 
 const skills = isSmallScreen => css`
-  background: #1a2639;
+  background: ${Palette.DARK};
   ${!isSmallScreen &&
     css`&:hover {
     ${skillsLayeredTitle}`}
-    ${isSmallScreen && skillsLayeredTitle}
+  ${isSmallScreen && skillsLayeredTitle}
   }
 `
 
@@ -47,7 +47,7 @@ const aboutLayeredTitle = css`
 `
 
 const about = isSmallScreen => css`
-  background: #d9dad7;
+  background: ${Palette.LIGHT};
   text-shadow: 0px 0px 25px #807878;
   ${!isSmallScreen &&
     css`&:hover {
@@ -57,13 +57,13 @@ const about = isSmallScreen => css`
 `
 
 const projectsLayeredTitle = css`
-  color: #d9dad7;
+  color: ${Palette.LIGHT};
   filter: grayscale(0%);
   text-shadow: none;
 `
 
 const projects = isSmallScreen => css`
-  background: #1a2639;
+  background: ${Palette.LIGHT_DARK};
   ${!isSmallScreen &&
     css`&:hover {
     ${projectsLayeredTitle}`}
@@ -162,16 +162,16 @@ const LandingPage = () => {
           </defs>
         </svg>
         <span
-          css={[title(isSmallScreen), skills(isSmallScreen)]}
-          onClick={() => setShowDetails({ skills: true })}
-        >
-          <label ref={skillLinkRef}>Skills</label>
-        </span>
-        <span
           css={[title(isSmallScreen), about(isSmallScreen)]}
           onClick={() => setShowDetails({ about: true })}
         >
           <label ref={aboutLinkRef}>About</label>
+        </span>
+        <span
+          css={[title(isSmallScreen), skills(isSmallScreen)]}
+          onClick={() => setShowDetails({ skills: true })}
+        >
+          <label ref={skillLinkRef}>Skills</label>
         </span>
         <span
           css={[title(isSmallScreen), projects(isSmallScreen)]}
