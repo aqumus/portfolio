@@ -49,6 +49,7 @@ const experienceHeaderStyle = css`
 
 export const ExperienceContainer = ({
   background,
+  secondBackground,
   color,
   duration,
   company,
@@ -63,14 +64,15 @@ export const ExperienceContainer = ({
     <ExperienceContext.Provider
       value={{
         background,
+        secondBackground,
         color,
       }}
     >
       <div css={experienceContainerStyle({ background, color })}>
         <section
           css={sectionStyle({
-            color: background,
-            background: color,
+            color,
+            background: secondBackground,
             isSmallScreen,
           })}
         >
