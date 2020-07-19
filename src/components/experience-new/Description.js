@@ -17,10 +17,10 @@ const descriptionStyle = ({ color, isSmallScreen }) => css`
 `
 
 export const Description = ({ renderDescription }) => {
-  const { background } = useContext(ExperienceContext)
+  const { color } = useContext(ExperienceContext)
   const isSmallScreen = useSmallScreenMediaQuery()
   return (
-    <div css={descriptionStyle({ color: background, isSmallScreen })}>
+    <div css={descriptionStyle({ color, isSmallScreen })}>
       {renderDescription()}
     </div>
   )

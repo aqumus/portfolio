@@ -28,13 +28,13 @@ const headingStyle = css`
 `
 
 export const TechnologyUsed = ({ children }) => {
-  const { background, color } = useContext(ExperienceContext)
+  const { secondBackground, color } = useContext(ExperienceContext)
   const isSmallScreen = useSmallScreenMediaQuery()
   return (
     <div
       css={technologyUsedStyle({
-        color: background,
-        background: color,
+        color,
+        background: secondBackground,
         isSmallScreen,
       })}
     >
