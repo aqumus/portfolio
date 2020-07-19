@@ -17,7 +17,8 @@ const expereinceStyle = ({ background }) => css`
 `
 
 const JPMorganExperience = {
-  background: Palette.DARK,
+  background: Palette.LIGHT_DARK,
+  secondBackground: Palette.DARK,
   color: Palette.LIGHT,
   company: "J.P. Morgan",
   companyFirstHalf: "J.P.",
@@ -43,8 +44,9 @@ const JPMorganExperience = {
 }
 
 const builioExperience = {
-  background: Palette.LIGHT,
-  color: Palette.DARK,
+  background: Palette.DARK,
+  secondBackground: Palette.LIGHT_DARK,
+  color: Palette.LIGHT,
   company: "Built.io",
   companyFirstHalf: "Bui",
   designation: "Web Developer, Mumbai",
@@ -67,7 +69,8 @@ const builioExperience = {
 }
 
 const IBMExperience = {
-  background: Palette.DARK,
+  background: Palette.LIGHT_DARK,
+  secondBackground: Palette.DARK,
   color: Palette.LIGHT,
   company: "I.B.M",
   companyFirstHalf: "I.B",
