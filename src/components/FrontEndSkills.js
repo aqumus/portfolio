@@ -8,12 +8,13 @@ import { useSmallScreenMediaQuery } from "../hooks/useMediaQuery"
 
 const headerStyle = isSmallScreen => css`
   color: ${Palette.LIGHT};
-  opacity: 0.15;
-  font-size: ${isSmallScreen ? "18vh" : "35vh"};
-  line-height: 30vh;
+  opacity: 0.3;
+  font-size: ${isSmallScreen ? "20vw" : "12vw"};
+  line-height: ${isSmallScreen ? "15vw" : "10vw"};
+  margin-bottom: 4vh;
 `
 
-export const FrontEndSkills = ({ show, onNext }) => {
+export const FrontEndSkills = () => {
   const isSmallScreen = useSmallScreenMediaQuery()
   return (
     <SkillDetails

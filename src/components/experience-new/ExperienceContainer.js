@@ -19,6 +19,7 @@ const experienceContainerStyle = ({ background, color }) => css`
   position: relative;
   background: ${background};
   color: ${color};
+  scroll-snap-align: start;
 `
 
 const sectionStyle = ({ background, color, isSmallScreen }) => css`

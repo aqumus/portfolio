@@ -11,13 +11,16 @@ import { useSmallScreenMediaQuery } from "../hooks/useMediaQuery"
 
 const headerStyle = isSmallScreen => css`
   color: ${Palette.DARK};
-  opacity: 0.55;
+  opacity: 0.7;
   font-size: 360px;
-  font-size: ${isSmallScreen ? "12vh" : "31vh"};
-  line-height: ${isSmallScreen ? "25vh" : "29vh"};
+  font-size: ${isSmallScreen ? "18vw" : "11vw"};
+  line-height: ${isSmallScreen ? "12vw" : "9vw"};
+  letter-spacing: ${isSmallScreen ? "-5px" : "-10px"};
+  padding-right: ${isSmallScreen ? "0px" : "2vw"};
+  margin-bottom: 4vh;
 `
 
-export const BackEndSkills = ({ show, onNext, onPrev }) => {
+export const BackEndSkills = () => {
   const isSmallScreen = useSmallScreenMediaQuery()
   return (
     <SkillDetails

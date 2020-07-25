@@ -13,10 +13,10 @@ const headerStyle = isSmallScreen => css`
   -webkit-text-stroke: 2px ${Palette.MEDIUM};
   text-shadow: -2px -2px 0 ${Palette.MEDIUM}, 2px -2px 0 ${Palette.MEDIUM},
     -2px 2px 0 ${Palette.MEDIUM}, 2px 2px 0 ${Palette.MEDIUM};
-  opacity: 0.3;
-  font-size: 390px;
-  font-size: ${isSmallScreen ? "14vh" : "37vh"};
-  line-height: ${isSmallScreen ? "45vh" : "50vh"};
+  opacity: 0.6;
+  font-size: ${isSmallScreen ? "20vw" : "11vw"};
+  line-height: ${isSmallScreen ? "15vw" : "10vw"};
+  padding-right: ${isSmallScreen ? "0px" : "2vw"};
 `
 
 export const SystemSkills = ({ show, onPrev }) => {
