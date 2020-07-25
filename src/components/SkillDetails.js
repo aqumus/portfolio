@@ -2,10 +2,12 @@ import React from "react"
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core"
 import styled from "@emotion/styled"
+import { useSmallScreenMediaQuery } from "../hooks/useMediaQuery"
 
-const skillsContainerStyle = ({ background }) => css`
+const skillsContainerStyle = ({ background, isSmallScreen }) => css`
   display: flex;
-  flex-direction: column;
+  flex-direction: ${isSmallScreen ? "column" : "row"};
+  padding: 5vh ${isSmallScreen ? "10vw" : "5vw"};
   justify-content: center;
   align-items: center;
   position: relative;
@@ -13,27 +15,26 @@ const skillsContainerStyle = ({ background }) => css`
   height: 100vh;
   background: ${background};
   overflow: hidden;
+  scroll-snap-align: start;
 `
 
-const headerStyle = css`
-  position: absolute;
+const headerStyle = ({ isSmallScreen }) => css`
   align-self: flex-start;
   font-weight: bold;
-  height: 100vh;
-  width: 100vw;
-  padding: 5vh 5vw;
+  height: ${isSmallScreen ? "auto" : "100%"};
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  text-transform: uppercase;
 `
 
 const SkillImage = styled.img`
   align-self: center;
-  flex-grow: 2;
   justify-content: center;
-  padding: 0px 25px;
-  z-index: 1;
+  width: ${({ isSmallScreen }) => (isSmallScreen ? "80vw" : "45vw")};
+  height: ${({ isSmallScreen }) => (isSmallScreen ? "37vh" : "50vh")};
+  margin: 0;
 `
 
 export const SkillDetails = ({
@@ -42,14 +43,15 @@ export const SkillDetails = ({
   background,
   headerClassName,
 }) => {
+  const isSmallScreen = useSmallScreenMediaQuery()
   return (
-    <div css={skillsContainerStyle({ background })}>
-      <header css={[headerStyle, headerClassName]}>
+    <div css={skillsContainerStyle({ background, isSmallScreen })}>
+      <header css={[headerStyle({ isSmallScreen }), headerClassName]}>
         {header.split(" ").map(text => (
           <p>{text}</p>
         ))}
       </header>
-      <SkillImage src={imgSrc} alt={header} />
+      <SkillImage src={imgSrc} alt={header} isSmallScreen={isSmallScreen} />
     </div>
   )
 }

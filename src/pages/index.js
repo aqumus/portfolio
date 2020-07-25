@@ -101,11 +101,11 @@ const title = isSmallScreen => css`
 `
 
 const IndexPage = () => {
-  const ProfilePage = React.lazy(() => import("./landing")) // Lazy-loaded
+  const LandingPage = React.lazy(() => import("./landing")) // Lazy-loaded
 
   return (
     <Suspense fallback={<BulbLoader isLoading={true} />}>
-      <ProfilePage />
+      <LandingPage />
     </Suspense>
   )
 }

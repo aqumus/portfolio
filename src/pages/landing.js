@@ -12,6 +12,18 @@ import Palette from "../palette"
 import { useSmallScreenMediaQuery } from "../hooks/useMediaQuery"
 import { useIsMounted } from "../hooks/useIsMounted"
 
+const landingnContainerStyle = css`
+  height: 100vh;
+  width: 100vw;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-snap-type: y mandatory;
+
+  > div {
+    scroll-snap-align: start;
+  }
+`
+
 const container = css`
   display: flex;
   flex-direction: row;
@@ -124,7 +136,7 @@ const LandingPage = () => {
   }, [isMounted])
 
   return (
-    <>
+    <div css={landingnContainerStyle}>
       <div css={[container, isSmallScreen && smallScreenContainer]}>
         <svg css={svgHidden}>
           <defs>
@@ -180,16 +192,13 @@ const LandingPage = () => {
           <label ref={projectLinkRef}>Projects</label>
         </span>
       </div>
-      )}
-      {showDetails.skills && (
-        <SkillsNew
-          show={showDetails.skills}
-          setShowDetails={() => setShowDetails({ skills: !showDetails.skills })}
-        />
-      )}
-      {showDetails.about && <AboutNew />}
-      {showDetails.projects && <Experience />}
-    </>
+      <AboutNew />
+      <SkillsNew
+        show={showDetails.skills}
+        setShowDetails={() => setShowDetails({ skills: !showDetails.skills })}
+      />
+      <Experience />
+    </div>
   )
 }
 

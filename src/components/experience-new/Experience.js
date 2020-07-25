@@ -7,6 +7,14 @@ import { useSmallScreenMediaQuery } from "../../hooks/useMediaQuery"
 import { ExperienceContainer } from "./ExperienceContainer"
 import Palette from "../../palette"
 
+const expereinceContainerStyle = css`
+  width: 100%;
+  height: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+`
+
 const expereinceStyle = ({ background }) => css`
   width: 100%;
   height: 100%;
@@ -98,14 +106,16 @@ const IBMExperience = {
 export const Experience = () => {
   const isSmallScreen = useSmallScreenMediaQuery()
   return (
-    <div css={expereinceStyle}>
-      <SEO
-        title="Aquib Vadsaria Experience"
-        description="Experience of Aquib Vadsaria with current employer being J.P. Morgan and past companies Build.io and IBM"
-      />
-      <ExperienceContainer {...JPMorganExperience} />
-      <ExperienceContainer {...builioExperience} />
-      <ExperienceContainer {...IBMExperience} />
+    <div css={expereinceContainerStyle}>
+      <div css={expereinceStyle}>
+        <SEO
+          title="Aquib Vadsaria Experience"
+          description="Experience of Aquib Vadsaria with current employer being J.P. Morgan and past companies Build.io and IBM"
+        />
+        <ExperienceContainer {...JPMorganExperience} />
+        <ExperienceContainer {...builioExperience} />
+        <ExperienceContainer {...IBMExperience} />
+      </div>
     </div>
   )
 }
