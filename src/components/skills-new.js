@@ -25,7 +25,7 @@ const skillsDetails = css`
 
 export function SkillsNew({ setShowDetails, show }) {
   return (
-    <div css={skillsDetailsContainer}>
+    <div css={skillsDetailsContainer} id="my-skills">
       <div css={skillsDetails}>
         <SEO
           title="Aquib Vadsaria Skills"

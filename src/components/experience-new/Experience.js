@@ -106,7 +106,7 @@ const IBMExperience = {
 export const Experience = () => {
   const isSmallScreen = useSmallScreenMediaQuery()
   return (
-    <div css={expereinceContainerStyle}>
+    <div css={expereinceContainerStyle} id="my-experience">
       <div css={expereinceStyle}>
         <SEO
           title="Aquib Vadsaria Experience"
