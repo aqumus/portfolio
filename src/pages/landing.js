@@ -1,9 +1,11 @@
-import React, { useState, useCallback, useEffect, useRef } from "react"
-import { animated, useSpring, useSprings, useTransition } from "react-spring"
+import { gsap } from "gsap"
+import ScrollToPlugin from "gsap/ScrollToPlugin"
+import ScrollTrigger from "gsap/ScrollTrigger"
+import React, { useEffect, useRef } from "react"
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core"
-import Loader from "../components/loader"
-import BulbLoader from "../components/bulb-loader"
+// import Loader from "../components/loader"
+// import BulbLoader from "../components/bulb-loader"
 import { Experience } from "../components/experience-new"
 import { SkillsNew } from "../components/skills-new"
 import { AboutNew } from "../components/about-new"
@@ -12,16 +14,14 @@ import Palette from "../palette"
 import { useSmallScreenMediaQuery } from "../hooks/useMediaQuery"
 import { useIsMounted } from "../hooks/useIsMounted"
 
+gsap.registerPlugin(ScrollToPlugin)
+gsap.registerPlugin(ScrollTrigger)
+
 const landingnContainerStyle = css`
   height: 100vh;
   width: 100vw;
   overflow-y: auto;
   overflow-x: hidden;
-  scroll-snap-type: y mandatory;
-
-  > div {
-    scroll-snap-align: start;
-  }
 `
 
 const container = css`
@@ -31,6 +31,11 @@ const container = css`
   height: 100vh;
   overflow: hidden;
   color: white;
+  position: absolute;
+  z-index: 1;
+  background: black;
+  visibility: hidden;
+  opacity: 0;
 `
 
 const smallScreenContainer = css`
@@ -45,6 +50,7 @@ const skillsLayeredTitle = css`
 
 const skills = isSmallScreen => css`
   background: ${Palette.DARK};
+  transform: translateY(-100%);
   ${!isSmallScreen &&
     css`&:hover {
     ${skillsLayeredTitle}`}
@@ -61,6 +67,7 @@ const aboutLayeredTitle = css`
 const about = isSmallScreen => css`
   background: ${Palette.LIGHT};
   text-shadow: 0px 0px 25px #807878;
+  transform: translateY(100%);
   ${!isSmallScreen &&
     css`&:hover {
     ${aboutLayeredTitle}`}
@@ -76,6 +83,7 @@ const projectsLayeredTitle = css`
 
 const projects = isSmallScreen => css`
   background: ${Palette.LIGHT_DARK};
+  transform: translateY(100%);
   ${!isSmallScreen &&
     css`&:hover {
     ${projectsLayeredTitle}`}
@@ -114,6 +122,15 @@ const svgHidden = css`
   pointer-events: none;
 `
 
+const articleStyle = css`
+  visibility: hidden;
+  opacity: 0;
+`
+
+const indexTi = gsap.timeline()
+
+const homeTimeLine = gsap.timeline()
+
 const LandingPage = () => {
   const isMounted = useIsMounted()
   const isSmallScreen = useSmallScreenMediaQuery()
@@ -121,23 +138,50 @@ const LandingPage = () => {
   const aboutLinkRef = useRef()
   const projectLinkRef = useRef()
 
-  const [showDetails, setShowDetails] = useState({
-    skills: false,
-    about: false,
-    projects: false,
-  })
+  const setShowDetails = id => {
+    gsap.to("#landing", {
+      duration: 1,
+      scrollTo: `#${id}`,
+    })
+    homeTimeLine.reverse()
+  }
 
   useEffect(() => {
-    console.log("Blah", skillLinkRef.current)
-
     skillLinkRef.current && new LinkHover(skillLinkRef.current)
     aboutLinkRef.current && new LinkHover(aboutLinkRef.current)
     projectLinkRef.current && new LinkHover(projectLinkRef.current)
-  }, [isMounted])
+    homeTimeLine
+      .addLabel("index")
+      .to("#my-index", {
+        autoAlpha: 1,
+      })
+      .to("#index-about", {
+        y: "0%",
+      })
+      .to("#index-skills", {
+        y: "0%",
+      })
+      .to("#index-experience", {
+        y: "0%",
+        onComplete: () => {
+          const indexEl = document.querySelector("#my-index")
+          const articleContainerEl = document.querySelector(
+            "#content-container"
+          )
+          console.log("index", indexEl)
+          indexEl.style.background = "transparent"
+          articleContainerEl.style.visibility = "visible"
+          articleContainerEl.style.opacity = 1
+        },
+      })
+  }, [])
 
   return (
-    <div css={landingnContainerStyle}>
-      <div css={[container, isSmallScreen && smallScreenContainer]}>
+    <div css={landingnContainerStyle} id="landing">
+      <div
+        id="my-index"
+        css={[container, isSmallScreen && smallScreenContainer]}
+      >
         <svg css={svgHidden}>
           <defs>
             <filter id="filter-5">
@@ -174,30 +218,32 @@ const LandingPage = () => {
           </defs>
         </svg>
         <span
+          id="index-about"
           css={[title(isSmallScreen), about(isSmallScreen)]}
-          onClick={() => setShowDetails({ about: true })}
+          onClick={() => setShowDetails("my-about")}
         >
           <label ref={aboutLinkRef}>About</label>
         </span>
         <span
+          id="index-skills"
           css={[title(isSmallScreen), skills(isSmallScreen)]}
-          onClick={() => setShowDetails({ skills: true })}
+          onClick={() => setShowDetails("my-skills")}
         >
           <label ref={skillLinkRef}>Skills</label>
         </span>
         <span
+          id="index-experience"
           css={[title(isSmallScreen), projects(isSmallScreen)]}
-          onClick={() => setShowDetails({ projects: true })}
+          onClick={() => setShowDetails("my-experience")}
         >
           <label ref={projectLinkRef}>Projects</label>
         </span>
       </div>
-      <AboutNew />
-      <SkillsNew
-        show={showDetails.skills}
-        setShowDetails={() => setShowDetails({ skills: !showDetails.skills })}
-      />
-      <Experience />
+      <article id="content-container" css={articleStyle}>
+        <AboutNew />
+        <SkillsNew />
+        <Experience />
+      </article>
     </div>
   )
 }

@@ -132,7 +132,7 @@ export const AboutNew = () => {
   const iconSize = isSmallScreen ? 15 : 30
   const listBulletSize = isSmallScreen ? 12 : 15
   return (
-    <AboutContainer isSmallScreen={isSmallScreen}>
+    <AboutContainer isSmallScreen={isSmallScreen} id="my-about">
       <SEO
         title="Aquib Vadsaria Intro"
         description="Brief Intro, area of interest and hobbies"
