@@ -7,30 +7,31 @@ import styled from "@emotion/styled"
 import { FrontEndSkills } from "./FrontEndSkills"
 import { BackEndSkills } from "./BackendSkills"
 import { SystemSkills } from "./SystemSkills"
+import { NavigationNew } from "./navigation-new"
+import Palette from "../palette"
 
 const skillsDetailsContainer = css`
   height: 100%;
   weight: 100%;
   display: flex;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-snap-type: x mandatory;
+  position: relative;
 `
 const skillsDetails = css`
   height: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: 300vw;
 `
 
 export function SkillsNew({ setShowDetails, show }) {
   return (
     <div css={skillsDetailsContainer} id="my-skills">
+      <SEO
+        title="Aquib Vadsaria Skills"
+        description="List of Aquib Vadsaria FrontEnd Skill, Backend and cloud skills, System skills"
+      />
+      <NavigationNew inView={"Skills"} color={Palette.LIGHT} />
       <div css={skillsDetails}>
-        <SEO
-          title="Aquib Vadsaria Skills"
-          description="List of Aquib Vadsaria FrontEnd Skill, Backend and cloud skills, System skills"
-        />
         <FrontEndSkills />
         <BackEndSkills />
         <SystemSkills />

@@ -6,6 +6,7 @@ import styled from "@emotion/styled"
 import { useSmallScreenMediaQuery } from "../../hooks/useMediaQuery"
 import { ExperienceContainer } from "./ExperienceContainer"
 import Palette from "../../palette"
+import { NavigationNew } from "../navigation-new"
 
 const expereinceContainerStyle = css`
   width: 100%;
@@ -13,6 +14,7 @@ const expereinceContainerStyle = css`
   overflow-x: auto;
   overflow-y: hidden;
   scroll-snap-type: x mandatory;
+  position: relative;
 `
 
 const expereinceStyle = ({ background }) => css`
@@ -107,11 +109,12 @@ export const Experience = () => {
   const isSmallScreen = useSmallScreenMediaQuery()
   return (
     <div css={expereinceContainerStyle} id="my-experience">
+      <SEO
+        title="Aquib Vadsaria Experience"
+        description="Experience of Aquib Vadsaria with current employer being J.P. Morgan and past companies Build.io and IBM"
+      />
+      <NavigationNew inView={"Experience"} color={Palette.LIGHT} />
       <div css={expereinceStyle}>
-        <SEO
-          title="Aquib Vadsaria Experience"
-          description="Experience of Aquib Vadsaria with current employer being J.P. Morgan and past companies Build.io and IBM"
-        />
         <ExperienceContainer {...JPMorganExperience} />
         <ExperienceContainer {...builioExperience} />
         <ExperienceContainer {...IBMExperience} />

@@ -13,11 +13,13 @@ import { LinkedIn } from "./Icons/Linkedin"
 import { Github } from "./Icons/Github"
 import { Bullet } from "./Icons/Bullet"
 import Palette from "../palette"
+import { NavigationNew } from "./navigation-new"
 
 const HEADER_MIN_WIDTH = "35vw"
 
 const AboutContainer = styled.div`
   display: flex;
+  position: relative
   flex-direction: ${({ isSmallScreen }) => (isSmallScreen ? "column" : "row")};
   width: 100vw;
   height: 100vh;
@@ -96,6 +98,7 @@ const AboutArticle = styled.article`
   height: 100vh;
   overflow-y: auto;
   justify-content: space-between;
+  margin-top: ${({ isSmallScreen }) => (isSmallScreen ? "0px" : "60px")};
 `
 
 const AboutSection = styled.section`
@@ -137,6 +140,7 @@ export const AboutNew = () => {
         title="Aquib Vadsaria Intro"
         description="Brief Intro, area of interest and hobbies"
       />
+      <NavigationNew inView={"About"} color={Palette.DARK} />
       <HeaderContainer isSmallScreen={isSmallScreen}>
         <IntroImage />
         <HeaderTextContainer>
