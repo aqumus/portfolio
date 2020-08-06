@@ -32,7 +32,7 @@ const container = css`
   overflow: hidden;
   color: white;
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   background: black;
   visibility: hidden;
   opacity: 0;
