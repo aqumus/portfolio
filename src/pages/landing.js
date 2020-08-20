@@ -13,6 +13,12 @@ import { LinkHover } from "../components/link-hover"
 import Palette from "../palette"
 import { useSmallScreenMediaQuery } from "../hooks/useMediaQuery"
 import { useIsMounted } from "../hooks/useIsMounted"
+import {
+  homeTimeLine,
+  indexPageTimeline,
+  homeMobileTimeline,
+} from "../timelines"
+import { NavigationNew } from "../components/navigation-new"
 
 gsap.registerPlugin(ScrollToPlugin)
 gsap.registerPlugin(ScrollTrigger)
@@ -33,7 +39,7 @@ const container = css`
   color: white;
   position: absolute;
   z-index: 2;
-  background: black;
+  background: ${Palette.DARK};
   visibility: hidden;
   opacity: 0;
 `
@@ -50,7 +56,7 @@ const skillsLayeredTitle = css`
 
 const skills = isSmallScreen => css`
   background: ${Palette.DARK};
-  transform: translateY(-100%);
+  transform: ${isSmallScreen ? "translateX(-100%)" : "translateY(-100%)"};
   ${!isSmallScreen &&
     css`&:hover {
     ${skillsLayeredTitle}`}
@@ -67,7 +73,7 @@ const aboutLayeredTitle = css`
 const about = isSmallScreen => css`
   background: ${Palette.LIGHT};
   text-shadow: 0px 0px 25px #807878;
-  transform: translateY(100%);
+  transform: ${isSmallScreen ? "translateX(100%)" : "translateY(100%)"};
   ${!isSmallScreen &&
     css`&:hover {
     ${aboutLayeredTitle}`}
@@ -83,7 +89,7 @@ const projectsLayeredTitle = css`
 
 const projects = isSmallScreen => css`
   background: ${Palette.LIGHT_DARK};
-  transform: translateY(100%);
+  transform: ${isSmallScreen ? "translateX(100%)" : "translateY(100%)"};
   ${!isSmallScreen &&
     css`&:hover {
     ${projectsLayeredTitle}`}
@@ -127,10 +133,6 @@ const articleStyle = css`
   opacity: 0;
 `
 
-const indexTi = gsap.timeline()
-
-const homeTimeLine = gsap.timeline()
-
 const LandingPage = () => {
   const isMounted = useIsMounted()
   const isSmallScreen = useSmallScreenMediaQuery()
@@ -150,31 +152,30 @@ const LandingPage = () => {
     skillLinkRef.current && new LinkHover(skillLinkRef.current)
     aboutLinkRef.current && new LinkHover(aboutLinkRef.current)
     projectLinkRef.current && new LinkHover(projectLinkRef.current)
+    if (isSmallScreen === undefined) {
+      return
+    }
+    const indexElTo = isSmallScreen ? { x: "0%" } : { y: "0%" }
     homeTimeLine
-      .addLabel("index")
       .to("#my-index", {
         autoAlpha: 1,
       })
-      .to("#index-about", {
-        y: "0%",
-      })
-      .to("#index-skills", {
-        y: "0%",
-      })
+      .to("#index-about", indexElTo)
+      .to("#index-skills", indexElTo)
       .to("#index-experience", {
-        y: "0%",
+        ...indexElTo,
         onComplete: () => {
           const indexEl = document.querySelector("#my-index")
           const articleContainerEl = document.querySelector(
             "#content-container"
           )
-          console.log("index", indexEl)
           indexEl.style.background = "transparent"
           articleContainerEl.style.visibility = "visible"
           articleContainerEl.style.opacity = 1
         },
       })
-  }, [])
+      .play()
+  }, [isSmallScreen])
 
   return (
     <div css={landingnContainerStyle} id="landing">
@@ -217,6 +218,9 @@ const LandingPage = () => {
             </filter>
           </defs>
         </svg>
+        {isSmallScreen && (
+          <NavigationNew showCross={true} color={Palette.DARK} />
+        )}
         <span
           id="index-about"
           css={[title(isSmallScreen), about(isSmallScreen)]}

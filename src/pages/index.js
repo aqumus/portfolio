@@ -99,10 +99,9 @@ const title = isSmallScreen => css`
   font-size: ${isSmallScreen ? "8vh" : "10vh"};
   ${!isSmallScreen && rotatedTitle}
 `
+const LandingPage = React.lazy(() => import("./landing")) // Lazy-loaded
 
 const IndexPage = () => {
-  const LandingPage = React.lazy(() => import("./landing")) // Lazy-loaded
-
   return (
     <Suspense fallback={<BulbLoader isLoading={true} />}>
       <LandingPage />

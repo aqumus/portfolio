@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react"
+import { useState, useLayoutEffect } from "react"
 
 // Code courtesy https://www.hooks.guide/community/useMedia
 export function useMediaQuery(query) {
   const [matches, setMatches] = useState(undefined)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const media = window.matchMedia(query)
     if (media.matches !== matches) setMatches(media.matches)
     const listener = () => setMatches(media.matches)
