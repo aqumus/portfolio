@@ -19,7 +19,7 @@ const HEADER_MIN_WIDTH = "35vw"
 
 const AboutContainer = styled.div`
   display: flex;
-  position: relative
+  position: relative;
   flex-direction: ${({ isSmallScreen }) => (isSmallScreen ? "column" : "row")};
   width: 100vw;
   height: 100vh;
