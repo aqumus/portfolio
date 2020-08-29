@@ -9,6 +9,8 @@ import { Designation } from "./Designation"
 import { Duration } from "./Duration"
 import { TechnologyUsed } from "./TechnologyUsed"
 import { ExperienceContext } from "./ExperienceContext"
+import { NavigationNew } from "../navigation-new"
+import Palette from "../../palette"
 
 const experienceContainerStyle = ({ background, color }) => css`
   display: flex;
@@ -24,8 +26,7 @@ const experienceContainerStyle = ({ background, color }) => css`
 
 const sectionStyle = ({ background, color, isSmallScreen }) => css`
   width: 70%;
-  height: 60%;
-  margin-right: ${isSmallScreen ? "0" : "5%"};
+  height: 65%;
   position: relative;
   align-self: flex-end;
   display: flex;
@@ -36,10 +37,11 @@ const sectionStyle = ({ background, color, isSmallScreen }) => css`
   color: ${color};
 `
 
-const experienceTitleStyle = css`
+const experienceTitleStyle = isSmallScreen => css`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-top: ${isSmallScreen ? "7vh" : "6vh"};
 `
 
 const experienceHeaderStyle = css`
@@ -70,6 +72,7 @@ export const ExperienceContainer = ({
       }}
     >
       <div css={experienceContainerStyle({ background, color })}>
+        <NavigationNew inView={"Experience"} color={Palette.LIGHT} />
         <section
           css={sectionStyle({
             color,
@@ -77,7 +80,7 @@ export const ExperienceContainer = ({
             isSmallScreen,
           })}
         >
-          <div css={experienceTitleStyle}>
+          <div css={experienceTitleStyle(isSmallScreen)}>
             <div css={experienceHeaderStyle}>
               <Company firstHalf={companyFirstHalf}>{company}</Company>
               <Designation firstHalf={designationFirstHalf}>

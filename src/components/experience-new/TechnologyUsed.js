@@ -12,7 +12,7 @@ const technologyUsedStyle = ({ color, background, isSmallScreen }) => css`
   background: ${background};
   color: ${color};
   width: 80%;
-  height: 25%;
+  height: 22%;
   font-size: ${isSmallScreen ? "16px" : "22px"};
   line-height: ${isSmallScreen ? "20px" : "28px"};
   display: flex;

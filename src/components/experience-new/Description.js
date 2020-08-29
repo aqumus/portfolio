@@ -9,7 +9,7 @@ const descriptionStyle = ({ color, isSmallScreen }) => css`
   color: ${color};
   font-size: ${isSmallScreen ? "16px" : "22px"};
   line-height: ${isSmallScreen ? "20px" : "28px"};
-  margin: 0 5vw;
+  margin: 0 3vw;
 
   emphasis {
     font-weight: bold;

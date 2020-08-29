@@ -8,11 +8,11 @@ import Palette from "../../palette"
 
 const durationStyle = ({ background, color, isSmallScreen }) => css`
   position: absolute;
-  right: ${isSmallScreen ? "0" : "-5%"};
-  top: ${isSmallScreen ? "0%" : "12%"};
+  right: 0;
+  top: ${isSmallScreen ? "7vh" : "12vh"};
   width: auto;
   height: ${isSmallScreen ? "auto" : "75px"};
-  padding: ${isSmallScreen ? "3vh 2vw" : "25px"};
+  padding: ${isSmallScreen ? "2vh 3vw" : "25px"};
   display: flex;
   flex-direction: row;
   justify-content: center;
