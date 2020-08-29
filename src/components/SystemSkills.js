@@ -1,4 +1,5 @@
-import React from "react"
+import React, { useEffect } from "react"
+import { gsap } from "gsap"
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core"
 import { animated, useTransition } from "react-spring"
@@ -17,12 +18,50 @@ const headerStyle = isSmallScreen => css`
   font-size: ${isSmallScreen ? "19vw" : "10vw"};
   line-height: ${isSmallScreen ? "15vw" : "10vw"};
   padding-right: ${isSmallScreen ? "0px" : "2vw"};
+  transform: translateX(-120%);
 `
 
 export const SystemSkills = ({ show, onPrev }) => {
   const isSmallScreen = useSmallScreenMediaQuery()
+  useEffect(() => {
+    if (isSmallScreen === undefined) {
+      return
+    }
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: "#my-skills-system",
+          start: "top 5%",
+          scroller: "#landing",
+        },
+      })
+      .to("#my-skills-system-header", {
+        x: "0%",
+      })
+      .fromTo(
+        "#my-skills-system-img",
+        {
+          scale: 0,
+        },
+        {
+          scale: 1,
+        },
+        "<"
+      )
+      .staggerFromTo(
+        '#my-skills-system > nav[data-inview="Skills"] > span',
+        0.5,
+        { scale: 0 },
+        { scale: 1 },
+        0.054,
+        "-=0.5"
+      )
+  }, [isSmallScreen])
   return (
     <SkillDetails
+      containerId="my-skills-system"
+      headerId="my-skills-system-header"
+      imgId="my-skills-system-img"
       header="System Skills"
       background={Palette.LIGHT}
       color={Palette.DARK}
