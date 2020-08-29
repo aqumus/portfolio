@@ -58,9 +58,9 @@ const builioExperience = {
   secondBackground: Palette.LIGHT_DARK,
   color: Palette.LIGHT,
   company: "Built.io",
-  companyFirstHalf: "Bui",
+  companyFirstHalf: "Bu",
   designation: "Web Developer, Mumbai",
-  designationFirstHalf: "Web Dev",
+  designationFirstHalf: "Web De",
   duration: "Aug, 2015 - Oct, 2016",
   renderDescription: () => {
     return (
@@ -85,7 +85,7 @@ const IBMExperience = {
   company: "I.B.M",
   companyFirstHalf: "I.B",
   designation: "System Engineer, Mumbai",
-  designationFirstHalf: "System",
+  designationFirstHalf: "System ",
   duration: "Jul, 2012 - Jul, 2015",
   renderDescription: () => {
     return (
@@ -113,7 +113,6 @@ export const Experience = () => {
         title="Aquib Vadsaria Experience"
         description="Experience of Aquib Vadsaria with current employer being J.P. Morgan and past companies Build.io and IBM"
       />
-      <NavigationNew inView={"Experience"} color={Palette.LIGHT} />
       <div css={expereinceStyle}>
         <ExperienceContainer {...JPMorganExperience} />
         <ExperienceContainer {...builioExperience} />
