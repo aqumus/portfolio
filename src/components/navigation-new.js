@@ -93,7 +93,7 @@ export const NavigationNew = ({ color, inView, showCross }) => {
     )
   }
   return (
-    <NavContainer>
+    <NavContainer data-inview={inView}>
       <NavItem
         color={color}
         inView={inView === "Home"}

@@ -14,7 +14,7 @@ const headerStyle = isSmallScreen => css`
   text-shadow: -2px -2px 0 ${Palette.MEDIUM}, 2px -2px 0 ${Palette.MEDIUM},
     -2px 2px 0 ${Palette.MEDIUM}, 2px 2px 0 ${Palette.MEDIUM};
   opacity: 0.6;
-  font-size: ${isSmallScreen ? "20vw" : "11vw"};
+  font-size: ${isSmallScreen ? "19vw" : "10vw"};
   line-height: ${isSmallScreen ? "15vw" : "10vw"};
   padding-right: ${isSmallScreen ? "0px" : "2vw"};
 `

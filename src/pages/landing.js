@@ -1,7 +1,7 @@
 import { gsap } from "gsap"
 import ScrollToPlugin from "gsap/ScrollToPlugin"
 import ScrollTrigger from "gsap/ScrollTrigger"
-import React, { useEffect, useRef } from "react"
+import React, { useLayoutEffect, useRef, useState } from "react"
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core"
 // import Loader from "../components/loader"
@@ -17,8 +17,12 @@ import {
   homeTimeLine,
   indexPageTimeline,
   homeMobileTimeline,
+  aboutTimeLine,
 } from "../timelines"
 import { NavigationNew } from "../components/navigation-new"
+import "splitting/dist/splitting.css"
+import "splitting/dist/splitting-cells.css"
+import Splitting from "splitting"
 
 gsap.registerPlugin(ScrollToPlugin)
 gsap.registerPlugin(ScrollTrigger)
@@ -28,6 +32,7 @@ const landingnContainerStyle = css`
   width: 100vw;
   overflow-y: auto;
   overflow-x: hidden;
+  // scroll-snap-type: y mandatory;
 `
 
 const container = css`
@@ -37,11 +42,12 @@ const container = css`
   height: 100vh;
   overflow: hidden;
   color: white;
-  position: absolute;
+  position: relative;
   z-index: 2;
   background: ${Palette.DARK};
   visibility: hidden;
   opacity: 0;
+  // scroll-snap-align: start;
 `
 
 const smallScreenContainer = css`
@@ -129,8 +135,8 @@ const svgHidden = css`
 `
 
 const articleStyle = css`
-  visibility: hidden;
-  opacity: 0;
+  display: flex;
+  flex-direction: column;
 `
 
 const LandingPage = () => {
@@ -139,22 +145,27 @@ const LandingPage = () => {
   const skillLinkRef = useRef()
   const aboutLinkRef = useRef()
   const projectLinkRef = useRef()
+  const [showArticle, setShowArticle] = useState(false)
 
   const setShowDetails = id => {
-    gsap.to("#landing", {
-      duration: 1,
-      scrollTo: `#${id}`,
+    homeTimeLine.reverse().then(() => {
+      setShowArticle(true)
+      gsap.to("#landing", {
+        duration: 0.5,
+        scrollTo: `#${id}`,
+        ease: "none",
+      })
     })
-    homeTimeLine.reverse()
   }
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     skillLinkRef.current && new LinkHover(skillLinkRef.current)
     aboutLinkRef.current && new LinkHover(aboutLinkRef.current)
     projectLinkRef.current && new LinkHover(projectLinkRef.current)
     if (isSmallScreen === undefined) {
       return
     }
+    Splitting()
     const indexElTo = isSmallScreen ? { x: "0%" } : { y: "0%" }
     homeTimeLine
       .to("#my-index", {
@@ -164,14 +175,22 @@ const LandingPage = () => {
       .to("#index-skills", indexElTo)
       .to("#index-experience", {
         ...indexElTo,
+        onReverseComplete: () => {
+          // setShowArticle(true)
+        },
+        onStart: () => {
+          // if (showArticle) {
+          //   setShowArticle(false)
+          // }
+        },
         onComplete: () => {
-          const indexEl = document.querySelector("#my-index")
-          const articleContainerEl = document.querySelector(
-            "#content-container"
-          )
-          indexEl.style.background = "transparent"
-          articleContainerEl.style.visibility = "visible"
-          articleContainerEl.style.opacity = 1
+          // const indexEl = document.querySelector("#my-index")
+          // const articleContainerEl = document.querySelector(
+          //   "#content-container"
+          // )
+          // indexEl.style.background = "transparent"
+          // articleContainerEl.style.visibility = "visible"
+          // articleContainerEl.style.opacity = 1
         },
       })
       .play()

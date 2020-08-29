@@ -13,10 +13,10 @@ const headerStyle = isSmallScreen => css`
   color: ${Palette.DARK};
   opacity: 0.7;
   font-size: 360px;
-  font-size: ${isSmallScreen ? "18vw" : "11vw"};
-  line-height: ${isSmallScreen ? "12vw" : "9vw"};
+  font-size: ${isSmallScreen ? "16vw" : "9vw"};
+  line-height: ${isSmallScreen ? "10vw" : "8vw"};
   letter-spacing: ${isSmallScreen ? "-5px" : "-10px"};
-  padding-right: ${isSmallScreen ? "0px" : "2vw"};
+  padding-right: ${isSmallScreen ? "0px" : "1vw"};
   margin-bottom: 4vh;
 `
 

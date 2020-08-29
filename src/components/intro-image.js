@@ -23,6 +23,7 @@ const introContainerStyle = isSmallScreen => css`
   justify-content: center;
   align-items: center;
   margin: ${isSmallScreen ? "3vh 5vw 3vh 2vw" : "0 2vw 7vh 2vw"};
+  transform: translateX(-120%);
 `
 
 const IntroImage = () => {
@@ -69,7 +70,7 @@ const IntroImage = () => {
     },
   ]
   return (
-    <div css={introContainerCss}>
+    <div css={introContainerCss} id="intro-image">
       <Img
         fluid={fluid}
         style={{
