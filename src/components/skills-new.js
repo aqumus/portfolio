@@ -12,15 +12,14 @@ import Palette from "../palette"
 
 const skillsDetailsContainer = css`
   height: 100%;
-  weight: 100%;
-  display: flex;
+  width: 100%;
   position: relative;
 `
 const skillsDetails = css`
   height: 100%;
   display: flex;
   flex-direction: column;
-  width: 300vw;
+  width: 100vw;
 `
 
 export function SkillsNew({ setShowDetails, show }) {
@@ -30,7 +29,6 @@ export function SkillsNew({ setShowDetails, show }) {
         title="Aquib Vadsaria Skills"
         description="List of Aquib Vadsaria FrontEnd Skill, Backend and cloud skills, System skills"
       />
-      <NavigationNew inView={"Skills"} color={Palette.LIGHT} />
       <div css={skillsDetails}>
         <FrontEndSkills />
         <BackEndSkills />

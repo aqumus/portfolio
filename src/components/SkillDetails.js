@@ -3,6 +3,8 @@ import React from "react"
 import { jsx, css } from "@emotion/core"
 import styled from "@emotion/styled"
 import { useSmallScreenMediaQuery } from "../hooks/useMediaQuery"
+import Palette from "../palette"
+import { NavigationNew } from "./navigation-new"
 
 const skillsContainerStyle = ({ background, isSmallScreen }) => css`
   display: flex;
@@ -52,6 +54,10 @@ export const SkillDetails = ({
       id={containerId}
       css={skillsContainerStyle({ background, isSmallScreen })}
     >
+      <NavigationNew
+        inView={"Skills"}
+        color={containerId.includes("system") ? Palette.DARK : Palette.LIGHT}
+      />
       <header
         id={headerId}
         css={[headerStyle({ isSmallScreen }), headerClassName]}
