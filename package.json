@@ -31,7 +31,8 @@
     "react-helmet": "^5.2.1",
     "react-spring": "^8.0.27",
     "react-vertical-timeline-component": "^2.5.0",
-    "react-xmasonry": "^3.0.1"
+    "react-xmasonry": "^3.0.1",
+    "splitting": "^1.0.6"
   },
   "devDependencies": {
     "prettier": "^1.18.2"

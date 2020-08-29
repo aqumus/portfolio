@@ -15,7 +15,7 @@ const skillsContainerStyle = ({ background, isSmallScreen }) => css`
   height: 100vh;
   background: ${background};
   overflow: hidden;
-  scroll-snap-align: start;
+  // scroll-snap-align: start;
 `
 
 const headerStyle = ({ isSmallScreen }) => css`
@@ -38,6 +38,9 @@ const SkillImage = styled.img`
 `
 
 export const SkillDetails = ({
+  containerId,
+  headerId,
+  imgId,
   imgSrc,
   header,
   background,
@@ -45,13 +48,25 @@ export const SkillDetails = ({
 }) => {
   const isSmallScreen = useSmallScreenMediaQuery()
   return (
-    <div css={skillsContainerStyle({ background, isSmallScreen })}>
-      <header css={[headerStyle({ isSmallScreen }), headerClassName]}>
-        {header.split(" ").map(text => (
-          <p>{text}</p>
+    <div
+      id={containerId}
+      css={skillsContainerStyle({ background, isSmallScreen })}
+    >
+      <header
+        id={headerId}
+        css={[headerStyle({ isSmallScreen }), headerClassName]}
+        data-splitting="chars"
+      >
+        {header.split(" ").map((text, i) => (
+          <p key={i}>{text}</p>
         ))}
       </header>
-      <SkillImage src={imgSrc} alt={header} isSmallScreen={isSmallScreen} />
+      <SkillImage
+        id={imgId}
+        src={imgSrc}
+        alt={header}
+        isSmallScreen={isSmallScreen}
+      />
     </div>
   )
 }
