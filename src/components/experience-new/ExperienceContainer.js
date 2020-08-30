@@ -1,4 +1,5 @@
-import React from "react"
+import React, { useEffect } from "react"
+import { gsap } from "gsap"
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core"
 import styled from "@emotion/styled"
@@ -35,6 +36,7 @@ const sectionStyle = ({ background, color, isSmallScreen }) => css`
   padding: ${isSmallScreen ? "5vh 0 0 0" : "5vh 0"};
   background: ${background};
   color: ${color};
+  transform: translateX(100%);
 `
 
 const experienceTitleStyle = isSmallScreen => css`
@@ -50,6 +52,22 @@ const experienceHeaderStyle = css`
   align-self: flex-start;
 `
 
+const NORMAL_TRIGGER = {
+  trigger: "#my-experience",
+  start: "top 5%",
+  scroller: "#landing",
+}
+
+const HORIZONTAL_TRIGGER = containerId => ({
+  trigger: `#${containerId}`,
+  start: "left 25%",
+  horizontal: true,
+  scroller: "#my-experience",
+  onEnter: () => {
+    console.log("cheers")
+  },
+})
+
 export const ExperienceContainer = ({
   background,
   secondBackground,
@@ -61,8 +79,128 @@ export const ExperienceContainer = ({
   designationFirstHalf,
   renderDescription,
   technologyUsed,
+  containerId,
 }) => {
   const isSmallScreen = useSmallScreenMediaQuery()
+  useEffect(() => {
+    if (isSmallScreen === undefined) {
+      return
+    }
+    const scrollTrigger = containerId.includes("jp")
+      ? NORMAL_TRIGGER
+      : HORIZONTAL_TRIGGER(containerId)
+    gsap
+      .timeline({
+        scrollTrigger,
+      })
+      .to(`#${containerId} > .experience-section`, {
+        duration: 0.5,
+        x: "0%",
+      })
+      .staggerFromTo(
+        `#${containerId} .experience-company> span:nth-child(1) .char`,
+        0.5,
+        { x: "100%", autoAlpha: 0 },
+        {
+          x: "0%",
+          autoAlpha: 1,
+        },
+        0.014
+      )
+      .staggerFromTo(
+        `#${containerId} .experience-company > span:nth-child(2) .char`,
+        0.5,
+        { x: "-100%", autoAlpha: 0 },
+        {
+          x: "0%",
+          autoAlpha: 1,
+        },
+        0.014,
+        "<"
+      )
+      .staggerFromTo(
+        `#${containerId} .experience-designation> span:nth-child(1) .char`,
+        0.5,
+        { x: "100%", autoAlpha: 0 },
+        {
+          x: "0%",
+          autoAlpha: 1,
+        },
+        0.014,
+        "<"
+      )
+      .staggerFromTo(
+        `#${containerId} .experience-designation > span:nth-child(2) .char`,
+        0.5,
+        { x: "-100%", autoAlpha: 0 },
+        {
+          x: "0%",
+          autoAlpha: 1,
+        },
+        0.014,
+        "<"
+      )
+      .fromTo(
+        `#${containerId} .experience-duration`,
+        { x: "100%", autoAlpha: 0 },
+        {
+          x: "0%",
+          autoAlpha: 1,
+        },
+        "-=0.25"
+      )
+      .staggerFromTo(
+        `#${containerId} .experience-duration .word:nth-child(odd)`,
+        0.5,
+        { y: "-100%", autoAlpha: 0 },
+        {
+          y: "0%",
+          autoAlpha: 1,
+        },
+        0.014,
+        "-=0.25"
+      )
+      .staggerFromTo(
+        `#${containerId} .experience-duration .word:nth-child(even)`,
+        0.5,
+        { y: "100%", autoAlpha: 0 },
+        {
+          y: "0%",
+          autoAlpha: 1,
+        },
+        0.014,
+        "<"
+      )
+      .staggerFromTo(
+        `#${containerId} .experience-description .word`,
+        0.5,
+        { y: "-100%", opacity: 0 },
+        {
+          y: "0%",
+          opacity: 1,
+        },
+        0.014,
+        "<"
+      )
+      .staggerFromTo(
+        `#${containerId} .experience-technology`,
+        0.5,
+        { y: "100%", opacity: 0 },
+        {
+          y: "0%",
+          opacity: 1,
+        },
+        0.014,
+        "<"
+      )
+      .staggerFromTo(
+        `#${containerId} > nav[data-inview="Experience"] > span`,
+        0.5,
+        { scale: 0 },
+        { scale: 1 },
+        0.054
+      )
+  }, [isSmallScreen])
   return (
     <ExperienceContext.Provider
       value={{
@@ -71,9 +209,13 @@ export const ExperienceContainer = ({
         color,
       }}
     >
-      <div css={experienceContainerStyle({ background, color })}>
+      <div
+        css={experienceContainerStyle({ background, color })}
+        id={containerId}
+      >
         <NavigationNew inView={"Experience"} color={Palette.LIGHT} />
         <section
+          className="experience-section"
           css={sectionStyle({
             color,
             background: secondBackground,

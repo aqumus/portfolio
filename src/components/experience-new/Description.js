@@ -20,7 +20,11 @@ export const Description = ({ renderDescription }) => {
   const { color } = useContext(ExperienceContext)
   const isSmallScreen = useSmallScreenMediaQuery()
   return (
-    <div css={descriptionStyle({ color, isSmallScreen })}>
+    <div
+      css={descriptionStyle({ color, isSmallScreen })}
+      className="experience-description"
+      data-splitting="words"
+    >
       {renderDescription()}
     </div>
   )

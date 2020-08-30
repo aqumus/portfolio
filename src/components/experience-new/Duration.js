@@ -35,7 +35,11 @@ export const Duration = ({ children }) => {
   const end = children.split("-")[1].trim()
 
   return (
-    <div css={durationStyle({ background, color, isSmallScreen })}>
+    <div
+      css={durationStyle({ background, color, isSmallScreen })}
+      data-splitting="chars"
+      className="experience-duration"
+    >
       <span>{start}</span>
       &nbsp;
       <span>{"-"}</span>
