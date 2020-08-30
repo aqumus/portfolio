@@ -29,11 +29,14 @@ export const Designation = ({ firstHalf, children }) => {
   const { color } = useContext(ExperienceContext)
   const isSmallScreen = useSmallScreenMediaQuery()
   return (
-    <div css={designationStyle}>
-      <span css={[designationText(isSmallScreen), firstHalfStyle({ color })]}>
+    <div css={designationStyle} className="experience-designation">
+      <span
+        css={[designationText(isSmallScreen), firstHalfStyle({ color })]}
+        data-splitting="chars"
+      >
         {firstHalf}
       </span>
-      <span css={designationText(isSmallScreen)}>
+      <span css={designationText(isSmallScreen)} data-splitting="chars">
         {children.replace(firstHalf, "")}
       </span>
     </div>

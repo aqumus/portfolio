@@ -37,6 +37,7 @@ export const TechnologyUsed = ({ children }) => {
         background: secondBackground,
         isSmallScreen,
       })}
+      className="experience-technology"
     >
       <div css={headingStyle}>Technology Used:</div>
       {children}

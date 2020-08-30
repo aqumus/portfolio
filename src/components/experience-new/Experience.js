@@ -18,15 +18,15 @@ const expereinceContainerStyle = css`
 `
 
 const expereinceStyle = ({ background }) => css`
-  width: 100%;
+  width: 300vw;
   height: 100%;
   position: relative;
   display: flex;
   flex-direction: row;
-  width: 300vw;
 `
 
 const JPMorganExperience = {
+  containerId: "experience-jp-morgan",
   background: Palette.LIGHT_DARK,
   secondBackground: Palette.DARK,
   color: Palette.LIGHT,
@@ -54,6 +54,7 @@ const JPMorganExperience = {
 }
 
 const builioExperience = {
+  containerId: "experience-builtio",
   background: Palette.DARK,
   secondBackground: Palette.LIGHT_DARK,
   color: Palette.LIGHT,
@@ -79,6 +80,7 @@ const builioExperience = {
 }
 
 const IBMExperience = {
+  containerId: "experience-ibm",
   background: Palette.LIGHT_DARK,
   secondBackground: Palette.DARK,
   color: Palette.LIGHT,
@@ -106,7 +108,6 @@ const IBMExperience = {
 }
 
 export const Experience = () => {
-  const isSmallScreen = useSmallScreenMediaQuery()
   return (
     <div css={expereinceContainerStyle} id="my-experience">
       <SEO
