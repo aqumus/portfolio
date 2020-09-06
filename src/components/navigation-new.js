@@ -6,8 +6,6 @@ import SEO from "./seo"
 import { jsx, css } from "@emotion/core"
 import styled from "@emotion/styled"
 import { useSmallScreenMediaQuery } from "../hooks/useMediaQuery"
-import Palette from "../palette"
-import { homeTimeLine } from "../timelines"
 
 const NavContainer = styled.nav`
   position: absolute;
@@ -69,11 +67,32 @@ const Drawer = props => {
   )
 }
 
-export const NavigationNew = ({ color, inView, showCross }) => {
+export const NavigationNew = ({
+  color,
+  inView,
+  showCross,
+  homeTimeLine,
+  parentId,
+}) => {
   const isSmallScreen = useSmallScreenMediaQuery()
+  const containerIndexId = `${parentId}-my-index`
+  const aboutIndexId = `${parentId}-index-about`
+  const skillsIndexId = `${parentId}-index-skills`
+  const expereinceIndexId = `${parentId}-index-experience`
+  const indexElTo = isSmallScreen ? { x: "0%" } : { y: "0%" }
+
   const onClick = id => {
     if (id === "my-index") {
-      homeTimeLine.play()
+      console.log("aaaaaa")
+
+      homeTimeLine
+        .to(`#${containerIndexId}`, {
+          autoAlpha: 1,
+        })
+        .to(`#${aboutIndexId}`, indexElTo)
+        .to(`#${skillsIndexId}`, indexElTo)
+        .to(`#${expereinceIndexId}`, indexElTo)
+        .play()
     } else {
       gsap.to("#landing", {
         duration: 1,
@@ -85,9 +104,20 @@ export const NavigationNew = ({ color, inView, showCross }) => {
     return (
       <Drawer
         strokeColor={color}
-        onClick={() =>
-          showCross ? homeTimeLine.reverse() : homeTimeLine.play()
-        }
+        onClick={() => {
+          if (showCross) {
+            homeTimeLine.reverse()
+            return
+          }
+          homeTimeLine
+            .to(`#${containerIndexId}`, {
+              autoAlpha: 1,
+            })
+            .to(`#${aboutIndexId}`, indexElTo)
+            .to(`#${skillsIndexId}`, indexElTo)
+            .to(`#${expereinceIndexId}`, indexElTo)
+            .play()
+        }}
         showCross={showCross}
       />
     )
