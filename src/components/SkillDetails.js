@@ -1,10 +1,12 @@
-import React from "react"
+import React, { useRef } from "react"
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core"
 import styled from "@emotion/styled"
 import { useSmallScreenMediaQuery } from "../hooks/useMediaQuery"
 import Palette from "../palette"
 import { NavigationNew } from "./navigation-new"
+import { createHomeTimeLine } from "../timelines"
+import { Home } from "./home"
 
 const skillsContainerStyle = ({ background, isSmallScreen }) => css`
   display: flex;
@@ -49,14 +51,22 @@ export const SkillDetails = ({
   headerClassName,
 }) => {
   const isSmallScreen = useSmallScreenMediaQuery()
+  const homeTimeLine = useRef(createHomeTimeLine(containerId))
   return (
     <div
       id={containerId}
       css={skillsContainerStyle({ background, isSmallScreen })}
     >
+      <Home
+        overlay={true}
+        homeTimeLine={homeTimeLine.current}
+        parentId={containerId}
+      />
       <NavigationNew
         inView={"Skills"}
         color={containerId.includes("system") ? Palette.DARK : Palette.LIGHT}
+        homeTimeLine={homeTimeLine.current}
+        parentId={containerId}
       />
       <header
         id={headerId}

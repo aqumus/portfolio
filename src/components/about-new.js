@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useRef } from "react"
 import { gsap } from "gsap"
 
 import SEO from "./seo"
@@ -15,7 +15,8 @@ import { Github } from "./Icons/Github"
 import { Bullet } from "./Icons/Bullet"
 import Palette from "../palette"
 import { NavigationNew } from "./navigation-new"
-import { aboutTimeLine } from "../timelines"
+import { createHomeTimeLine } from "../timelines"
+import { Home } from "./home"
 
 const HEADER_MIN_WIDTH = "35vw"
 
@@ -136,6 +137,7 @@ const hobbies = [
 
 export const AboutNew = () => {
   const isSmallScreen = useSmallScreenMediaQuery()
+  const homeTimeLine = useRef(createHomeTimeLine("my-about"))
   const iconSize = isSmallScreen ? 15 : 30
   const listBulletSize = isSmallScreen ? 12 : 15
   const contactIconBottom = isSmallScreen ? "25px" : "6vh"
@@ -215,7 +217,17 @@ export const AboutNew = () => {
         title="Aquib Vadsaria Intro"
         description="Brief Intro, area of interest and hobbies"
       />
-      <NavigationNew inView={"About"} color={Palette.DARK} />
+      <NavigationNew
+        inView={"About"}
+        color={Palette.DARK}
+        homeTimeLine={homeTimeLine.current}
+        parentId={"my-about"}
+      />
+      <Home
+        overlay={true}
+        homeTimeLine={homeTimeLine.current}
+        parentId={"my-about"}
+      />
       <HeaderContainer isSmallScreen={isSmallScreen}>
         <IntroImage />
         <HeaderTextContainer id="intro-title">

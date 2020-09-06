@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useRef } from "react"
 import { gsap } from "gsap"
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core"
@@ -12,6 +12,8 @@ import { TechnologyUsed } from "./TechnologyUsed"
 import { ExperienceContext } from "./ExperienceContext"
 import { NavigationNew } from "../navigation-new"
 import Palette from "../../palette"
+import { createHomeTimeLine } from "../../timelines"
+import { Home } from "../home"
 
 const experienceContainerStyle = ({ background, color }) => css`
   display: flex;
@@ -82,6 +84,7 @@ export const ExperienceContainer = ({
   containerId,
 }) => {
   const isSmallScreen = useSmallScreenMediaQuery()
+  const homeTimeLine = useRef(createHomeTimeLine(containerId))
   useEffect(() => {
     if (isSmallScreen === undefined) {
       return
@@ -213,7 +216,17 @@ export const ExperienceContainer = ({
         css={experienceContainerStyle({ background, color })}
         id={containerId}
       >
-        <NavigationNew inView={"Experience"} color={Palette.LIGHT} />
+        <NavigationNew
+          inView={"Experience"}
+          color={Palette.LIGHT}
+          homeTimeLine={homeTimeLine.current}
+          parentId={containerId}
+        />
+        <Home
+          overlay={true}
+          homeTimeLine={homeTimeLine.current}
+          parentId={containerId}
+        />
         <section
           className="experience-section"
           css={sectionStyle({
