@@ -126,6 +126,10 @@ const ListBullet = styled(Bullet)`
   margin-right: ${({ isSmallScreen }) => (isSmallScreen ? "10px" : "15px")};
 `
 
+const iconStyle = css`
+  cursor: pointer;
+`
+
 const hobbies = [
   "Exploring frameworks",
   "Reading Tech blogs",
@@ -235,17 +239,38 @@ export const AboutNew = () => {
             id="my-about-contact"
             isSmallScreen={isSmallScreen}
           >
-            <Twitter width={iconSize} height={iconSize} />
-            <Gmail width={iconSize} height={iconSize} />
+            <Twitter
+              css={iconStyle}
+              width={iconSize}
+              height={iconSize}
+              onClick={() => window.open("https://twitter.com/aqumus29")}
+            />
+            <Gmail
+              css={iconStyle}
+              width={iconSize}
+              height={iconSize}
+              onClick={() =>
+                (window.location.href = "mailto:vadsaria.ak@gmail.com")
+              }
+            />
             <LinkedIn
+              css={iconStyle}
               width={iconSize}
               height={iconSize}
               style={{
                 position: "relative",
                 top: "-2px",
               }}
+              onClick={() =>
+                window.open("https://www.linkedin.com/in/aquib-vadsaria/")
+              }
             />
-            <Github width={iconSize} height={iconSize} />
+            <Github
+              css={iconStyle}
+              width={iconSize}
+              height={iconSize}
+              onClick={() => window.open("https://github.com/aqumus")}
+            />
           </ContactLinkContainer>
         </HeaderTextContainer>
       </HeaderContainer>
