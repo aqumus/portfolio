@@ -2,7 +2,7 @@ import React, { useEffect } from "react"
 import { gsap } from "gsap"
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core"
-import FrontEndSkillsSvg from "../images/FrontendSkills.svg"
+import FrontEndSkillsSvg from "../images/FrontEndSkills.svg"
 import Palette from "../palette"
 import { SkillDetails } from "./SkillDetails"
 import { useSmallScreenMediaQuery } from "../hooks/useMediaQuery"
