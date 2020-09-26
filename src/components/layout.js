@@ -7,10 +7,6 @@
 
 import React, { useEffect } from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
-/** @jsx jsx */
-import { jsx, css } from "@emotion/core"
-
 import Footer from "./footer"
 
 import "./layout.css"
@@ -28,15 +24,15 @@ const Layout = ({ children, page }) => {
         }
       })
   })
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
+  // const data = useStaticQuery(graphql`
+  //   query SiteTitleQuery {
+  //     site {
+  //       siteMetadata {
+  //         title
+  //       }
+  //     }
+  //   }
+  // `)
 
   return (
     <>

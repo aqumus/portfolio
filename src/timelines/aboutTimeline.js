@@ -1,4 +1,4 @@
-import { gsap } from "gsap"
+// import { gsap } from "gsap"
 
 // export const aboutTimeLine = gsap.timeline({
 //   paused: true,

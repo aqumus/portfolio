@@ -8,6 +8,7 @@ import SystemPrevArrow from "../images/SystemPreviousArrow.svg"
 import Palette from "../palette"
 import { SkillDetails } from "./SkillDetails"
 import { useSmallScreenMediaQuery } from "../hooks/useMediaQuery"
+import { useSplittingLoaded } from "../hooks/useSplitting"
 
 const headerStyle = isSmallScreen => css`
   color: ${Palette.LIGHT};
@@ -23,8 +24,9 @@ const headerStyle = isSmallScreen => css`
 
 export const SystemSkills = ({ show, onPrev }) => {
   const isSmallScreen = useSmallScreenMediaQuery()
+  const isSplittingLoaded = useSplittingLoaded()
   useEffect(() => {
-    if (isSmallScreen === undefined) {
+    if (isSmallScreen === undefined || !isSplittingLoaded) {
       return
     }
     gsap
@@ -56,7 +58,7 @@ export const SystemSkills = ({ show, onPrev }) => {
         0.054,
         "-=0.5"
       )
-  }, [isSmallScreen])
+  }, [isSmallScreen, isSplittingLoaded])
   return (
     <SkillDetails
       containerId="my-skills-system"

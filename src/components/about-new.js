@@ -17,6 +17,7 @@ import Palette from "../palette"
 import { NavigationNew } from "./navigation-new"
 import { createHomeTimeLine } from "../timelines"
 import { Home } from "./home"
+import { useSplittingLoaded } from "../hooks/useSplitting"
 
 const HEADER_MIN_WIDTH = "35vw"
 
@@ -139,13 +140,14 @@ const hobbies = [
 
 export const AboutNew = () => {
   const isSmallScreen = useSmallScreenMediaQuery()
+  const isSplittingLoaded = useSplittingLoaded()
   const homeTimeLine = useRef(createHomeTimeLine("my-about"))
   const iconSize = isSmallScreen ? 15 : 30
   const listBulletSize = isSmallScreen ? 12 : 15
   const contactIconBottom = isSmallScreen ? "25px" : "6vh"
 
   useEffect(() => {
-    if (isSmallScreen === undefined) {
+    if (isSmallScreen === undefined || !isSplittingLoaded) {
       return
     }
 
@@ -212,7 +214,7 @@ export const AboutNew = () => {
         0.054,
         "<"
       )
-  }, [isSmallScreen])
+  }, [isSmallScreen, isSplittingLoaded])
   return (
     <AboutContainer isSmallScreen={isSmallScreen} id="my-about">
       <SEO

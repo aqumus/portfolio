@@ -1,9 +1,6 @@
-import React from "react"
 import { gsap } from "gsap"
-
-import SEO from "./seo"
 /** @jsx jsx */
-import { jsx, css } from "@emotion/core"
+import { jsx } from "@emotion/core"
 import styled from "@emotion/styled"
 import { useSmallScreenMediaQuery } from "../hooks/useMediaQuery"
 
@@ -83,8 +80,6 @@ export const NavigationNew = ({
 
   const onClick = id => {
     if (id === "my-index") {
-      console.log("aaaaaa")
-
       homeTimeLine
         .to(`#${containerIndexId}`, {
           autoAlpha: 1,
