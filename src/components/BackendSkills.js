@@ -9,6 +9,7 @@ import BackEndPrevArrow from "../images/BackEndPreviousArrow.svg"
 import Palette from "../palette"
 import { SkillDetails } from "./SkillDetails"
 import { useSmallScreenMediaQuery } from "../hooks/useMediaQuery"
+import { useSplittingLoaded } from "../hooks/useSplitting"
 
 const headerStyle = isSmallScreen => css`
   color: ${Palette.DARK};
@@ -24,8 +25,9 @@ const headerStyle = isSmallScreen => css`
 
 export const BackEndSkills = () => {
   const isSmallScreen = useSmallScreenMediaQuery()
+  const isSplittingLoaded = useSplittingLoaded()
   useEffect(() => {
-    if (isSmallScreen === undefined) {
+    if (isSmallScreen === undefined || !isSplittingLoaded) {
       return
     }
     gsap
@@ -57,7 +59,7 @@ export const BackEndSkills = () => {
         0.054,
         "-=0.5"
       )
-  }, [isSmallScreen])
+  }, [isSmallScreen, isSplittingLoaded])
   return (
     <SkillDetails
       containerId="my-skills-back-end"

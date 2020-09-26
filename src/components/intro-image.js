@@ -1,8 +1,6 @@
-import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core"
-import styled from "@emotion/styled"
 import Img from "gatsby-image"
 import { useSmallScreenMediaQuery } from "../hooks/useMediaQuery"
 

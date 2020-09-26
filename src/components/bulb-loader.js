@@ -51,20 +51,18 @@ const LoadingText = styled.div`
   color: ${Palette.DARK};
 `
 
-const Loader = ({ isLoading }) => {
+const Loader = () => {
   const isSmallScreen = useSmallScreenMediaQuery()
   // const textStyle = getTextStyle(isSmallScreen)
 
   return (
-    isLoading && (
-      <LoaderContainer>
-        <img
-          id="loading-image"
-          src={isSmallScreen ? MobileLightSvg : DesktopLightSvg}
-        />
-        <LoadingText isSmallScreen={isSmallScreen}>Loading</LoadingText>
-      </LoaderContainer>
-    )
+    <LoaderContainer>
+      <img
+        id="loading-image"
+        src={isSmallScreen ? MobileLightSvg : DesktopLightSvg}
+      />
+      <LoadingText isSmallScreen={isSmallScreen}>Loading</LoadingText>
+    </LoaderContainer>
   )
 }
 

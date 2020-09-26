@@ -1,5 +1,5 @@
 import { gsap } from "gsap"
-import Palette from "../palette"
+// import Palette from "../palette"
 
 export class LinkHover {
   constructor(el) {
@@ -26,7 +26,6 @@ export class LinkHover {
   initEvents() {
     this.onMouseEnterFn = () => this.tl.restart()
     this.onMouseLeaveFn = () => this.tl.progress(1).kill()
-    console.log("el", this.el)
     this.el.parentElement.addEventListener("mouseenter", this.onMouseEnterFn)
     this.el.parentElement.addEventListener("mouseleave", this.onMouseLeaveFn)
   }

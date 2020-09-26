@@ -14,6 +14,7 @@ import { NavigationNew } from "../navigation-new"
 import Palette from "../../palette"
 import { createHomeTimeLine } from "../../timelines"
 import { Home } from "../home"
+import { useSplittingLoaded } from "../../hooks/useSplitting"
 
 const experienceContainerStyle = ({ background, color }) => css`
   display: flex;
@@ -65,9 +66,6 @@ const HORIZONTAL_TRIGGER = containerId => ({
   start: "left 25%",
   horizontal: true,
   scroller: "#my-experience",
-  onEnter: () => {
-    console.log("cheers")
-  },
 })
 
 export const ExperienceContainer = ({
@@ -84,9 +82,10 @@ export const ExperienceContainer = ({
   containerId,
 }) => {
   const isSmallScreen = useSmallScreenMediaQuery()
+  const isSplittingLoaded = useSplittingLoaded()
   const homeTimeLine = useRef(createHomeTimeLine(containerId))
   useEffect(() => {
-    if (isSmallScreen === undefined) {
+    if (isSmallScreen === undefined || !isSplittingLoaded) {
       return
     }
     const scrollTrigger = containerId.includes("jp")
@@ -203,7 +202,7 @@ export const ExperienceContainer = ({
         { scale: 1 },
         0.054
       )
-  }, [isSmallScreen])
+  }, [isSmallScreen, isSplittingLoaded])
   return (
     <ExperienceContext.Provider
       value={{

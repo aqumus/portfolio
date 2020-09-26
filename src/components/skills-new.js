@@ -1,14 +1,9 @@
-import React, { useState } from "react"
 import SEO from "./seo"
-import { animated, useSpring, useSprings, useTransition } from "react-spring"
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core"
-import styled from "@emotion/styled"
 import { FrontEndSkills } from "./FrontEndSkills"
 import { BackEndSkills } from "./BackendSkills"
 import { SystemSkills } from "./SystemSkills"
-import { NavigationNew } from "./navigation-new"
-import Palette from "../palette"
 
 const skillsDetailsContainer = css`
   height: 100%;
@@ -22,7 +17,7 @@ const skillsDetails = css`
   width: 100vw;
 `
 
-export function SkillsNew({ setShowDetails, show }) {
+export function SkillsNew() {
   return (
     <div css={skillsDetailsContainer} id="my-skills">
       <SEO
