@@ -28,7 +28,7 @@ const experienceContainerStyle = ({ background, color }) => css`
 `
 
 const sectionStyle = ({ background, color, isSmallScreen }) => css`
-  width: 70%;
+  width: 65%;
   height: 65%;
   position: relative;
   align-self: flex-end;

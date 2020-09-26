@@ -20,8 +20,8 @@ const companyTextStyle = isSmallScreen => css`
 const firstHalfStyle = ({ color }) => css`
   color: ${color};
   position: absolute;
-  width: 25%;
-  left: -25%;
+  width: 40%;
+  left: -40%;
   display: flex;
   justify-content: flex-end;
 `
