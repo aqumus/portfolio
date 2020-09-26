@@ -2,12 +2,10 @@ import React, { useEffect } from "react"
 import { gsap } from "gsap"
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core"
-import FrontEndSkillsSvg from "../images/FrontEndSkills.svg"
+import FrontEndSkillsSvg from "../images/FrontendSkills.svg"
 import Palette from "../palette"
 import { SkillDetails } from "./SkillDetails"
-import { NavigationNew } from "./navigation-new"
 import { useSmallScreenMediaQuery } from "../hooks/useMediaQuery"
-import { skillsTimeline } from "../timelines"
 import { useSplittingLoaded } from "../hooks/useSplitting"
 
 const headerStyle = isSmallScreen => css`
