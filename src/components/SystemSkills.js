@@ -2,9 +2,7 @@ import React, { useEffect } from "react"
 import { gsap } from "gsap"
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core"
-import { animated, useTransition } from "react-spring"
 import SystemSkillsSvg from "../images/SystemSkills.svg"
-import SystemPrevArrow from "../images/SystemPreviousArrow.svg"
 import Palette from "../palette"
 import { SkillDetails } from "./SkillDetails"
 import { useSmallScreenMediaQuery } from "../hooks/useMediaQuery"
@@ -22,7 +20,7 @@ const headerStyle = isSmallScreen => css`
   transform: translateX(-120%);
 `
 
-export const SystemSkills = ({ show, onPrev }) => {
+export const SystemSkills = () => {
   const isSmallScreen = useSmallScreenMediaQuery()
   const isSplittingLoaded = useSplittingLoaded()
   useEffect(() => {
