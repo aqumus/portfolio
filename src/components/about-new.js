@@ -37,7 +37,7 @@ const HeaderContainer = styled.header(({ isSmallScreen }) => {
     flex-direction: ${isSmallScreen ? "row" : "column"};
     background-color: ${Palette.LIGHT_BACKGROUND};
     color: ${Palette.DARK};
-    width: ${isSmallScreen ? "100vw" : "65vw"};
+    width: ${isSmallScreen ? "100vw" : "50vw"};
     position: relative;
     justify-content: center;
     min-width: ${HEADER_MIN_WIDTH};
@@ -101,13 +101,11 @@ const AboutArticle = styled.article`
   padding: ${({ isSmallScreen }) => (isSmallScreen ? "4vh 5vw" : "10vh 5vw")};
   height: 100vh;
   overflow-y: auto;
-  justify-content: space-between;
+  justify-content: space-around;
   margin-top: ${({ isSmallScreen }) => (isSmallScreen ? "0px" : "60px")};
 `
 
-const AboutSection = styled.section`
-  margin-bottom: ${({ isSmallScreen }) => (isSmallScreen ? "3vh" : "5vh")};
-`
+const AboutSection = styled.section``
 
 const Para = styled.p`
   margin-bottom: ${({ isSmallScreen }) => (isSmallScreen ? "16px" : "1.45rem")};
@@ -129,10 +127,10 @@ const ListBullet = styled(Bullet)`
 `
 
 const hobbies = [
-  "Listening Music - EDM, HipHop, Bollywood.",
-  "Watching movies and TV shows.",
+  "Exploring frameworks",
+  "Reading Tech blogs",
+  "Listening Music",
   "Playing games.",
-  "Reading Tech Blogs",
 ]
 
 export const AboutNew = () => {
@@ -264,20 +262,12 @@ export const AboutNew = () => {
           </Para>
 
           <Para isSmallScreen={isSmallScreen} data-splitting="words">
-            I have started my career as a “System Engineer” where I used to
-            configure mainframe servers, network switches and storages but soon
-            realised my passion for development which got me turned into a Web
-            Developer.
+            I have started my career as a “System Engineer” where now I bring
+            UX/UI designs to life.
           </Para>
 
           <Para isSmallScreen={isSmallScreen} data-splitting="words">
-            My current area of interest is to be more proficient in server side
-            technologies i.e creating web servers and system design.
-          </Para>
-
-          <Para isSmallScreen={isSmallScreen} data-splitting="words">
-            My <Bold>goal</Bold> is to become a <Bold>Technical Architect</Bold>
-            .
+            I want to become a <Bold>Technical Architect</Bold>.
           </Para>
         </AboutSection>
         <section>

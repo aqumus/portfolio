@@ -13,8 +13,8 @@ const designationStyle = css`
 const firstHalfStyle = ({ color }) => css`
   color: ${color};
   position: absolute;
-  width: 35%;
-  left: -35%;
+  width: 48%;
+  left: -48%;
   display: flex;
   justify-content: flex-end;
 `
