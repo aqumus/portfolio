@@ -34,6 +34,7 @@
 
 - [ ] Navigation for Skills section
 - [ ] Navigation for Experience section
+- [ ] Scroll Snap for About, Skills & Experience
 - [ ] Mobile home drawer icon transition from open to close
 - [ ] Overlay Home page disable scroll
 - [ ] Fancy Skills header animation
