@@ -28,7 +28,7 @@
     yarn deploy
     ```
 4.  **Auto published to Netlify**
-    Commit merged to **portfolio-2.0** branch auto publishes the changes to https://aquibvadsaria.netlify.app/ using [netlify Continuous deployment](https://app.netlify.com/sites/aquibvadsaria/deploys)
+    Commit merged to **master** branch auto publishes the changes to https://aquibvadsaria.netlify.app/ using [netlify Continuous deployment](https://app.netlify.com/sites/aquibvadsaria/deploys)
 
 #### Pending Tasks
 
