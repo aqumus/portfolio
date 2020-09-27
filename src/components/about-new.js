@@ -289,33 +289,21 @@ export const AboutNew = () => {
           </Para>
 
           <Para isSmallScreen={isSmallScreen} data-splitting="words">
-            I have started my career as a “System Engineer” where now I bring
-            UX/UI designs to life.
+            Started my career as “System Engineer” but soon realized my passion
+            for web development since then I bring UX/UI designs to life.
           </Para>
 
           <Para isSmallScreen={isSmallScreen} data-splitting="words">
-            I want to become a <Bold>Technical Architect</Bold>.
+            My strong hold is to always have that hunger for learning, self
+            driven and highly productive.
+            <br />I like to learn new frameworks, programming languages, read
+            tech blogs, listen music and play games.
+          </Para>
+
+          <Para isSmallScreen={isSmallScreen} data-splitting="words">
+            My goal is to become a <Bold>Technical Architect</Bold>.
           </Para>
         </AboutSection>
-        <section>
-          <Para isSmallScreen={isSmallScreen} data-splitting="chars">
-            <Bold>Hobbies:</Bold>
-          </Para>
-          <Para isSmallScreen={isSmallScreen}>
-            <HobbiesList>
-              {hobbies.map(hobby => (
-                <li data-splitting="items">
-                  <ListBullet
-                    width={listBulletSize}
-                    height={listBulletSize}
-                    isSmallScreen={isSmallScreen}
-                  />
-                  {hobby}
-                </li>
-              ))}
-            </HobbiesList>
-          </Para>
-        </section>
       </AboutArticle>
     </AboutContainer>
   )
