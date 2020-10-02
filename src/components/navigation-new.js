@@ -48,7 +48,7 @@ const DrawerContainer = styled.div`
 
 const Drawer = props => {
   return (
-    <DrawerContainer onClick={props.onClick}>
+    <DrawerContainer onClick={props.onClick} data-id="mobile-drawer">
       <svg width={30} height={30} viewBox="0 0 30 30" fill="none" {...props}>
         <g stroke={props.strokeColor} strokeWidth={2}>
           {props.showCross ? (
@@ -90,7 +90,7 @@ export const NavigationNew = ({
         .play()
     } else {
       gsap.to("#landing", {
-        duration: 1,
+        duration: 0.5,
         scrollTo: `#${id}`,
       })
     }

@@ -56,6 +56,12 @@ export const BackEndSkills = () => {
         0.054,
         "-=0.5"
       )
+      .fromTo(
+        `#my-skills-back-end [data-id="mobile-drawer"]`,
+        { scale: 0 },
+        { scale: 1 },
+        "<"
+      )
   }, [isSmallScreen, isSplittingLoaded])
   return (
     <SkillDetails

@@ -56,6 +56,12 @@ export const SystemSkills = () => {
         0.054,
         "-=0.5"
       )
+      .fromTo(
+        `#my-skills-system [data-id="mobile-drawer"]`,
+        { scale: 0 },
+        { scale: 1 },
+        "<"
+      )
   }, [isSmallScreen, isSplittingLoaded])
   return (
     <SkillDetails
