@@ -53,6 +53,12 @@ export const FrontEndSkills = () => {
         0.054,
         "-=0.5"
       )
+      .fromTo(
+        `#my-skills-front-end [data-id="mobile-drawer"]`,
+        { scale: 0 },
+        { scale: 1 },
+        "<"
+      )
   }, [isSmallScreen, isSplittingLoaded])
   return (
     <SkillDetails

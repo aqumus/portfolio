@@ -214,6 +214,12 @@ export const AboutNew = () => {
         0.054,
         "<"
       )
+      .fromTo(
+        `#my-about [data-id="mobile-drawer"]`,
+        { scale: 0 },
+        { scale: 1 },
+        "<"
+      )
   }, [isSmallScreen, isSplittingLoaded])
   return (
     <AboutContainer isSmallScreen={isSmallScreen} id="my-about">

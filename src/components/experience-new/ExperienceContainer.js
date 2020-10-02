@@ -15,6 +15,7 @@ import Palette from "../../palette"
 import { createHomeTimeLine } from "../../timelines"
 import { Home } from "../home"
 import { useSplittingLoaded } from "../../hooks/useSplitting"
+import { ExpNavigation } from "./ExpNavigation"
 
 const experienceContainerStyle = ({ background, color }) => css`
   display: flex;
@@ -91,7 +92,7 @@ export const ExperienceContainer = ({
     const scrollTrigger = containerId.includes("jp")
       ? NORMAL_TRIGGER
       : HORIZONTAL_TRIGGER(containerId)
-    gsap
+    const experienceTimeline = gsap
       .timeline({
         scrollTrigger,
       })
@@ -200,8 +201,25 @@ export const ExperienceContainer = ({
         0.5,
         { scale: 0 },
         { scale: 1 },
-        0.054
+        0.054,
+        "<"
       )
+      .staggerFromTo(
+        `#${containerId} > aside > svg`,
+        0.5,
+        { scale: 0 },
+        { scale: 1 },
+        0.054,
+        "<"
+      )
+    if (isSmallScreen) {
+      experienceTimeline.fromTo(
+        `#${containerId} [data-id="mobile-drawer"]`,
+        { scale: 0 },
+        { scale: 1 },
+        "<"
+      )
+    }
   }, [isSmallScreen, isSplittingLoaded])
   return (
     <ExperienceContext.Provider
@@ -209,6 +227,7 @@ export const ExperienceContainer = ({
         background,
         secondBackground,
         color,
+        company,
       }}
     >
       <div
@@ -246,6 +265,7 @@ export const ExperienceContainer = ({
           <Description renderDescription={renderDescription} />
         </section>
         <TechnologyUsed>{technologyUsed}</TechnologyUsed>
+        <ExpNavigation />
       </div>
     </ExperienceContext.Provider>
   )

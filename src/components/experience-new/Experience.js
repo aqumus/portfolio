@@ -84,7 +84,7 @@ const IBMExperience = {
   background: Palette.LIGHT_DARK,
   secondBackground: Palette.DARK,
   color: Palette.LIGHT,
-  company: "I.B.M",
+  company: "I.B.M.",
   companyFirstHalf: "I.B",
   designation: "System Engineer, Mumbai",
   designationFirstHalf: "System ",
