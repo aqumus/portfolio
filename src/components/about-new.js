@@ -193,18 +193,8 @@ export const AboutNew = () => {
           y: "0%",
           opacity: 1,
         },
-        0.014,
+        0.005,
         "-=0.5"
-      )
-      .staggerFromTo(
-        "#my-about .items",
-        0.5,
-        { x: "-100%", opacity: 0 },
-        {
-          x: "0%",
-          opacity: 1,
-        },
-        0.034
       )
       .staggerFromTo(
         'nav[data-inview="About"] > span',
