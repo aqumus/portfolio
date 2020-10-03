@@ -14,7 +14,7 @@ const ExpBullet = styled(Bullet)`
 
 const expAsideStyle = ({ color, background, isSmallScreen }) => css`
   position: absolute;
-  bottom: 25px;
+  bottom: ${isSmallScreen ? "7vh" : "25px"};
   right: ${isSmallScreen ? 20 : 30}px;
   svg {
     circle {

@@ -7,6 +7,8 @@ import Palette from "../palette"
 import { SkillDetails } from "./SkillDetails"
 import { useSmallScreenMediaQuery } from "../hooks/useMediaQuery"
 import { useSplittingLoaded } from "../hooks/useSplitting"
+import backendSkillsNav from "../images/backend_skills_nav_rhs.svg"
+import frontendSkillsNav from "../images/frontend_skills_nav.svg"
 
 const headerStyle = isSmallScreen => css`
   color: ${Palette.LIGHT};
@@ -57,12 +59,35 @@ export const SystemSkills = () => {
         "-=0.5"
       )
       .fromTo(
+        `#my-skills-system .skills-lhs-nav`,
+        { y: "-100%" },
+        { y: "0%" },
+        "<"
+      )
+      .fromTo(
+        `#my-skills-system .skills-rhs-nav`,
+        { y: "100%" },
+        { y: "0%" },
+        "<"
+      )
+      .fromTo(
         `#my-skills-system [data-id="mobile-drawer"]`,
         { scale: 0 },
         { scale: 1 },
         "<"
       )
   }, [isSmallScreen, isSplittingLoaded])
+  const onLhsNavClick = () =>
+    gsap.to("#landing", {
+      duration: 0.5,
+      scrollTo: "#my-skills-front-end",
+    })
+
+  const onRhsNavClick = () =>
+    gsap.to("#landing", {
+      duration: 0.5,
+      scrollTo: "#my-skills-front-end",
+    })
   return (
     <SkillDetails
       containerId="my-skills-system"
@@ -73,6 +98,10 @@ export const SystemSkills = () => {
       color={Palette.DARK}
       imgSrc={SystemSkillsSvg}
       headerClassName={headerStyle(isSmallScreen)}
+      lhsNavImgSrc={frontendSkillsNav}
+      rhsNavImgSrc={backendSkillsNav}
+      onLhsNavClick={onLhsNavClick}
+      onRhsNavClick={onRhsNavClick}
     />
   )
 }

@@ -41,6 +41,23 @@ const SkillImage = styled.img`
   margin: 0;
 `
 
+const navStyle = css`
+  position: absolute;
+  margin: 0;
+  z-index: 1;
+  cursor: pointer;
+`
+
+const lhsNavStyle = css`
+  top: 0;
+  left: 0;
+`
+
+const rhsNavStyle = css`
+  bottom: 0;
+  right: 0;
+`
+
 export const SkillDetails = ({
   containerId,
   headerId,
@@ -49,6 +66,10 @@ export const SkillDetails = ({
   header,
   background,
   headerClassName,
+  lhsNavImgSrc,
+  rhsNavImgSrc,
+  onLhsNavClick,
+  onRhsNavClick,
 }) => {
   const isSmallScreen = useSmallScreenMediaQuery()
   const homeTimeLine = useRef(createHomeTimeLine(containerId))
@@ -68,6 +89,14 @@ export const SkillDetails = ({
         homeTimeLine={homeTimeLine.current}
         parentId={containerId}
       />
+      {!isSmallScreen && (
+        <img
+          className="skills-lhs-nav"
+          src={lhsNavImgSrc}
+          css={[navStyle, lhsNavStyle]}
+          onClick={onLhsNavClick}
+        />
+      )}
       <header
         id={headerId}
         css={[headerStyle({ isSmallScreen }), headerClassName]}
@@ -83,6 +112,14 @@ export const SkillDetails = ({
         alt={header}
         isSmallScreen={isSmallScreen}
       />
+      {!isSmallScreen && (
+        <img
+          className="skills-rhs-nav"
+          src={rhsNavImgSrc}
+          css={[navStyle, rhsNavStyle]}
+          onClick={onRhsNavClick}
+        />
+      )}
     </div>
   )
 }
