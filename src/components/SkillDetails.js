@@ -46,7 +46,7 @@ const navStyle = css`
   margin: 0;
   z-index: 1;
   cursor: pointer;
-  width: 50vw;
+  width: 30vw;
 `
 
 const lhsNavStyle = css`

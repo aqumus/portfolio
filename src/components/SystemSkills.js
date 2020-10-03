@@ -86,7 +86,7 @@ export const SystemSkills = () => {
   const onRhsNavClick = () =>
     gsap.to("#landing", {
       duration: 0.5,
-      scrollTo: "#my-skills-front-end",
+      scrollTo: "#my-skills-back-end",
     })
   return (
     <SkillDetails
