@@ -32,11 +32,12 @@
 
 #### Pending Tasks
 
-- [ ] Navigation for Skills section
-- [ ] Navigation for Experience section
-- [ ] Scroll Snap for About, Skills & Experience
+- [x] Navigation for Skills section
+- [x] Navigation for Experience section
+- [x] Scroll Snap for About, Skills & Experience
 - [ ] Mobile home drawer icon transition from open to close
-- [ ] Overlay Home page disable scroll
+- [x] Overlay Home page disable scroll
+- [ ] Better Experience Page transition- vertical scroll instead of horizontal
 - [ ] Fancy Skills header animation
 - [ ] Code clean up
 - [ ] Fancy Home Page
