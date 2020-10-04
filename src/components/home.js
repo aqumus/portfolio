@@ -120,11 +120,11 @@ export const Home = ({ overlay, homeTimeLine, parentId }) => {
   const isSmallScreen = useSmallScreenMediaQuery()
   const skillLinkRef = useRef()
   const aboutLinkRef = useRef()
-  const projectLinkRef = useRef()
+  const experienceLinkRef = useRef()
   const containerIndexId = `${parentId}-my-index`
   const aboutIndexId = `${parentId}-index-about`
   const skillsIndexId = `${parentId}-index-skills`
-  const expereinceIndexId = `${parentId}-index-experience`
+  const experienceIndexId = `${parentId}-index-experience`
   const indexElTo = isSmallScreen ? { x: "0%" } : { y: "0%" }
 
   const setShowDetails = id => {
@@ -151,7 +151,7 @@ export const Home = ({ overlay, homeTimeLine, parentId }) => {
   useLayoutEffect(() => {
     skillLinkRef.current && new LinkHover(skillLinkRef.current)
     aboutLinkRef.current && new LinkHover(aboutLinkRef.current)
-    projectLinkRef.current && new LinkHover(projectLinkRef.current)
+    experienceLinkRef.current && new LinkHover(experienceLinkRef.current)
     if (isSmallScreen === undefined) {
       return
     }
@@ -166,7 +166,7 @@ export const Home = ({ overlay, homeTimeLine, parentId }) => {
       })
       .to(`#${aboutIndexId}`, indexElTo)
       .to(`#${skillsIndexId}`, indexElTo)
-      .to(`#${expereinceIndexId}`, {
+      .to(`#${experienceIndexId}`, {
         ...indexElTo,
         onReverseComplete: () => {
           // setShowArticle(true)
@@ -256,11 +256,11 @@ export const Home = ({ overlay, homeTimeLine, parentId }) => {
         <label ref={skillLinkRef}>Skills</label>
       </span>
       <span
-        id={expereinceIndexId}
+        id={experienceIndexId}
         css={[title(isSmallScreen), projects(isSmallScreen)]}
         onClick={() => setShowDetails("my-experience")}
       >
-        <label ref={projectLinkRef}>Projects</label>
+        <label ref={experienceLinkRef}>Experience</label>
       </span>
     </div>
   )
