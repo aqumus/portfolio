@@ -145,6 +145,7 @@ export const Home = ({ overlay, homeTimeLine, parentId }) => {
         })
         .then(() => {
           document.getElementById("landing").style.overflowY = "auto"
+          document.getElementById("my-experience").style.overflowX = "auto"
         })
     })
   }

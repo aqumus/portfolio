@@ -90,6 +90,7 @@ export const NavigationNew = ({
           ...indexElTo,
           onComplete: () => {
             document.getElementById("landing").style.overflowY = "hidden"
+            document.getElementById("my-experience").style.overflowX = "hidden"
           },
         })
         .play()
