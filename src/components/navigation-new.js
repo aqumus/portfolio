@@ -86,7 +86,12 @@ export const NavigationNew = ({
         })
         .to(`#${aboutIndexId}`, indexElTo)
         .to(`#${skillsIndexId}`, indexElTo)
-        .to(`#${expereinceIndexId}`, indexElTo)
+        .to(`#${expereinceIndexId}`, {
+          ...indexElTo,
+          onComplete: () => {
+            document.getElementById("landing").style.overflowY = "hidden"
+          },
+        })
         .play()
     } else {
       gsap.to("#landing", {

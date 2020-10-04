@@ -19,7 +19,7 @@ const skillsContainerStyle = ({ background, isSmallScreen }) => css`
   height: 100vh;
   background: ${background};
   overflow: hidden;
-  // scroll-snap-align: start;
+  scroll-snap-align: start;
 `
 
 const headerStyle = ({ isSmallScreen }) => css`

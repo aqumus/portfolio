@@ -15,6 +15,7 @@ const expereinceContainerStyle = css`
   overflow-y: hidden;
   scroll-snap-type: x mandatory;
   position: relative;
+  scroll-snap-align: start;
 `
 
 const expereinceStyle = ({ background }) => css`

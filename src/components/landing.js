@@ -29,7 +29,7 @@ const landingnContainerStyle = css`
   width: 100vw;
   overflow-y: auto;
   overflow-x: hidden;
-  // scroll-snap-type: y mandatory;
+  scroll-snap-type: y mandatory;
 `
 
 const articleStyle = css`

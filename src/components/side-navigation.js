@@ -14,8 +14,8 @@ const navigationContainerPage = css`
 const navPage = css`
   display: flex;
   flex-direction: row;
-    writing-mode: vertical-rl;
-    text-orientation: sideways;
+  writing-mode: vertical-rl;
+  text-orientation: sideways;
   justify-content: space-between;
   align-items: flex-end;
   height: 100%;

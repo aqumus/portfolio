@@ -29,7 +29,7 @@ const AboutContainer = styled.div`
   height: 100vh;
   overflow: hidden;
   background: ${Palette.LIGHT};
-  // scroll-snap-align: start;
+  scroll-snap-align: start;
 `
 
 const HeaderContainer = styled.header(({ isSmallScreen }) => {

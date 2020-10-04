@@ -1,5 +1,5 @@
 import { gsap } from "gsap"
-import React, { useLayoutEffect, useRef } from "react"
+import React, { useEffect, useLayoutEffect, useRef } from "react"
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core"
 import { LinkHover } from "../components/link-hover"
@@ -28,7 +28,7 @@ const container = css`
   background: ${Palette.DARK};
   visibility: hidden;
   opacity: 0;
-  // scroll-snap-align: start;
+  scroll-snap-align: start;
 `
 
 const smallScreenContainer = css`
@@ -118,6 +118,7 @@ const svgHidden = css`
 export const Home = ({ overlay, homeTimeLine, parentId }) => {
   const isMounted = useIsMounted()
   const isSmallScreen = useSmallScreenMediaQuery()
+  const landElem = document.getElementById("landing")
   const skillLinkRef = useRef()
   const aboutLinkRef = useRef()
   const experienceLinkRef = useRef()
@@ -136,16 +137,17 @@ export const Home = ({ overlay, homeTimeLine, parentId }) => {
       })
       return
     }
-    homeTimeLine
-      .progress(1)
-      .reverse()
-      .then(() => {
-        gsap.to("#landing", {
+    homeTimeLine.reverse().then(() => {
+      gsap
+        .to("#landing", {
           duration: 0.5,
           scrollTo: `#${id}`,
           ease: "none",
         })
-      })
+        .then(() => {
+          landElem.style.overflowY = "auto"
+        })
+    })
   }
 
   useLayoutEffect(() => {
@@ -187,7 +189,7 @@ export const Home = ({ overlay, homeTimeLine, parentId }) => {
         },
       })
       .play()
-  }, [isSmallScreen])
+  }, [isSmallScreen, overlay])
 
   return (
     <div
