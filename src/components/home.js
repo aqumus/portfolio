@@ -118,7 +118,6 @@ const svgHidden = css`
 export const Home = ({ overlay, homeTimeLine, parentId }) => {
   const isMounted = useIsMounted()
   const isSmallScreen = useSmallScreenMediaQuery()
-  const landElem = document.getElementById("landing")
   const skillLinkRef = useRef()
   const aboutLinkRef = useRef()
   const experienceLinkRef = useRef()
@@ -145,7 +144,7 @@ export const Home = ({ overlay, homeTimeLine, parentId }) => {
           ease: "none",
         })
         .then(() => {
-          landElem.style.overflowY = "auto"
+          document.getElementById("landing").style.overflowY = "auto"
         })
     })
   }
