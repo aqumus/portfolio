@@ -168,10 +168,10 @@ export const Home = ({ overlay, homeTimeLine, parentId }) => {
     homeTimeLine
       .to(`#${containerIndexId}`, {
         autoAlpha: 1,
-      })
-      .to(`#${aboutIndexId}`, indexElTo)
-      .to(`#${skillsIndexId}`, indexElTo)
-      .to(`#${experienceIndexId}`, {
+      }, 0.2)
+      .to(`#${aboutIndexId}`, 0.75, indexElTo,  "-=0.3")
+      .to(`#${skillsIndexId}`,0.75 ,indexElTo, "-=0.5")
+      .to(`#${experienceIndexId}`, 0.75,{
         ...indexElTo,
         onReverseComplete: () => {
           // setShowArticle(true)
@@ -190,7 +190,7 @@ export const Home = ({ overlay, homeTimeLine, parentId }) => {
           // articleContainerEl.style.visibility = "visible"
           // articleContainerEl.style.opacity = 1
         },
-      })
+      }, "-=0.5")
       .play()
   }, [isSmallScreen, overlay])
 

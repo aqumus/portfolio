@@ -96,6 +96,7 @@ export const SkillDetails = ({
           src={lhsNavImgSrc}
           css={[navStyle, lhsNavStyle]}
           onClick={onLhsNavClick}
+          alt="skills left navigation"
         />
       )}
       <header
@@ -119,6 +120,7 @@ export const SkillDetails = ({
           src={rhsNavImgSrc}
           css={[navStyle, rhsNavStyle]}
           onClick={onRhsNavClick}
+          alt="skills right navigation"
         />
       )}
     </div>

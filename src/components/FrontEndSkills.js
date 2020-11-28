@@ -2,13 +2,13 @@ import React, { useEffect } from "react"
 import { gsap } from "gsap"
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core"
-import FrontEndSkillsSvg from "../images/FrontEndSkills.svg"
+import FrontEndSkillsSvg from "../images/FrontEndSkills_c.svg"
 import Palette from "../palette"
 import { SkillDetails } from "./SkillDetails"
 import { useSmallScreenMediaQuery } from "../hooks/useMediaQuery"
 import { useSplittingLoaded } from "../hooks/useSplitting"
-import backendSkillsNav from "../images/backend_skills_lhs.svg"
-import systemSkillsNav from "../images/system_skills_nav.svg"
+import backendSkillsNav from "../images/backend_skills_nav_l.svg"
+import systemSkillsNav from "../images/system_skills_nav_r.svg"
 
 const headerStyle = isSmallScreen => css`
   color: ${Palette.LIGHT};
