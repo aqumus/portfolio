@@ -1,4 +1,3 @@
-import SEO from "./seo"
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core"
 import { FrontEndSkills } from "./FrontEndSkills"
@@ -20,10 +19,6 @@ const skillsDetails = css`
 export function SkillsNew() {
   return (
     <div css={skillsDetailsContainer} id="my-skills">
-      <SEO
-        title="Aquib Vadsaria Skills"
-        description="List of Aquib Vadsaria FrontEnd Skill, Backend and cloud skills, System skills"
-      />
       <div css={skillsDetails}>
         <FrontEndSkills />
         <BackEndSkills />

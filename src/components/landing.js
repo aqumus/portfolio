@@ -10,6 +10,7 @@ import React, {
 } from "react"
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core"
+import SEO from "./seo"
 import { Experience } from "./experience-new"
 import { SkillsNew } from "./skills-new"
 import { AboutNew } from "./about-new"
@@ -62,6 +63,10 @@ const LandingPage = () => {
 
   return (
     <SplittingContext.Provider value={isSplittingLoaded}>
+      <SEO
+        title="Aquib Vadsaria Portfolio"
+        description="Know about Aquib Vadsaria, his front end/backend skills and his corporate experiences"
+      />
       <div css={landingnContainerStyle} id="landing">
         <Home
           overlay={false}

@@ -1,9 +1,7 @@
 import React from "react"
-import SEO from "../seo"
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core"
 import styled from "@emotion/styled"
-import { useSmallScreenMediaQuery } from "../../hooks/useMediaQuery"
 import { ExperienceContainer } from "./ExperienceContainer"
 import Palette from "../../palette"
 import { NavigationNew } from "../navigation-new"
@@ -111,10 +109,6 @@ const IBMExperience = {
 export const Experience = () => {
   return (
     <div css={expereinceContainerStyle} id="my-experience">
-      <SEO
-        title="Aquib Vadsaria Experience"
-        description="Experience of Aquib Vadsaria with current employer being J.P. Morgan and past companies Build.io and IBM"
-      />
       <div css={expereinceStyle}>
         <ExperienceContainer {...JPMorganExperience} />
         <ExperienceContainer {...builioExperience} />

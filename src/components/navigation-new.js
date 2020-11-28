@@ -3,6 +3,7 @@ import { gsap } from "gsap"
 import { jsx } from "@emotion/core"
 import styled from "@emotion/styled"
 import { useSmallScreenMediaQuery } from "../hooks/useMediaQuery"
+import { touchMoveListerner } from "../util"
 
 const NavContainer = styled.nav`
   position: absolute;
@@ -91,6 +92,8 @@ export const NavigationNew = ({
           onComplete: () => {
             document.getElementById("landing").style.overflowY = "hidden"
             document.getElementById("my-experience").style.overflowX = "hidden"
+            document.getElementById("landing").addEventListener('touchmove', touchMoveListerner, { passive: false });
+            document.getElementById("landing").addEventListener('wheel', touchMoveListerner, { passive: false });
           },
         })
         .play()

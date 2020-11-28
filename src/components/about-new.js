@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react"
 import { gsap } from "gsap"
 
-import SEO from "./seo"
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core"
 import styled from "@emotion/styled"
@@ -213,10 +212,6 @@ export const AboutNew = () => {
   }, [isSmallScreen, isSplittingLoaded])
   return (
     <AboutContainer isSmallScreen={isSmallScreen} id="my-about">
-      <SEO
-        title="Aquib Vadsaria Intro"
-        description="Brief Intro, area of interest and hobbies"
-      />
       <NavigationNew
         inView={"About"}
         color={Palette.DARK}
@@ -286,7 +281,7 @@ export const AboutNew = () => {
 
           <Para isSmallScreen={isSmallScreen} data-splitting="words">
             Started my career as “System Engineer” but soon realized my passion
-            for web development since then I bring UX/UI designs to life.
+            for web development since then I bring UI designs to life.
           </Para>
 
           <Para isSmallScreen={isSmallScreen} data-splitting="words">

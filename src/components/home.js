@@ -9,6 +9,7 @@ import { useIsMounted } from "../hooks/useIsMounted"
 import { NavigationNew } from "../components/navigation-new"
 import "splitting/dist/splitting.css"
 import "splitting/dist/splitting-cells.css"
+import { touchMoveListerner } from "../util"
 
 const overlayContainer = css`
   position: absolute;
@@ -146,6 +147,8 @@ export const Home = ({ overlay, homeTimeLine, parentId }) => {
         .then(() => {
           document.getElementById("landing").style.overflowY = "auto"
           document.getElementById("my-experience").style.overflowX = "auto"
+          document.getElementById("landing").removeEventListener('touchmove', touchMoveListerner, { passive: false });
+          document.getElementById("landing").removeEventListener('wheel', touchMoveListerner, { passive: false });
         })
     })
   }
