@@ -4,7 +4,6 @@ import { jsx, css } from "@emotion/core"
 import styled from "@emotion/styled"
 import { ExperienceContainer } from "./ExperienceContainer"
 import Palette from "../../palette"
-import { NavigationNew } from "../navigation-new"
 
 const expereinceContainerStyle = css`
   width: 100%;

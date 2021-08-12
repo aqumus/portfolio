@@ -142,7 +142,6 @@ export const AboutNew = () => {
   const isSplittingLoaded = useSplittingLoaded()
   const homeTimeLine = useRef(createHomeTimeLine("my-about"))
   const iconSize = isSmallScreen ? 15 : 30
-  const listBulletSize = isSmallScreen ? 12 : 15
   const contactIconBottom = isSmallScreen ? "25px" : "6vh"
 
   useEffect(() => {
