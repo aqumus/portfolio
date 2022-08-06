@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkaquib_vadsaria_portfolio=self.webpackChunkaquib_vadsaria_portfolio||[]).push([[306],{1367:function(e,t,a){var u=a(4836);t.__esModule=!0,t.default=void 0;var n=u(a(7867)),r=u(a(7294)),o=function(e){function t(){return e.apply(this,arguments)||this}return(0,n.default)(t,e),t.prototype.render=function(){return r.default.createElement(r.default.Fragment,null)},t}(r.default.Component),l=o;t.default=l}}]);
+//# sourceMappingURL=component---cache-caches-gatsby-plugin-offline-app-shell-js-811d7e19e6ab37b7f59b.js.map

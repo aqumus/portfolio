@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[5],{222:function(e,n,t){"use strict";t.r(n);var c=t(1),i=(t(0),t(52)),a=t(218),b=t(217);n.default=function(){return Object(c.b)(a.a,null,Object(c.b)(b.a,{title:"Aquib Vadsaria experience"}),Object(c.b)("h1",null,"Experience"),Object(c.b)(i.Link,{to:"/"},"Back to Main"))}}}]);
-//# sourceMappingURL=component---src-pages-experience-js-88e708a77ac9ce3d09cc.js.map
