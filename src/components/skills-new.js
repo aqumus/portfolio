@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, css } from "@emotion/core"
+import { jsx, css } from "@emotion/react"
 import { FrontEndSkills } from "./FrontEndSkills"
 import { BackEndSkills } from "./BackendSkills"
 import { SystemSkills } from "./SystemSkills"

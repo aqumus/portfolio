@@ -1,6 +1,6 @@
 import { gsap } from "gsap"
 /** @jsx jsx */
-import { jsx } from "@emotion/core"
+import { jsx } from "@emotion/react"
 import styled from "@emotion/styled"
 import { useSmallScreenMediaQuery } from "../hooks/useMediaQuery"
 import { touchMoveListerner } from "../util"
@@ -92,8 +92,14 @@ export const NavigationNew = ({
           onComplete: () => {
             document.getElementById("landing").style.overflowY = "hidden"
             document.getElementById("my-experience").style.overflowX = "hidden"
-            document.getElementById("landing").addEventListener('touchmove', touchMoveListerner, { passive: false });
-            document.getElementById("landing").addEventListener('wheel', touchMoveListerner, { passive: false });
+            document
+              .getElementById("landing")
+              .addEventListener("touchmove", touchMoveListerner, {
+                passive: false,
+              })
+            document
+              .getElementById("landing")
+              .addEventListener("wheel", touchMoveListerner, { passive: false })
           },
         })
         .play()

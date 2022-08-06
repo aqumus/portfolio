@@ -2,7 +2,7 @@ import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
 /** @jsx jsx */
-import { jsx, css } from "@emotion/core"
+import { jsx, css } from "@emotion/react"
 
 import { useSmallScreenMediaQuery } from "../hooks/useMediaQuery"
 import GithubIcon from "./github-icon"

@@ -1,6 +1,6 @@
 import React from "react"
 /** @jsx jsx */
-import { jsx, css } from "@emotion/core"
+import { jsx, css } from "@emotion/react"
 import styled from "@emotion/styled"
 import { ExperienceContainer } from "./ExperienceContainer"
 import Palette from "../../palette"
@@ -16,12 +16,41 @@ const expereinceContainerStyle = css`
 `
 
 const expereinceStyle = ({ background }) => css`
-  width: 300vw;
+  width: 400vw;
   height: 100%;
   position: relative;
   display: flex;
   flex-direction: row;
 `
+
+const LiveLikeExperience = {
+  containerId: "experience-livelike",
+  background: Palette.DARK,
+  secondBackground: Palette.LIGHT_DARK,
+  color: Palette.LIGHT,
+  company: "LiveLike",
+  companyFirstHalf: "Liv",
+  designation: "Technical Lead, Mumbai",
+  designationFirstHalf: "Technic",
+  duration: "Oct, 2021 - Current",
+  renderDescription: () => {
+    return (
+      <>
+        <p>
+          Working on an <a href="https://livelike.com/">Engagement platform</a>{" "}
+          for client like Canal+, Chelsea FC, Fifa+, Coca Cola, etc.
+        </p>
+        <p>
+          {" "}
+          Designing and developing enagement related features such as chat,
+          interactive widgets and gamification based features
+        </p>
+      </>
+    )
+  },
+  technologyUsed:
+    "Web Components, Lit.js, Typescript, Rollup, Jest, Python, Django, AWS, Heroku, PostgresSQL, etc.",
+}
 
 const JPMorganExperience = {
   containerId: "experience-jp-morgan",
@@ -32,7 +61,7 @@ const JPMorganExperience = {
   companyFirstHalf: "J.P.",
   designation: "Application Developer, Mumbai",
   designationFirstHalf: "Applicatio",
-  duration: "Nov, 2016 - Current",
+  duration: "Nov, 2016 - Oct, 2021",
   renderDescription: () => {
     return (
       <>
@@ -41,8 +70,7 @@ const JPMorganExperience = {
         </p>
         <p>
           {" "}
-          Migrating existing Flex application to HTML5,CSS3 and JS based web
-          app.
+          Migrated existing Flex application to HTML5,CSS3 and JS based web app.
         </p>
       </>
     )
@@ -109,6 +137,7 @@ export const Experience = () => {
   return (
     <div css={expereinceContainerStyle} id="my-experience">
       <div css={expereinceStyle}>
+        <ExperienceContainer {...LiveLikeExperience} />
         <ExperienceContainer {...JPMorganExperience} />
         <ExperienceContainer {...builioExperience} />
         <ExperienceContainer {...IBMExperience} />

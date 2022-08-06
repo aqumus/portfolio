@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import { gsap } from "gsap"
 /** @jsx jsx */
-import { jsx, css } from "@emotion/core"
+import { jsx, css } from "@emotion/react"
 import BackEndSkillsSvg from "../images/BackendCloudSkills_c.svg"
 import Palette from "../palette"
 import { SkillDetails } from "./SkillDetails"

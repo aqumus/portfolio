@@ -1,7 +1,7 @@
 import { gsap } from "gsap"
 import React, { useEffect, useLayoutEffect, useRef } from "react"
 /** @jsx jsx */
-import { jsx, css } from "@emotion/core"
+import { jsx, css } from "@emotion/react"
 import { LinkHover } from "../components/link-hover"
 import Palette from "../palette"
 import { useSmallScreenMediaQuery } from "../hooks/useMediaQuery"
@@ -147,8 +147,16 @@ export const Home = ({ overlay, homeTimeLine, parentId }) => {
         .then(() => {
           document.getElementById("landing").style.overflowY = "auto"
           document.getElementById("my-experience").style.overflowX = "auto"
-          document.getElementById("landing").removeEventListener('touchmove', touchMoveListerner, { passive: false });
-          document.getElementById("landing").removeEventListener('wheel', touchMoveListerner, { passive: false });
+          document
+            .getElementById("landing")
+            .removeEventListener("touchmove", touchMoveListerner, {
+              passive: false,
+            })
+          document
+            .getElementById("landing")
+            .removeEventListener("wheel", touchMoveListerner, {
+              passive: false,
+            })
         })
     })
   }
@@ -166,31 +174,40 @@ export const Home = ({ overlay, homeTimeLine, parentId }) => {
       return
     }
     homeTimeLine
-      .to(`#${containerIndexId}`, {
-        autoAlpha: 1,
-      }, 0.2)
-      .to(`#${aboutIndexId}`, 0.75, indexElTo,  "-=0.3")
-      .to(`#${skillsIndexId}`,0.75 ,indexElTo, "-=0.5")
-      .to(`#${experienceIndexId}`, 0.75,{
-        ...indexElTo,
-        onReverseComplete: () => {
-          // setShowArticle(true)
+      .to(
+        `#${containerIndexId}`,
+        {
+          autoAlpha: 1,
         },
-        onStart: () => {
-          // if (showArticle) {
-          //   setShowArticle(false)
-          // }
+        0.2
+      )
+      .to(`#${aboutIndexId}`, 0.75, indexElTo, "-=0.3")
+      .to(`#${skillsIndexId}`, 0.75, indexElTo, "-=0.5")
+      .to(
+        `#${experienceIndexId}`,
+        0.75,
+        {
+          ...indexElTo,
+          onReverseComplete: () => {
+            // setShowArticle(true)
+          },
+          onStart: () => {
+            // if (showArticle) {
+            //   setShowArticle(false)
+            // }
+          },
+          onComplete: () => {
+            // const indexEl = document.querySelector("#my-index")
+            // const articleContainerEl = document.querySelector(
+            //   "#content-container"
+            // )
+            // indexEl.style.background = "transparent"
+            // articleContainerEl.style.visibility = "visible"
+            // articleContainerEl.style.opacity = 1
+          },
         },
-        onComplete: () => {
-          // const indexEl = document.querySelector("#my-index")
-          // const articleContainerEl = document.querySelector(
-          //   "#content-container"
-          // )
-          // indexEl.style.background = "transparent"
-          // articleContainerEl.style.visibility = "visible"
-          // articleContainerEl.style.opacity = 1
-        },
-      }, "-=0.5")
+        "-=0.5"
+      )
       .play()
   }, [isSmallScreen, overlay])
 

@@ -1,8 +1,7 @@
 import React, { useEffect, useRef } from "react"
 import { gsap } from "gsap"
 /** @jsx jsx */
-import { jsx, css } from "@emotion/core"
-import styled from "@emotion/styled"
+import { jsx, css } from "@emotion/react"
 import { useSmallScreenMediaQuery } from "../../hooks/useMediaQuery"
 import { Description } from "./Description"
 import { Company } from "./Company"
@@ -29,7 +28,12 @@ const experienceContainerStyle = ({ background, color }) => css`
   scroll-snap-align: start;
 `
 
-const sectionStyle = ({ background, color, isSmallScreen }) => css`
+const sectionStyle = ({
+  background,
+  secondBackground,
+  color,
+  isSmallScreen,
+}) => css`
   width: 65%;
   height: 65%;
   position: relative;
@@ -38,9 +42,13 @@ const sectionStyle = ({ background, color, isSmallScreen }) => css`
   flex-direction: column;
   justify-content: space-between;
   padding: ${isSmallScreen ? "5vh 0 0 0" : "5vh 0"};
-  background: ${background};
+  background: ${secondBackground};
   color: ${color};
   transform: translateX(100%);
+
+  a {
+    color: ${background};
+  }
 `
 
 const experienceTitleStyle = isSmallScreen => css`
@@ -89,7 +97,7 @@ export const ExperienceContainer = ({
     if (isSmallScreen === undefined || !isSplittingLoaded) {
       return
     }
-    const scrollTrigger = containerId.includes("jp")
+    const scrollTrigger = containerId.includes("livelike")
       ? NORMAL_TRIGGER
       : HORIZONTAL_TRIGGER(containerId)
     const experienceTimeline = gsap
@@ -249,7 +257,8 @@ export const ExperienceContainer = ({
           className="experience-section"
           css={sectionStyle({
             color,
-            background: secondBackground,
+            background,
+            secondBackground,
             isSmallScreen,
           })}
         >
