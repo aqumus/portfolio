@@ -1,6 +1,6 @@
 import React from "react"
 /** @jsx jsx */
-import { jsx, css } from "@emotion/core"
+import { jsx, css } from "@emotion/react"
 import styled from "@emotion/styled"
 import IntroImage from "../components/intro-image"
 import SEO from "../components/seo"

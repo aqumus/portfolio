@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 /** @jsx jsx */
-import { jsx, css } from "@emotion/core"
+import { jsx, css } from "@emotion/react"
 
 import { links } from "../util"
 

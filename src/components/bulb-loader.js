@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 /** @jsx jsx */
-import { jsx, css } from "@emotion/core"
+import { jsx, css } from "@emotion/react"
 import styled from "@emotion/styled"
 import Palette from "../palette"
 import DesktopLightSvg from "../images/desktop_light.svg"

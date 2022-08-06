@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useContext } from "react"
 import { gsap } from "gsap"
 /** @jsx jsx */
-import { jsx, css } from "@emotion/core"
+import { jsx, css } from "@emotion/react"
 import styled from "@emotion/styled"
 import { useSmallScreenMediaQuery } from "../../hooks/useMediaQuery"
 import { Bullet } from "../Icons/Bullet"
@@ -35,17 +35,24 @@ export const ExpNavigation = () => {
       case 0:
         gsap.to("#my-experience", {
           duration: 1,
-          scrollTo: `#experience-jp-morgan`,
+          scrollTo: `#experience-livelike`,
         })
         break
 
       case 1:
         gsap.to("#my-experience", {
           duration: 1,
+          scrollTo: `#experience-jp-morgan`,
+        })
+        break
+
+      case 2:
+        gsap.to("#my-experience", {
+          duration: 1,
           scrollTo: `#experience-builtio`,
         })
         break
-      case 2:
+      case 3:
         gsap.to("#my-experience", {
           duration: 1,
           scrollTo: `#experience-ibm`,
@@ -63,18 +70,23 @@ export const ExpNavigation = () => {
     >
       <ExpBullet
         isSmallScreen={isSmallScreen}
+        selected={company.includes("Live")}
+        onClick={() => !company.includes("Live") && onClick(0)}
+      />
+      <ExpBullet
+        isSmallScreen={isSmallScreen}
         selected={company.includes("J.P.")}
-        onClick={() => !company.includes("J.P.") && onClick(0)}
+        onClick={() => !company.includes("J.P.") && onClick(1)}
       />
       <ExpBullet
         isSmallScreen={isSmallScreen}
         selected={company.includes("Built.io")}
-        onClick={() => !company.includes("Built.io") && onClick(1)}
+        onClick={() => !company.includes("Built.io") && onClick(2)}
       />
       <ExpBullet
         isSmallScreen={isSmallScreen}
         selected={company.includes("I.B.M.")}
-        onClick={() => !company.includes("I.B.M.") && onClick(2)}
+        onClick={() => !company.includes("I.B.M.") && onClick(3)}
       />
     </aside>
   )

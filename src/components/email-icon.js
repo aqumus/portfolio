@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 /** @jsx jsx */
-import { jsx, css } from "@emotion/core"
+import { jsx, css } from "@emotion/react"
 import styled from "@emotion/styled"
 
 const Svg = styled.svg`
