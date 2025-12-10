@@ -15,30 +15,61 @@ const expereinceContainerStyle = css`
   scroll-snap-align: start;
 `
 
+const experienceATag = css`
+  color: ${Palette.LIGHT} !important;
+  font-weight: bold;
+`
+
 const expereinceStyle = ({ background }) => css`
-  width: 400vw;
+  width: 500vw;
   height: 100%;
   position: relative;
   display: flex;
   flex-direction: row;
 `
 
-const LiveLikeExperience = {
-  containerId: "experience-livelike",
+const LiveLikeExperiencePrincipal = {
+  containerId: "experience-livelike-principal",
+  background: Palette.LIGHT_DARK,
+  secondBackground: Palette.DARK,
+  color: Palette.LIGHT,
+  company: "LiveLike",
+  companyFirstHalf: "Liv",
+  designation: "Principal Engineer, Mumbai",
+  designationFirstHalf: "Principa",
+  duration: "Aug, 2023 - Current",
+  renderDescription: () => {
+    return (
+      <>
+        <p>
+          Working on <a css={experienceATag} href="https://livelike.com/livelike-launches-genie-a-multi-agent-ai-assistant-to-transform-interactive-content-workflows/">LiveLike Genie</a>
+        </p>
+        <p>
+          Developing autonomous Agentic AI solution to automate content creation and management through LiveLike's engagement platform
+        </p>
+      </>
+    )
+  },
+  technologyUsed:
+    "Langgraph, Langchain, Autogen, AWS Bedrock, PostgresSQL, Redis, RAG pipeline, Pheonix Arize Observability, Anthropic Claude, Python, Typescript, MCP, Next.js, etc.",
+}
+
+const LiveLikeExperienceLead = {
+  containerId: "experience-livelike-lead",
   background: Palette.DARK,
   secondBackground: Palette.LIGHT_DARK,
   color: Palette.LIGHT,
   company: "LiveLike",
   companyFirstHalf: "Liv",
   designation: "Technical Lead, Mumbai",
-  designationFirstHalf: "Technic",
-  duration: "Oct, 2021 - Current",
+  designationFirstHalf: "Technica",
+  duration: "Oct, 2021 - July 2023",
   renderDescription: () => {
     return (
       <>
         <p>
-          Working on an <a href="https://livelike.com/">Engagement platform</a>{" "}
-          for client like Canal+, Chelsea FC, Fifa+, Coca Cola, etc.
+          Working on an <a css={experienceATag} href="https://livelike.com/">Engagement platform</a>{" "}
+          for client like Canal+, Chelsea FC, Fifa+, Coca Cola, NBA etc.
         </p>
         <p>
           {" "}
@@ -137,7 +168,8 @@ export const Experience = () => {
   return (
     <div css={expereinceContainerStyle} id="my-experience">
       <div css={expereinceStyle}>
-        <ExperienceContainer {...LiveLikeExperience} />
+        <ExperienceContainer {...LiveLikeExperiencePrincipal} />
+        <ExperienceContainer {...LiveLikeExperienceLead} />
         <ExperienceContainer {...JPMorganExperience} />
         <ExperienceContainer {...builioExperience} />
         <ExperienceContainer {...IBMExperience} />

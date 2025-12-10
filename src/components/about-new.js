@@ -274,18 +274,18 @@ export const AboutNew = () => {
           </Para>
 
           <Para isSmallScreen={isSmallScreen} data-splitting="words">
-            I am a <Bold>Full stack web developer</Bold> based in{" "}
+            I am a <Bold>Principal Web Engineer</Bold> based in{" "}
             <Bold>Mumbai</Bold>.
           </Para>
 
           <Para isSmallScreen={isSmallScreen} data-splitting="words">
             Started my career as “System Engineer” but soon realized my passion
-            for web development since then I bring UI designs to life.
+            for software development since then I drive business impact using technologies.
           </Para>
 
           <Para isSmallScreen={isSmallScreen} data-splitting="words">
-            My strong hold is to always have that hunger for learning, self
-            driven and highly productive.
+            My strong hold is to always have that hunger for learning, curiously self
+            driven, result oriented highly productive engineer.
             <br />I like to learn new frameworks, programming languages, read
             tech blogs, listen music and play games.
           </Para>

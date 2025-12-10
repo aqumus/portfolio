@@ -98,10 +98,10 @@ filter: grayscale(100%);
 
 const title = isSmallScreen => css`
   display: flex;
+  flex: 1 1 0%;
   justify-content: center;
   align-content: center;
   align-items: center;
-  width: 100%;
   height: 100%;
   text-shadow: 0px 0px 20px white;
   font-size: ${isSmallScreen ? "8vh" : "10vh"};
